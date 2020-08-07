@@ -1,0 +1,109 @@
+body {
+    margin:  0;
+    background-color: #306BAD;
+    height: 100vh;
+
+}
+.paper{
+    background: #fff;
+    max-width: 650px;
+	box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-o-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+    margin: auto;	
+    position: relative;
+    padding: 50px;
+}
+.rounded{
+    border-radius: 50px !important;
+}
+input:focus{
+    border-color: #306BAD !important;
+    box-shadow: none !important;
+}
+.input-label{
+    margin-bottom: -10px;
+    z-index: 2;
+    position: relative;
+    margin-left: 10px;
+    background-color: white;
+    width: fit-content;
+    font-size: 12px;
+    padding: 0px 4px;
+}
+#btn-signup{
+    border: 0px;
+    text-align: center;
+    height: 40px;
+    width: 105px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #306bad;
+    color: white;
+}
+.label-font{
+    font-size: 14px;
+    
+}
+#terms{
+    margin-top: 7px;
+}
+#email-confirmation{
+    display: none;
+}
+#btn-quick-setup{
+    display: none;
+}
+#btn-confirm{
+    border: 0px;
+    text-align: center;
+    height: 40px;
+    width: 105px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #306bad;
+    color: white;
+    margin-top: 5px;
+    
+}
+#btn-resend{
+    margin-bottom: 5px;
+}
+#login_header, #login_footer {
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 60px;
+    background-color: white;
+    box-shadow: 0px 0px 6px #0D2442;
+    width: 100%;
+}
+#login_header img, #login_footer img {
+    height: 40px;
+    width: auto;
+}
+.h-10{
+    height: 10vh;
+
+}
+.h-80{
+    height: 80vh;
+}
+.has-float-label .form-control:placeholder-shown:not(:focus)+* {
+    top: 12px !important;
+    font-size: 14px !important;
+}

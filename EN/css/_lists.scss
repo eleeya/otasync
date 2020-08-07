@@ -1,0 +1,533 @@
+
+// List globals
+.list_names {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left:30px;
+  margin-right:30px;
+  font-size: 14px;
+  color: $darkBlue;
+  pointer-events: none;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.list_row {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: calc(100% - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: $darkBlue;
+  height:60px;
+  overflow:hidden;
+  box-shadow: 0px 0px 6px $shadowColor;
+  &:hover {
+    background-color: $listHoverColor;
+    > div {
+      border-color: $listHoverColor;
+    }
+  }
+  > div {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 1px solid $listBorderColor;
+    text-align: center;
+  }
+  > :last-child {
+    border-right: 0px;
+  }
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  img {
+    max-width: 25px;
+    max-height: 25px;
+  }
+}
+// Empty
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  width: 100%;
+  color: $lightGray;
+}
+.empty_img {
+  content: $emptyImage;
+  width: auto;
+  margin-bottom: 8px;
+}
+// Icons
+.list_action {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 0px 6px $shadowColor;
+  margin: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+.list_action_icon {
+  padding: 10px;
+  width: 14px;
+  height: 14px;
+}
+.list_action_icon.edit {
+  content: $listEdit;
+}
+.list_action_icon.invoice {
+  content: $listInvoice;
+}
+.list_action_icon.reservation {
+  content: $listReservation;
+}
+.list_action_icon.mail {
+  content: $listMail;
+}
+.list_action_icon.delete {
+  content: $listDelete;
+}
+.list_action_icon.edit {
+  content: $listEdit;
+}
+.res_guests_icon.total {
+content: $listGuests;
+}
+.res_guests_icon.adults {
+content: $listAdults;
+}
+.res_guests_icon.children {
+content: $listChildren;
+}
+.res_guests_icon {
+  width: 20px;
+  height: 20px;
+}
+// Loading
+.loader {
+  width:100%;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader_icon {
+  border: 4px solid $shadowColor;
+  border-top: 4px solid $lightBlue;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+// Reservations
+.compact_res_channel {
+  width:10%;
+}
+.compact_res_info {
+  width:27%;
+  flex-direction: column;
+}
+.compact_res_received {
+  font-size: 14px;
+}
+.compact_res_period {
+  width:18%;
+  flex-direction: column;
+}
+.compact_res_nights {
+  font-size: 14px;
+}
+.compact_res_price {
+  width:18%;
+  flex-direction: column;
+}
+.compact_res_avg {
+  font-size: 14px;
+}
+.compact_res_rooms {
+  width:27%;
+}
+
+.res_channel{
+  width:6%;
+}
+.res_received {
+  width:10%;
+  flex-direction: column;
+}
+.res_time_received {
+  font-size: 14px;
+}
+.res_guest {
+  width:18%;
+  flex-direction: column;
+}
+.country_flag {
+  margin-bottom: -4px;
+}
+.res_guest_info {
+  padding-left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.res_guests_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.res_guests_icon {
+  width:20px;
+  height:auto;
+  margin-left: 2px;
+  margin-right: 6px;
+}
+.res_period {
+  width:10%;
+  flex-direction: column;
+}
+.res_nights {
+  font-size: 14px;
+}
+.res_price {
+  width:10%;
+  flex-direction: column;
+}
+.res_avg {
+  font-size: 14px;
+}
+.res_rooms {
+  width:18%;
+  flex-direction: column;
+}
+.res_confirmed, .res_modified, .res_canceled {
+  border-radius: 10px;
+  width: 100px;
+  color: white;
+  font-size: 14px;
+}
+.res_confirmed {
+  background-color: $confirmedColor;
+}
+.res_modified {
+  background-color: $modifiedColor;
+}
+.res_canceled {
+  background-color: $canceledColor;
+}
+.res_note {
+  font-size: 14px;
+  width:18%;
+}
+.res_actions {
+  width:10%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Guests
+.guest.selected {
+  border: 2px solid $lightBlue;
+}
+.guest_number {
+  width: 6%;
+  .number {
+    display: block;
+  }
+  .select {
+    display: none;
+  }
+}
+.guest_number.selectable {
+  .number {
+    display: none;
+  }
+  .select {
+    display: block;
+  }
+}
+.guest_info {
+  width: 23%;
+  flex-direction: column;
+}
+.guest_arrivals {
+  font-size: 14px;
+}
+.guest_contact {
+  width: 23%;
+  flex-direction: column;
+}
+.guest_email {
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.guest_phone {
+  font-weight: normal;
+}
+.guest_paid {
+  width: 10%;
+  flex-direction: column;
+}
+.guest_avg_paid {
+  font-size: 14px;
+}
+.guest_host_again {
+  width: 10%;
+}
+.guest_note {
+  font-size: 14px;
+  width:18%;
+}
+.guest_actions {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+.invoice_number {
+  width: 6%;
+}
+.invoice_created {
+  width: 14%;
+  flex-direction: column;
+}
+.invoice_time {
+  font-size: 14px;
+}
+.invoice_mark {
+  width: 20%;
+}
+.invoice_type {
+  width: 10%;
+}
+.invoice_client {
+  width: 18%;
+  flex-direction: column;
+}
+.invoice_client_name {
+  max-width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.invoice_client_email {
+  font-size: 14px;
+  max-width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.invoice_amount {
+  width: 10%;
+}
+.invoice_paid {
+  width: 10%;
+}
+.invoice_actions {
+  width: 12%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Prices / Restrictions
+
+#pricing_plans_list, #restriction_plans_list {
+  width: 100%;
+}
+#restriction_plans_list {
+  margin-top: 68px;
+}
+
+.pricing_plan.selected {
+  border: 2px solid $lightBlue;
+}
+.restriction_plan.selected {
+  border: 2px solid $lightBlue;
+}
+.price_name, .restriction_name {
+  width: 45%;
+}
+.price_type, .restriction_type {
+  width: 30%;
+}
+.price_actions, .restriction_actions {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Channels
+#channels_list {
+  width: 100%;
+}
+.channel.selected {
+  border: 2px solid $lightBlue;
+}
+.channel_logo {
+  width:15%;
+  img {
+    width: 20px;
+    height: auto;
+  }
+}
+.channel_name {
+  width: 30%;
+}
+.channel_commission {
+  width: 30%;
+}
+.channel_actions {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Extras
+#extras_list {
+  width: 100%;
+
+}
+.extra.selected {
+  border: 2px solid $lightBlue;
+}
+.extra_name {
+  width:30%;
+}
+.extra_type {
+  width: 25%;
+}
+.extra_price {
+  width: 20%;
+}
+.extra_actions {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Promocodes
+#promocodes_list {
+  margin-top: 20px;
+  width: 100%;
+}
+.promocode.selected {
+  border: 2px solid $lightBlue;
+}
+.promocode_name {
+  width: 20%;
+}
+.promocode_code {
+  width:20%;
+}
+.promocode_target {
+  width: 20%;
+}
+.promocode_amount {
+  width: 20%;
+}
+.promocode_actions {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Policies
+#policies_list {
+  margin-top: 20px;
+  width: 100%;
+}
+.policy.selected {
+  border: 2px solid $lightBlue;
+}
+.policy_name {
+  width: 20%;
+}
+.policy_type {
+  width:20%;
+}
+.policy_description {
+  width: 45%;
+  font-size: 14px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.policy_actions {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Users
+
+.user_name {
+  width: 30%;
+}
+.user_email {
+  width: 30%;
+}
+.user_status {
+  width: 30%;
+}
+.user_actions {
+  width:10%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}
+
+// Articles
+
+.article_id {
+  width: 15%;
+}
+.article_tax_rate {
+  width: 15%;
+}
+.article_description {
+  width: 35%;
+}
+.article_price {
+  width: 20%;
+}
+.article_actions {
+  width:15%;
+  display: flex;
+  align-items: center;
+  flex-direction: row !important;
+}

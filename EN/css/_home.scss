@@ -1,0 +1,67 @@
+#tab_home {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  min-height: calc(100vh - 80px); // Header height + this padding + body padding
+}
+#news, #events {
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 50%;
+  box-sizing: border-box;
+}
+#events {
+  background-color: #3575bd;
+  .select2-container--default .select2-selection--single {
+    background-color: #3575bd;
+  }
+}
+
+.home_tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 36px; // Width of news number
+  width: 100%;
+  height: 30px;
+  margin-top: 30px;
+  box-sizing: border-box;
+}
+.news_button, .events_button {
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  width: 30%;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  &.selected {
+    color: white;
+    .underlined {
+      display: inline-block;
+      border-bottom: 2px solid white;
+    }
+  }
+}
+
+.news_number {
+  display: inline-block;
+  min-width: 36px;
+}
+
+#modified_list, #canceled_list, #departures_list, #stay_list {
+  display: none;
+}
+
+.export_form {
+  display: none;
+}
+.list_button {
+  margin-top: 10px;
+  cursor: pointer;
+  img {
+    height: 20px;
+    width: auto;
+  }
+}

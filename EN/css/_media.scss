@@ -1,0 +1,717 @@
+@media screen and (max-width: 1600px) {
+  .list_row {
+    font-size: 14px;
+  }
+  #tab_general {
+    section {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 46%;
+    }
+  }
+  .form_invoice_service_actions {
+    width: 5%;
+  }
+  .form_invoice_service input {
+    width: 70px;
+  }
+  #form_invoice_client {
+    flex-grow: 1;
+    margin-left: 20px;
+  }
+  section.half {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .list_row {
+    font-size: 14px;
+  }
+  #form_invoice_client {
+    width: 55%;
+  }
+  #form_invoice {
+    width: calc(100% - 380px);
+    font-size: 14px;
+  }
+  #invoices_list_container {
+    width: 300px;
+  }
+  #tab_engine section.half {
+    width: 70%;
+  }
+  #tab_engine {
+    font-size: 14px;
+  }
+  #tab_plans section.half {
+    width: 70%;
+  }
+  #tab_title {
+    font-size: 30px;
+  }
+  #tab_general {
+    section {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 46%;
+      font-size: 12px;
+    }
+  }
+  #form_invoice .list_names {
+    font-size: 10px;
+  }
+  .form_invoice_service input {
+    font-size: 14px;
+    width: 60px;
+  }
+  .form_list>div {
+    font-size: 14px;
+  }
+  #form_invoice_client .flex_between {
+    height: 26px;
+  }
+  #tab_articles #articles {
+    margin-left: 300px;
+  }
+  #guest_emails {
+    padding: 15px;
+  }
+  #guest_emails_received, #guest_emails_before, #guest_emails_after {
+    width: 32%;
+  }
+  #tab_nav_occupancy, #tab_nav_daily, #tab_nav_housekeeping {
+    font-size: 14px;
+    &.selected {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  #tab_title {
+    font-size: 20px;
+  }
+
+  #tab_invoices.form_opened #invoices_list {
+    display: none;
+  }
+  #form_invoice {
+    width: 100%;
+  }
+  #tab_home {
+    display: block;
+  }
+  #news, #events {
+    width:95%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  #tab_general {
+    flex-direction: column;
+    align-items: center;
+    section.half {
+      width: 80%;
+    }
+  }
+
+  #guest_emails > .flex_between {
+    flex-direction: column;
+  }
+  #guest_emails_received, #guest_emails_before, #guest_emails_after {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #tab_engine section.half {
+    width: 90%;
+  }
+  #tab_engine .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #rest_flex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  #rest_details_container {
+    margin-top: 30px;
+    width: 100%;
+  }
+  .stat_row {
+    flex-direction: column;
+  }
+  .stat_item {
+    width:90%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  #channels_list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .list_row > div {
+    line-height: 1;
+  }
+  .settings_list_row > div {
+    line-height: 1;
+  }
+  .stat_table_row>div {
+    font-size: 14px;
+  }
+
+}
+
+@media screen and (max-width: 992px) {
+  #nav_logo {
+    display: none;
+  }
+  #main_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:55px;
+    width:100%;
+    position: static;
+  }
+  .main_header {
+    .main_header_name {
+      width: 100%;
+      text-align: center;
+    }
+    .tab_nav {
+      height:36px;
+    }
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: auto;
+    padding: 5px;
+  }
+  body {
+    padding-left: 0px;
+  }
+  .nav_tooltip {
+    left: 50%;
+    top: 100%;
+    width: 100px;
+    margin-left: -56px;
+    margin-top: 0px;
+  }
+  .nav_tooltip:after{
+    content: ' ';
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom:5px solid rgba(0,0,0,0.95);
+    border-right:5px solid transparent;
+    position: absolute;
+    right: 50%;
+    top: 0%;
+    margin-top: -10px;
+    margin-left: -5px;
+  }
+  #search_list {
+    left:20px;
+  }
+  #pricing_plans_list {
+    width:90%;
+    min-width: 0px;
+  }
+  #changelog_list {
+    width:90%;
+    min-width: 0px;
+  }
+  #login_footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: auto;
+    a {
+      display: block;
+      width: auto;
+      margin: 0;
+    }
+    > * {
+      margin-bottom: 7px;
+    }
+  }
+  .yield_calendar {
+    width:700px;
+  }
+  .yield_header {
+    width:700px;
+  }
+  .yield_date {
+    height:80px;
+    width:100px;
+  }
+  .yield_avail {
+    width: 28px;
+    font-size: 14px;
+  }
+  .yield_delta {
+    padding-right: 2px;
+    height: 32px;
+    > div {
+      font-size: 12px;
+    }
+  }
+  .list_row > div {
+    flex-grow: 1;
+  }
+  .list_row, .list_names {
+    > .res_note {
+      display: none;
+    }
+    > .res_actions {
+      display: none;
+    }
+    > .guest_host_again {
+      display: none;
+    }
+    > .guest_actions {
+      display: none;
+    }
+    > .guest_note {
+      display: none;
+    }
+    > .invoice_actions {
+      display: none;
+    }
+    > .invoice_status {
+      display: none;
+    }
+    > .offer_actions {
+      display: none;
+    }
+    > .company_actions {
+      display: none;
+    }
+  }
+  #channels_list {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .avail_field, .min_field, .price_field {
+    font-size: 12px;
+  }
+  .yes_label, .no_label {
+    font-size: 11px;
+  }
+  .stat_table_row > .stat_room_name {
+    display: none;
+  }
+  .stat_table_row > .stat_room_shortname {
+    display: flex;
+  }
+  #form_invoice_services, #form_offer_services {
+    .number_input {
+      font-size: 12px;
+      width: 60px;
+    }
+    .form_input {
+      font-size: 12px;
+      width: 150px;
+    }
+  }
+  .tab_artikli {
+    #categories {
+      float: none;
+    }
+    #articles {
+      margin-left: 0px;
+      margin-top: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  #main_podesavanja .main_header, #main_kalendar .main_header {
+    height: 125px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .settings_container {
+    width: auto;
+    margin: auto;
+  }
+  .settings_item {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    > * {
+      margin-top: 5px;
+    }
+  }
+  #settings_update_email {
+    margin-top: -15px;
+    margin-left: 0px;
+  }
+  #pricing_plans_list {
+    width:100%;
+  }
+  #changelog_list {
+    width:100%;
+  }
+  #search_list {
+    width:80%;
+    max-width: 600px;
+  }
+
+  .yield_calendar {
+    width:560px;
+  }
+  .yield_header {
+    width:560px;
+  }
+  .yield_date {
+    height:100px;
+    width:80px;
+  }
+  .yield_avail {
+    width: 28px;
+    font-size: 14px;
+  }
+  .yield_delta {
+    padding-right: 2px;
+    height: 40px;
+    > div {
+      text-align: right;
+      font-size: 12px;
+      margin: auto;
+    }
+  }
+  .stat_flex {
+    .form_select {
+      width: 150px;
+    }
+  }
+  .stat_table {
+    font-size: 12px;
+    div {
+      word-break: break-word;
+    }
+  }
+  #users_list {
+    width: 95%;
+  }
+
+  .list_row, .settings_list_row {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .kokpit_nav {
+    margin-left: 5px;
+    margin-right: 40px;
+    .tab_nav_item {
+      font-size: 15px;
+    }
+  }
+  .settings_room_row {
+    flex-wrap: wrap;
+  }
+  .info {
+    width: 98vw;
+    left: 1vw;
+  }
+  .stat_item {
+    display: none;
+  }
+  #prices_list, #restrictions_list {
+    width: 90%;
+  }
+
+  .textarea_input {
+    width: 80vw;
+  }
+  #form_res_services, #form_group_services {
+    .number_input {
+      font-size: 12px;
+      width: 55px;
+    }
+    .form_input {
+      font-size: 12px;
+      width: 120px;
+    }
+  }
+  .form_group_room {
+    > div {
+      font-size: 12px;
+      line-height: 1;
+    }
+    .number_input {
+      width:60px;
+      font-size: 12px;
+    }
+    .number_input_button {
+      width:24px;
+      height:24px;
+    }
+  }
+  .form_invoice_main {
+    padding-left: 10px;
+    .invoice_label {
+      width: 80px;
+      font-size: 12px;
+    }
+    .calendar_input {
+      width: 150px;
+      font-size: 12px;
+    }
+    .form_input.form_select {
+      width: 150px;
+      font-size: 12px;
+    }
+    .form_invoice_client {
+      width: 45%;
+    }
+  }
+  .form {
+    width: 100vw;
+  }
+
+  #undo_list {
+    left: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  header {
+    height: auto;
+    flex-wrap: wrap-reverse;
+  }
+  #search_input {
+    margin: 5px;
+    width: 100%;
+  }
+  .header_right {
+    width: 100%;
+  }
+  #property_select {
+    margin: 5px;
+    margin-right: 10px;
+    width: 100%;
+  }
+  .cal_label {
+    width:110px;
+  }
+  .list_settings {
+    flex-wrap: wrap;
+    height: auto;
+    .settings_left {
+      width: 100%;
+    }
+    .list_select {
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+  }
+  #search_list {
+    top:100px;
+    width: 100vw;
+    left: 0px;
+  }
+  .filter_container {
+    width: 80vw;
+  }
+  #main_podesavanja .main_header {
+    height: 244px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #main_podesavanja .tab_nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 5px;
+    height: auto;
+  }
+  #main_podesavanja .tab_nav_item {
+    margin-top:3px;
+    margin-bottom: 3px;
+  }
+  .create_button {
+    font-size: 10px;
+  }
+  .rest_item, .rest_first_item {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .rest_label {
+    text-align: center;
+  }
+  #rest_rooms_list {
+    width:98vw;
+    margin: auto;
+  }
+  .rest_room {
+    width: 40%;
+  }
+
+  .yield_calendar {
+    width:98vw;
+  }
+  .yield_header {
+    width:98vw;
+  }
+  .yield_date {
+    width:14vw;
+  }
+  .yield_legend {
+    width: 98vw;
+    font-size: 14px;
+  }
+
+  .stat_settings {
+    flex-direction: column;
+    > * {
+      margin-bottom: 5px;
+    }
+  }
+
+  .settings_header {
+    width: 80%;
+  }
+  h2 > input {
+    font-size: 12px;
+  }
+  #channels_list>.settings_list_row {
+    min-width: 96%;
+  }
+  .main_header_select {
+    width: 150px;
+    font-size: 12px;
+  }
+  .list_names, .settings_list_names {
+  }
+  .list_row, .list_names {
+    font-size: 12px;
+    * {
+      font-size: 12px;
+    }
+    .res_avg {
+      display: none;
+    }
+    .res_received {
+      display: none;
+    }
+    .guest_avg_paid {
+      display: none;
+    }
+    .company_number {
+      display: none;
+    }
+    .invoice_number {
+      display: none;
+    }
+    .invoice_mark {
+      display: none;
+    }
+    .offer_number {
+      display: none;
+    }
+    .offer_mark {
+      display: none;
+    }
+  }
+
+  .filter_container {
+    .calendar_input {
+      width:100px;
+      font-size: 12px;
+    }
+  }
+  #form_invoice_currencies_names, #form_offer_currencies_names {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .form_invoice_currency {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .form_invoice_main {
+    padding-left: 10px;
+    .invoice_label {
+      width: 60px;
+      font-size: 12px;
+    }
+    .calendar_input {
+      width: 100px;
+      font-size: 12px;
+    }
+    .form_input.form_select {
+      width: 100px;
+    }
+  }
+  .form_dark > * {
+    margin-bottom: 3px;
+  }
+  .form_group_room {
+    margin-left: 5px;
+    margin-right: 5px;
+    .number_input_button {
+      display: none;
+    }
+  }
+  #form_res_services, #form_group_services {
+    font-size: 12px;
+    .form_list_names {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .form_res_service {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .form_group_service {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .form_res_service_name {
+      width: 120px;
+    }
+    .number_input {
+      width: 40px;
+      font-size: 10px;
+    }
+    .form_input {
+      font-size: 10px;
+      width: 80px;
+    }
+  }
+  #form_invoice_services, #form_offer_services {
+    .form_list_names {
+      padding-left: 3px;
+      padding-right: 3px;
+      font-size: 12px;
+    }
+    .form_invoice_service {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+    .number_input {
+      width: 40px;
+      font-size: 10px;
+    }
+    .form_input {
+      font-size: 10px;
+      width: 80px;
+    }
+    .form_select {
+      font-size: 10px;
+      width: 60px;
+    }
+  }
+
+  .undo_item {
+    width: calc(100vw - 20px);
+    font-size: 12px;
+  }
+}

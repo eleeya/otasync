@@ -1,0 +1,72 @@
+
+// Colors
+$backgroundColor: #F4F4F4;
+$navColor: #FFFFFF;
+$lightBlue: #306bad;
+$darkBlue: #0D2442;
+$lightGray: #97A0AC;
+$listBorderColor: #F1F1F1;
+$listHoverColor: #DADADA;
+$shadowColor:  #CECECE;
+$checkboxShadowColor: #AEAEAE;
+$lightBlueHover: #27558a;
+$confirmedColor: #0DC85E;
+$modifiedColor: #c6a43d;
+$canceledColor: #f0535a;
+
+// Images
+ // Navigation
+$nav_home: url("../img/home_light.svg");
+$nav_home_hovered: url("../img/home_hovered_light.svg");
+$nav_calendar: url("../img/calendar_light.svg");
+$nav_calendar_hovered: url("../img/calendar_hovered_light.svg");
+$nav_reservations: url("../img/reservations_light.svg");
+$nav_reservations_hovered: url("../img/reservations_hovered_light.svg");
+$nav_guests: url("../img/guests_light.svg");
+$nav_guests_hovered: url("../img/guests_hovered_light.svg");
+$nav_invoices: url("../img/invoices_light.svg");
+$nav_invoices_hovered: url("../img/invoices_hovered_light.svg");
+$nav_statistics: url("../img/statistics_light.svg");
+$nav_statistics_hovered: url("../img/statistics_hovered_light.svg");
+$nav_reports: url("../img/reports_light.png");
+$nav_reports_hovered: url("../img/reports_hovered_light.png");
+$nav_settings: url("../img/settings_light.svg");
+$nav_settings_hovered: url("../img/settings_hovered_light.svg");
+$nav_menu: url("../img/user_white.png");
+$nav_menu_hovered: url("../img/user_hovered_white.png");
+ // List settings
+$order_desc: url("../img/order_desc_light.svg");
+$order_desc_hovered: url("../img/order_desc_hovered_light.svg");
+$order_asc: url("../img/order_asc_light.svg");
+$order_asc_hovered: url("../img/order_asc_hovered_light.svg");
+$calendar_prev: url("../img/arrow_left.png");
+$calendar_prev_hovered: url("../img/arrow_left.png");
+$calendar_next: url("../img/arrow_right.png");
+$calendar_next_hovered: url("../img/arrow_right.png");
+$filter_button: url("../img/filter_light.svg");
+$filter_button_hovered: url("../img/filter_hovered_light.svg");
+$checkboxChecked: url("../img/checked_light.svg");
+ // Lists
+$emptyImage: url("../img/empty_light.png");
+$listGuests: url("../img/people_white.svg");
+$listAdults: url("../img/person_white.svg");
+$listChildren: url("../img/baby_white.svg");
+$listEdit: url("../img/edit_white.svg");
+$listInvoice: url("../img/invoices_hovered_light.svg");
+$listReservation: url("../img/reservations_hovered_light.svg");
+$listMail: url("../img/letter_b.png");
+$listDelete: url("../img/trash_white.svg");
+// Misc
+$cancelImage: url("../img/cancel_light.svg");
+$navWidth: 70px;
+
+
+// Animations
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes appear {
+from {opacity: 0;}
+to {opacity: 1;}
+}

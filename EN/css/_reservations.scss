@@ -1,0 +1,26 @@
+#reservations_year, #reservations_month {
+  width: 120px;
+}
+
+#new_reservation, #new_group_reservation {
+  width: 160px;
+  box-sizing: border-box;
+  padding: 5px;
+  text-transform: uppercase;
+  padding-left: 35px;
+  padding-right: 10px;
+  font-weight: bold;
+  border: 0px;
+  background-position: 10px 50%;
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  width: 200px;
+  height: 36px;
+  border-radius: 18px;
+}
+#new_reservation {
+  background-image: url("../img/person_w.svg");
+}
+#new_group_reservation {
+  background-image: url("../img/people_w.svg");
+}

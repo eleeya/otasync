@@ -1,0 +1,154 @@
+#tab_statistics {
+  .list_settings {
+    color: $darkBlue;
+
+  }
+}
+
+// Header
+
+#stats_plan_show {
+  width: 150px;
+}
+#stats_plan {
+  color: $darkBlue;
+  &.hidden {
+    display: none;
+  }
+  .number_input {
+    width: 70px;
+  }
+  > div {
+    margin-left: 10px;
+  }
+  height: auto !important;
+  flex-wrap: wrap;
+}
+
+.stat_flex {
+  @include flexStart();
+  color: $darkBlue;
+  > * {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.stat_settings {
+  @include flexCenter();
+  > * {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+.stat_cmp {
+  .calendar_input_container {
+    width: 160px;
+  }
+}
+
+#stat_plan {
+  margin-top: -40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  .form_label {
+    color: white;
+  }
+  .number_input {
+    background-color: white;
+  }
+}
+#stat_plan_show {
+  margin-left: 10px;
+}
+#stats_plan {
+  margin-bottom: 20px;
+}
+
+
+// Main
+.stat_full_container {
+  @include flexBetween();
+  padding-left:30px;
+  padding-right: 30px;
+}
+
+.stat_column {
+  width: calc(50% - 15px);
+  > * {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+  height:100%;
+  .stat_item {
+    height: 100%;
+  }
+}
+
+.stat_item {
+  .stat_flex {
+    margin-bottom: 10px;
+  }
+  background-color: white;
+  color: $mainColor;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px $shadowColor;
+  padding: 10px;
+  width: calc(50% - 30px);
+}
+
+.stat_row {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.stat_table {
+  .stat_flex {
+    margin-bottom: 10px;
+  }
+  background-color: white;
+  color: #222;
+  font-size: 17px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px $shadowColor;
+  padding: 10px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  margin-left: 30px;
+  margin-right: 30px;
+  width: calc(100% - 60px);
+  font-size: 16px;
+}
+.stat_table_row > .stat_room_shortname {
+  display: none;
+}
+
+.pie_chart_container {
+  width:90%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.stat_table_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  > div {
+    height:50px;
+    width: 15%;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    @include flexCenter();
+    background-color: #dedede;
+    font-size: 14px;
+  }
+  img {
+    margin-right: 5px;
+    width:24px;
+    height: auto;
+  }
+}

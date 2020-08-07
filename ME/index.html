@@ -1,0 +1,3555 @@
+<!DOCTYPE html>
+<html lang="rs" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="expires" content="0">
+    <title>Montenegro-Booking.com System Channel Manager</title>
+    <link rel="icon" href="https://export.otasync.me/agencies/img/1_small.png">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://admin.otasync.me/css/style.min.css?v=105">
+    <!-- Plugins -->
+    <script type="text/javascript" src="js/plugins/jquery.js"></script>
+    <script type="text/javascript" src="js/plugins/datepicker.js"></script>
+    <script type="text/javascript" src="js/plugins/select2.js"></script>
+    <script src="js/plugins/jstree-bootstrap/jstree.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/plugins/jstree-bootstrap/themes/proton/style.min.css">
+
+    <script type="text/javascript" src="js/plugins/jquery.range.js"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/global.js?v=105"></script>
+    <script type="text/javascript" src="js/input.js?v=105"></script>
+    <script type="text/javascript" src="js/navigation.js?v=105"></script>
+    <script type="text/javascript" src="js/home.js?v=105"></script>
+    <script type="text/javascript" src="js/login.js?v=105"></script>
+    <script type="text/javascript" src="js/reservations.js?v=105"></script>
+    <script type="text/javascript" src="js/guests.js?v=105"></script>
+    <script type="text/javascript" src="js/invoices.js?v=105"></script>
+    <script type="text/javascript" src="js/fiscal.js?v=105"></script>
+    <script type="text/javascript" src="js/changes.js?v=105"></script>
+    <script type="text/javascript" src="js/restrictions.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/articles.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/emails.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/engine.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/general.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/prices.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/rooms.js?v=105"></script>
+    <script type="text/javascript" src="js/settings/users.js?v=105"></script>
+    <script type="text/javascript" src="js/forms/reservation.js?v=105"></script>
+    <script type="text/javascript" src="js/forms/group.js?v=105"></script>
+    <script type="text/javascript" src="js/forms/guest.js?v=105"></script>
+    <script type="text/javascript" src="js/forms/invoice.js?v=105"></script>
+    <script type="text/javascript" src="js/forms/user.js?v=105"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="js/statistics.js?v=105"></script>
+    <script type="text/javascript" src="js/info.js?v=105"></script>
+    <script type="text/javascript" src="js/calendar.js?v=105"></script>
+    <script type="text/javascript" src="js/search.js?v=105"></script>
+    <script type="text/javascript" src="js/reports.js?v=105"></script>
+
+    <!--changelog skripta-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!--toexcel skripta-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css">
+  </head>
+  <body>
+    <!-- Preload -->
+    <img class='preload' id='preload1'>
+    <img class='preload' id='preload2'>
+    <img class='preload' id='preload3'>
+    <img class='preload' id='preload4'>
+    <!-- Login Page -->
+    <div id='login'>
+      <div id='login_header'>
+        <img id='login_header_logo' src='https://export.otasync.me/agencies/img/1_big.png'>
+      </div>
+      <div id='login_window'>
+        <div>
+          UPRAVLJANJE OBJEKTIMA
+        </div>
+        <div class='vert_center'>
+          <div>Username</div>
+          <input type='text' id='login_username' class='text_input'>
+        </div>
+        <div class="vert_center">
+          <div>Password</div>
+          <div class='flex_center'>
+            <input type='password' id='login_password' class='text_input'><div id="show_password_container"><img src='img/eye_closed.png' id='show_password' data-value=0></div>
+          </div>
+        </div>
+        <div class='flex_center'>
+          <div class='custom_checkbox' id='login_remember' data-value=0>
+            <div class='checkbox_value'>
+            </div>
+          </div>
+          Zapamti me na ovom uređaju
+        </div>
+        <button id='login_confirm' class='confirm_button'> Log In </button>
+        <div id='login_error'></div>
+      </div>
+      <div id="login_footer">
+        <div>
+          Copyright© 2020 <span id='login_agency'> </span>
+        </div>
+        <a href="https://www.montenegro-booking.com/" target="_blank" id="login_terms">Uslovi korišćenja</a>
+        <a href="https://www.montenegro-booking.com/" target="_blank" id="login_policy">Pravilnik o privatnosti podataka</a>
+      </div>
+    </div>
+    <!-- Main App -->
+    <div id='app'>
+      <header>
+        <!-- Tab headers -->
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_home'> Početna </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_calendar'> Kalendar </div>
+          <div class='tab_nav_button' id='tab_nav_restrictions'> Cijene i Restrikcije </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_reservations'> Rezervacije </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_guests'> Gosti </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_invoices'> Računi </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_statistics'> Statistika </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_occupancy'> Stanje u objektu </div>
+          <div class='tab_nav_button' id='tab_nav_daily'> Dnevni izvještaj </div>
+          <div class='tab_nav_button' id='tab_nav_housekeeping'> Housekeeping izvještaj </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_articles'> Artikli </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_engine'> Booking Engine </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_general'> Opšte </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_emails'> Emailovi </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_plans'> Cijene i Restrikcije </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_rooms'> Jedinice i Kanali </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_users'> Korisnici </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_finances'> Finansije </div>
+        </div>
+        <div class='tab_nav'>
+          <div class='tab_nav_button' id='tab_nav_changelog'> Izmjene </div>
+        </div>
+
+        <input type='text' class='text_input' id='search' placeholder='Pretraži...'>
+        <select id='property_select'>
+        </select>
+        <div class='modal_container'>
+          <img id='menu'>
+          <section class='modal modal_right'>
+            <div class='menu_item' id='menu_finances'> Finansije </div>
+            <div class='menu_item' id='menu_changelog'> Izmjene </div>
+            <div class='menu_item' id='menu_logout'> Odjava </div>
+          </section>
+        </div>
+      </header>
+      <nav id='nav'>
+        <img id='nav_logo' src='https://export.otasync.me/agencies/img/1_small.png'>
+        <div class='nav_item' id='nav_home'>
+          <div class='nav_tooltip'>
+            Početna
+          </div>
+        </div>
+        <div class='nav_item' id='nav_calendar'>
+          <div class='nav_tooltip'>
+            Kalendar
+          </div>
+        </div>
+        <div class='nav_item' id='nav_reservations'>
+          <div class='nav_tooltip'>
+            Rezervacije
+          </div>
+        </div>
+        <div class='nav_item' id='nav_guests'>
+          <div class='nav_tooltip'>
+            Gosti
+          </div>
+        </div>
+        <div class='nav_item' id='nav_invoices'>
+          <div class='nav_tooltip'>
+            Računi
+          </div>
+        </div>
+        <div class='nav_item' id='nav_statistics'>
+          <div class='nav_tooltip'>
+            Statistika
+          </div>
+        </div>
+        <div class='nav_item' id='nav_reports'>
+          <div class='nav_tooltip'>
+            Izvještaji
+          </div>
+        </div>
+        <div class='nav_item' id='nav_settings'>
+          <div class='nav_tooltip'>
+            Podešavanja
+          </div>
+        </div>
+      </nav>
+
+      <main id='main_home'>
+        <div class='tab' id='tab_home'>
+          <section id='news'>
+            <div class='list_settings'>
+              <div class='list_button' id='news_export'>
+                <img src='img/print_pure_white.svg'></img>
+                <form action="https://export.otasync.me/reservations/" class='export_form' target="_blank" method="POST" enctype='multipart/form-data' id='news_export_form'>
+                  <input type="text" name="key" value="" id='news_export_key'>
+                  <input type="text" name="account" value="" id='news_export_account'>
+                  <input type="text" name="lcode" value="" id='news_export_lcode'>
+                  <textarea name="ids" id='news_export_ids'></textarea>
+                  <input type="submit" value="Submit" id='news_export_submit'>
+                </form>
+              </div>
+              <select class="basic_select" id='news_order_by'>
+                <option value='date_received'>Datum rezervacije</option>
+                <option value='date_arrival'>Datum dolaska</option>
+              </select>
+              <img class='order desc' id='news_order_type' data-value='desc'>
+              <select class="basic_select"  id='news_dfrom'>
+                <option value="0" selected='selected'>Danas</option>
+                <option value="-1">Juče</option>
+                <option value="-7">Poslednjih 7 dana</option>
+                <option value="-30">Poslednjih 30 dana</option>
+              </select>
+            </div>
+            <div class='home_tabs'>
+              <div class='news_button selected' id='received'> <span class='underlined'> Potvrđene </span> <span class='news_number'></span> </div>
+              <div class='news_button' id='modified'> <span class='underlined'> Izmjenjene </span> <span class='news_number'></span> </div>
+              <div class='news_button' id='canceled'> <span class='underlined'> Otkazane </span> <span class='news_number'></span> </div>
+            </div>
+            <div class="news_list" id='received_list'>
+            </div>
+            <div class="news_list" id='modified_list'>
+            </div>
+            <div class="news_list" id='canceled_list'>
+            </div>
+          </section>
+          <section id='events'>
+            <div class='list_settings'>
+              <div class='list_button' id='events_export'>
+                <img src='img/print_pure_white.svg'></img>
+                <form action="https://export.otasync.me/reservations/" class='export_form' target="_blank" method="POST" enctype='multipart/form-data' id='events_export_form'>
+                  <input type="text" name="key" value="" id='events_export_key'>
+                  <input type="text" name="account" value="" id='events_export_account'>
+                  <input type="text" name="lcode" value="" id='events_export_lcode'>
+                  <textarea name="ids" id='events_export_ids'></textarea>
+                  <input type="submit" value="Submit" id='events_export_submit'>
+                </form>
+              </div>
+              <select class="basic_select" id='events_dto'>
+                <option value="-1">Juče</option>
+                <option value="0" selected='selected'>Danas</option>
+                <option value="1">Sjutra</option>
+                <option value="7">Narednih 7 dana</option>
+              </select>
+            </div>
+            <div class='home_tabs'>
+              <div class='events_button selected' id='arrivals'><span class='underlined'> Dolasci </span> <span class='news_number'></span> </div>
+              <div class='events_button' id='departures'><span class='underlined'> Odlasci </span> <span class='news_number'></span> </div>
+              <div class='events_button' id='stay'><span class='underlined'> Boravak </span> <span class='news_number'></span> </div>
+            </div>
+            <div class="events_list" id='arrivals_list'>
+            </div>
+            <div class="events_list" id='departures_list'>
+            </div>
+            <div class="events_list" id='stay_list'>
+            </div>
+          </section>
+        </div>
+      </main>
+      <div id='cal_dialog_container'>
+      <div id='cal_dialog'>
+        <h1>Ažuriranje rezervacije</h1>
+        <div id='cal_dialog_changes'>
+        </div>
+        <div class='flex_around'>
+          <button class='cancel_button' id='cal_dialog_cancel'>ODUSTANI</button>
+          <button class='confirm_button' id='cal_dialog_confirm'>POTVRDI</button>
+        </div>
+      </div>
+    </div>
+      <div id='cal_modal'>
+        <input type='hidden' id='cal_modal_room'>
+        <input type='hidden' id='cal_modal_pid'>
+        <input type='hidden' id='cal_modal_field'>
+        <h1></h1>
+        <h2 class='cal_modal_item price virtual rest compact'></h2>
+        <div class='flex_between cal_modal_item price rest avail'>
+          <div class='calendar_input_container'>
+            <span class='calendar_label'> OD </span>
+            <input type='text' class='calendar_input' readonly id='cal_modal_dfrom'>
+          </div>
+          <div class='calendar_input_container'>
+            <span class='calendar_label'> DO </span>
+            <input type='text' class='calendar_input' readonly id='cal_modal_dto'>
+          </div>
+        </div>
+        <div class='cal_modal_item compact' id='cal_modal_compact_note'>
+          Minimalni boravak za kompakti plan se odnosi na sve dane / jedinice.
+        </div>
+        <div class="flex_between">
+          <div class='calendar_input_container cal_modal_item price'>
+            <span class='calendar_label'> Varijacija </span>
+            <select class="basic_select" id='cal_modal_price_variation'>
+              <option value=0>Postavi cijenu</option>
+              <option value=-2>Popust (EUR)</option>
+              <option value=-1>Popust (%)</option>
+              <option value=1>Povećanje (%)</option>
+              <option value=2>Povećanje (EUR)</option>
+            </select>
+          </div>
+          <div class='calendar_input_container cal_modal_item virtual'>
+            <span class='calendar_label'> Tip varijacije </span>
+            <select class="basic_select" id='cal_modal_virtual_variation'>
+              <option value=-2>Popust (EUR)</option>
+              <option value=-1>Popust (%)</option>
+              <option value=1>Povećanje (%)</option>
+              <option value=2>Povećanje (EUR)</option>
+            </select>
+          </div>
+          <div class='calendar_input_container cal_modal_item avail'>
+            <span class='calendar_label'> Varijacija </span>
+            <select class="basic_select" id='cal_modal_avail_variation'>
+              <option value=0>Postavi raspoloživost</option>
+              <option value=-1>Smanji za</option>
+              <option value=1>Povećaj za</option>
+            </select>
+          </div>
+          <div class='calendar_input_container'>
+            <span class='calendar_label cal_modal_item price avail rest compact'> Vrijednost </span>
+            <span class='calendar_label cal_modal_item virtual'> Varijacija </span>
+            <input class='number_input' id='cal_modal_value'>
+          </div>
+        </div>
+        <div class='form_error' id='cal_modal_error'></div>
+        <class class="flex_center">
+          <button class='confirm_button wubook_update' id='cal_modal_update'>AŽURIRAJ</button>
+        </class>
+      </div>
+      <main id='main_calendar'>
+        <div class='tab' id='tab_calendar'>
+          <div class='list_settings'>
+            <button class='create_button' id='cal_new_reservation'> Nova rezervacija </button>
+            <button class='create_button' id='cal_new_group_reservation'> Grupna rezervacija </button>
+            <div class="settings_break"></div>
+          </div>
+          <div class='list_settings'>
+            <select class="price_select basic_select" id='calendar_price'>
+            </select>
+            <select class="restriction_select basic_select" id='calendar_restriction'>
+            </select>
+            <div class="settings_break"></div>
+            <img class="calendar_action" id='calendar_prev'>
+            <input type="text" class='calendar_input' id='calendar_date' readonly>
+            <img class="calendar_action" id='calendar_next'>
+            <div class='modal_container'>
+              <img class='filter_button'>
+              <section class='modal modal_right filter_modal' id='cal_filters'>
+                <div class='filter_flex'>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Jedinice
+                    </div>
+                    <div class='flex_center room_types'>
+                      <select class="basic_select real_room_select" id='cal_filter_rooms'>
+                        <option value=-1> Dodaj jedinicu </option>
+                        <option value='all'> Dodaj sve </option>
+                        <option value='none'> Ukloni sve </option>
+                      </select>
+                    </div>
+                    <div class='flex_center single_rooms'>
+                      <select class="basic_select room_numbers_select" id='cal_filter_rooms_single'>
+                        <option value=-1> Dodaj jedinicu </option>
+                        <option value='all'> Dodaj sve </option>
+                        <option value='none'> Ukloni sve </option>
+                      </select>
+                    </div>
+                    <div id='cal_filter_rooms_types_list' class='room_types'>
+                    </div>
+                    <div id='cal_filter_rooms_single_list' class='single_rooms'>
+                    </div>
+                  </div>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Prikaz kalendara
+                    </div>
+                    <div class='flex_center'>
+                      <select class='basic_select' id='cal_filter_type'>
+                        <option value='room_types'> Po tipovima jedinica </option>
+                        <option value='single_rooms'> Po pojedinačnim jedinicama </option>
+                      </select>
+                    </div>
+
+                    <div class='filter_flex' id='cal_filter_checkboxes'>
+                      <div class='filter_half'>
+                        <div class='flex_start room_types'>
+                          <div class='custom_checkbox' id='cal_filter_avail' data-value=0> <img class='checkbox_value'> </div>
+                          Raspoloživost
+                        </div>
+                        <div class='flex_start room_types'>
+                          <div class='custom_checkbox' id='cal_filter_price' data-value=1> <img class='checkbox_value checked'> </div>
+                          Cijena
+                        </div>
+                        <div class='flex_start room_types'>
+                          <div class='custom_checkbox' id='cal_filter_min' data-value=0> <img class='checkbox_value'> </div>
+                          Minimalni boravak
+                        </div>
+                      </div>
+                      <div class='filter_half'>
+                        <div class='flex_start'>
+                          <div class='custom_checkbox' id='cal_filter_margin' data-value=0> <img class='checkbox_value'> </div>
+                          Prikaz po cijelim danima
+                        </div>
+                        <div class='flex_start'>
+                          <div class='custom_checkbox' id='cal_filter_room_name' data-value=1> <img class='checkbox_value checked'> </div>
+                          Broj jedinice
+                        </div>
+                        <div class='flex_start'>
+                          <div class='custom_checkbox' id='cal_filter_room_type' data-value=1> <img class='checkbox_value checked'> </div>
+                          Tip jedinice
+                        </div>
+                        <div class='flex_start'>
+                          <div class='custom_checkbox' id='cal_filter_room_status' data-value=1> <img class='checkbox_value checked'> </div>
+                          Status jedinice
+                        </div>
+                      </div>
+                    </div>
+                    <div class='filter_header'>
+                      Broj prikazanih polja
+                    </div>
+                    <div class='flex_around'>
+                      <input type='hidden' id='cal_filter_days' value=21>
+                      <div class='flex_center'>
+                        <div class='custom_radio' id='cal_filter_days_7'> <div class='radio_value'></div> </div>
+                        7
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_radio' id='cal_filter_days_14'> <div class='radio_value'></div> </div>
+                        14
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_radio' id='cal_filter_days_21'> <div class='radio_value checked'></div> </div>
+                        21
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_radio' id='cal_filter_days_28'> <div class='radio_value'></div> </div>
+                        28
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div id='calendar'>
+          </div>
+        </div>
+        <div class='tab' id='tab_restrictions'>
+
+          <div id='rest_flex'>
+            <div id='rest_settings'>
+              <div class='rest_first_item'>
+                <div class='rest_label'>Radi na</div>
+                <div class='loader_container wubook_update'>
+                  <select class="basic_select" id='rest_work_on'>
+                    <option value='--'> -- </option>
+                    <option value='price'> Cijena </option>
+                    <option value='min'> Minimalni boravak </option>
+                    <option value='max'> Maksimalni boravak </option>
+                    <option value='closure'> Zatvaranje </option>
+                    <option value='avail'> Raspoloživost </option>
+                    <option value='ota'> Blokiranje kanala </option>
+                  </select>
+                </div>
+              </div>
+              <div class='rest_item rest_price'>
+                <div class='rest_label'>Plan cijena</div>
+                <select class="basic_select daily_price_select" id='rest_pricing_plan'>
+                </select>
+              </div>
+              <div class='rest_item rest_min rest_closure'>
+                <div class='rest_label'>Plan restrikcija</div>
+                <select class="basic_select restriction_select" id='rest_restriction_plan'>
+                </select>
+              </div>
+              <div class='rest_item rest_price rest_min rest_closure rest_avail rest_ota' id='rest_period_container'>
+                <div class='flex_center'>
+                  <div>Od</div>
+                  <input type='text' class='calendar_input' readonly id='rest_dfrom'>
+                </div>
+                <div class='flex_center'>
+                  <div>Do</div>
+                  <input type='text' class='calendar_input' readonly id='rest_dto'>
+                </div>
+              </div>
+              <div class='rest_item rest_price'>
+                <div class='rest_label'>Varijacija</div>
+                <select class="basic_select" id='rest_price_variation'>
+                  <option value=0>Postavi cijenu</option>
+                  <option value=-2>Popust (EUR)</option>
+                  <option value=-1>Popust (%)</option>
+                  <option value=1>Povećanje (%)</option>
+                  <option value=2>Povećanje (EUR)</option>
+                </select>
+              </div>
+              <div class='rest_item rest_avail'>
+                <div class='rest_label'>Varijacija</div>
+                <select class="basic_select" id='rest_avail_variation'>
+                  <option value=0>Postavi raspoloživost</option>
+                  <option value=-1>Smanji za</option>
+                  <option value=1>Povećaj za</option>
+                </select>
+              </div>
+              <div class='rest_item rest_price rest_min rest_closure rest_avail rest_ota' id='rest_rooms_container'>
+                <div class='rest_label'>Jedinice</div>
+                <select class="basic_select room_select" id='rest_rooms'>
+                  <option value='all'> Dodaj sve </option>
+                  <option value='none'> Ukloni sve </option>
+                  <option value='-' selected="selected"> -- </option>
+                </select>
+              </div>
+              <div class='rest_item rest_price rest_avail'>
+                <div class='flex_start'>
+                  <div class='custom_checkbox' id='rest_separate' data-value=1>
+                    <div class='checkbox_value checked'>
+                    </div>
+                  </div>
+                  Pojedinačne vrijednosti
+                </div>
+              </div>
+              <div class='rest_item rest_price rest_min rest_avail' id='rest_value_container'>
+                <div class='rest_label'>Vrijednost</div>
+                <input class='number_input' id='rest_value'>
+              </div>
+              <div class='rest_item rest_closure'>
+                <div class='rest_label'>Vrijednost</div>
+                <select class="basic_select" id='rest_value_closure'>
+                  <option value='1'>Zatvoreno</option>
+                  <option value='0'>Otvoreno</option>
+                </select>
+              </div>
+              <div class='rest_item rest_ota'>
+                <div class='rest_label'>Vrijednost</div>
+                <select class="basic_select" id='rest_value_ota'>
+                  <option value='1'>Blokiraj</option>
+                  <option value='0'>Dozvoli</option>
+                </select>
+              </div>
+              <div id='rest_rooms_list' class='rest_price rest_min rest_closure rest_avail rest_ota'>
+              </div>
+              <button class='confirm_button wubook_update' id='rest_update'>AŽURIRAJ</button>
+            </div>
+            <div id='rest_details_container'>
+              <div class='flex_center'>
+                <select class='basic_select' id='rest_details_period'> </select>
+              </div>
+              <div id='rest_details'>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <main id='main_reservations'>
+        <div class='tab' id='tab_reservations'>
+          <div class='list_settings'>
+            <button class='confirm_button' id='new_reservation'> Nova rezervacija </button>
+            <button class='confirm_button' id='new_group_reservation'> Grupna rezervacija </button>
+            <div class="settings_break"></div>
+            <select class="basic_select" id='reservations_order_by'>
+              <option value='date_received'>Datum unosa</option>
+              <option value='customer_name'>Ime gosta</option>
+              <option value='customer_country'>Država gosta</option>
+              <option value='date_arrival'>Datum dolaska</option>
+              <option value='date_departure'>Datum odlaska</option>
+              <option value='nights'>Ukupno noćenja</option>
+              <option value='total_price'>Ukupna cijena</option>
+              <option value='rooms'>Naziv jedinice</option>
+              <option value='id_woodoo'>Prodajni kanal</option>
+            </select>
+            <img class='order desc' id='reservations_order_type' data-value='desc'>
+            <select class="basic_select" id='reservations_year'>
+              <option value=''>Godina</option>
+              <option value='2018'>2018</option>
+              <option value='2019'>2019</option>
+              <option value='2020'>2020</option>
+              <option value='2021'>2021</option>
+            </select>
+            <select class="basic_select" id='reservations_month'>
+              <option value=''>Mesec</option>
+              <option value=01>Januar</option>
+              <option value=02>Februar</option>
+              <option value=03>Mart</option>
+              <option value=04>April</option>
+              <option value=05>Maj</option>
+              <option value=06>Jun</option>
+              <option value=07>Jul</option>
+              <option value=08>Avgust</option>
+              <option value=09>Septembar</option>
+              <option value=10>Oktobar</option>
+              <option value=11>Novembar</option>
+              <option value=12>Decembar</option>
+            </select>
+            <div class='modal_container'>
+              <img class='filter_button'>
+              <section class='modal modal_right filter_modal' id='res_filters'>
+                <div class='filter_flex'>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Status
+                    </div>
+                    <div class="flex_center">
+                      <select class="basic_select" id='reservations_filter_status'>
+                        <option value=''>Sve</option>
+                        <option value='1'>Potvrđene</option>
+                        <option value='5'>Otkazane</option>
+                      </select>
+                    </div>
+                    <div class='filter_header'>
+                      Jedinice
+                    </div>
+                    <select class="multiple room_select" id='reservations_filter_rooms' multiple='multiple'>
+                    </select>
+                    <div class='filter_header'>
+                      Prodajni kanali
+                    </div>
+                    <select class="multiple channel_select" id='reservations_filter_channels' multiple='multiple'>
+                    </select>
+                    <div class='filter_header'>
+                      Država
+                    </div>
+                    <select class="multiple country_select" id='reservations_filter_countries' multiple='multiple'>
+                    </select>
+                  </div>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Period
+                    </div>
+                    <div class="flex_center">
+                      <select class="basic_select" id='reservations_filter_by'>
+                        <option value='date_received'>Datum unosa</option>
+                        <option value='date_arrival'>Datum dolaska</option>
+                        <option value='date_departure'>Datum odlaska</option>
+                        <option value='date_canceled'>Datum otkazivanja</option>
+                      </select>
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <span class='label'> OD </span>
+                        <input type='text' class='calendar_input filter_dfrom_calendar' readonly id='reservations_filter_dfrom'>
+                      </div>
+                      <div class='flex_center'>
+                        <span class='label'> DO </span>
+                        <input type='text' class='calendar_input filter_dto_calendar' readonly id='reservations_filter_dto'>
+                      </div>
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='reservations_filter_arrivals' data-value=0> <img class='checkbox_value'> </div>
+                        Dolasci danas
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='reservations_filter_departures' data-value=0> <img class='checkbox_value'> </div>
+                        Odlasci danas
+                      </div>
+                    </div>
+                    <div class='filter_header'>
+                      Ukupna cijena
+                    </div>
+                    <div class='flex_center'>
+                      <input type='hidden' class='range_slider' id='reservations_filter_price'>
+                    </div>
+                    <div class='filter_header'>
+                      Broj noćenja
+                    </div>
+                    <div class="flex_center">
+                      <input type='hidden' class='range_slider' id='reservations_filter_nights'>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex_center">
+                  <button class='cancel_button' id='reservations_filter_clear'> Poništi </button>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div id='reservations_list'> </div>
+        </div>
+      </main>
+      <main id='main_guests'>
+        <div class='tab' id='tab_guests'>
+          <div class='list_settings'>
+            <button class='confirm_button' id='guests_select_all'> Označi sve </button>
+            <div class="settings_break"></div>
+            <button class='confirm_button' id='guests_register'> Prijavi </button>
+          <!--  <button class='confirm_button' id='guests_registration'> E-Prijava </button> -->
+            <select class="basic_select" id='guests_order_by'>
+              <option value='name'>Ime gosta</option>
+              <option value='email'>Email</option>
+              <option value='total_arrivals'>Ukupno dolazaka</option>
+              <option value='total_nights'>Ukupno noćenja</option>
+              <option value='total_paid'>Ukupno plaćeno</option>
+            </select>
+            <img class='order desc' id='guests_order_type' data-value='desc'>
+            <div class='modal_container'>
+              <img class='filter_button'>
+              <section class='modal modal_right filter_modal' id='guest_filters'>
+                <div class='filter_flex'>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Jedinice
+                    </div>
+                    <select class="multiple room_select" id='guests_filter_rooms' multiple='multiple'>
+                    </select>
+                    <div class='filter_header'>
+                      Prodajni kanali
+                    </div>
+                    <select class="multiple channel_select" id='guests_filter_channels' multiple='multiple'>
+                    </select>
+                    <div class='filter_header'>
+                      Država
+                    </div>
+                    <select class="multiple country_select" id='guests_filter_countries' multiple='multiple'>
+                    </select>
+                  </div>
+                  <div class='filter_half'>
+                    <div class='filter_header'>
+                      Period
+                    </div>
+                    <div class="flex_center">
+                      <select class="basic_select" id='guests_filter_by'>
+                        <option value='date_received'>Datum unosa</option>
+                        <option value='date_arrival'>Datum dolaska</option>
+                        <option value='date_departure'>Datum odlaska</option>
+                        <option value='date_canceled'>Datum otkazivanja</option>
+                      </select>
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <span class='label'> OD </span>
+                        <input type='text' class='calendar_input filter_dfrom_calendar' readonly id='guests_filter_dfrom'>
+                      </div>
+                      <div class='flex_center'>
+                        <span class='label'> DO </span>
+                        <input type='text' class='calendar_input filter_dto_calendar' readonly id='guests_filter_dto'>
+                      </div>
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='guests_filter_arrivals' data-value=0> <img class='checkbox_value'> </div>
+                        Dolasci danas
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='guests_filter_departures' data-value=0> <img class='checkbox_value'> </div>
+                        Odlasci danas
+                      </div>
+                    </div>
+                    <div class='filter_header'>
+                      Ukupna plaćeno
+                    </div>
+                    <div class='flex_center'>
+                      <input type='hidden' class='range_slider' id='guests_filter_price'>
+                    </div>
+                    <div class='filter_header'>
+                      Ukupno noćenja
+                    </div>
+                    <div class="flex_center">
+                      <input type='hidden' class='range_slider' id='guests_filter_nights'>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex_center">
+                  <button class='cancel_button' id='guests_filter_clear'> Poništi </button>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div id='guests_list'></div>
+        </div>
+      </main>
+      <main id='main_invoices'>
+        <div class='tab' id='tab_invoices'>
+          <div class='list_settings'>
+            <button class='confirm_button' id='new_invoice'> Dodaj račun </button>
+            <div class='settings_break'>
+            </div>
+          </div>
+          <div class='flex_start'>
+            <div id='form_invoice'>
+              <input type='hidden' id='form_invoice_id'>
+              <input type='hidden' id='form_invoice_reservation_code'>
+              <img id='form_invoice_logo'>
+              <div id='form_invoice_header'>
+                <div id='form_invoice_property' class='margin_bottom'> </div>
+                <div class='flex_start'>
+                  <div class='label'> PIB: </div>
+                  <div id='form_invoice_pib'> </div>
+                </div>
+                <div class='flex_start'>
+                  <div class='label'> Matični broj: </div>
+                  <div id='form_invoice_mb'> </div>
+                </div>
+                <div class='flex_start margin_bottom'>
+                  <div class='label'> Adresa: </div>
+                  <div id='form_invoice_address'> </div>
+                </div>
+                <div class='flex_start'>
+                  <div class='label'> Tekući račun: </div>
+                  <div id='form_invoice_bank_account'> </div>
+                </div>
+                <div class='flex_start'>
+                  <div class='label'> IBAN: </div>
+                  <div id='form_invoice_iban'> </div>
+                </div>
+                <div class='flex_start margin_bottom'>
+                  <div class='label'> SWIFT: </div>
+                  <div id='form_invoice_swift'> </div>
+                </div>
+                <div class='flex_start margin_bottom'>
+                  <div class='label'> Račun generisao: </div>
+                  <input class='text_input' type='text' id='form_invoice_user' autocomplete="off">
+                </div>
+              </div>
+              <div class='flex_between'>
+                <section class='half' id='form_invoice_info'>
+                  <select id='form_invoice_type' class='basic_select'>
+                    <option value=2> Račun </option>
+                    <option value=1> Predračun </option>
+                  </select>
+                  <div class='flex_start'>
+                    <div class='vert_start'>
+                      <div class='label'> Broj računa </div>
+                      <input type='text' class='text_input' id='form_invoice_mark'>
+                    </div>
+                    <div class='vert_start'>
+                      <select id='form_invoice_status'>
+                        <option value=1> Plaćen </option>
+                        <option value=0> Neplaćen </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class='flex_start'>
+                    <div class='vert_start'>
+                      <div class='label'> Datum izdavanja </div>
+                      <input type='text' class='calendar_input' readonly id='form_invoice_issued'>
+                    </div>
+                    <div class='vert_start'>
+                      <div class='label'> Datum dospjeća </div>
+                      <input type='text' class='calendar_input' readonly id='form_invoice_delivery'>
+                    </div>
+                  </div>
+                  <div id='form_invoice_payment_type_container'>
+                    <div class='label'>
+                      Način plaćanja
+                    </div>
+                    <select class='basic_select' id='form_invoice_payment_type'>
+                      <option value='1'>Gotovina</option>
+                      <option value='2'>Kartica</option>
+                      <option value='3'>Ček</option>
+                      <option value='4'>Virman</option>
+                      <option value='5'>Ostalo</option>
+                    </select>
+                  </div>
+                </section>
+                <section class='half' id='form_invoice_client'>
+                  <div class='section_title'>  </div>
+                  <div class='flex_between'>
+                    <div class='label' id='form_invoice_client_name_label'> Primalac: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_name' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> PIB: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_pib' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Matični broj: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_mb' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Broj dokumenta: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_document_number' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Adresa: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_address' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Država: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_country' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Email: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_email' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Telefon: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_phone' autocomplete="off">
+                  </div>
+                  <div class='flex_between'>
+                    <div class='label'> Rezervacija važi na ime: </div>
+                    <input class='text_input' type='text' id='form_invoice_client_reservation_name' autocomplete="off">
+                  </div>
+                </section>
+              </div>
+              <section class='white' id='form_invoice_services_container'>
+                <div class='flex_center' id='form_invoice_add_article_container'>
+                  <select class='basic_select' id='form_invoice_add_article'>
+                    <option value='-1'> Dodaj artikal </option>
+                  </select>
+                </div>
+                <div class='list_names'>
+                  <div class='form_invoice_service_name'> Naziv usluge/proizvoda </div>
+                  <div class='form_invoice_service_amount'> Količina </div>
+                  <div class='form_invoice_service_price'> Cijena po jedinici </div>
+                  <div class='form_invoice_service_tax'> Porez </div>
+                  <div class='form_invoice_service_total'> Ukupna cijena </div>
+                  <div class='form_invoice_service_tax'> Ukupan porez </div>
+                  <div class='form_invoice_service_actions'> </div>
+                </div>
+                <div id='form_invoice_services' class='form_list'>
+                </div>
+                <div class='flex_center'>
+                  <button class='add_button' id='form_invoice_new_service'>+</button>
+                </div>
+                <div class='form_invoice_break'></div>
+                <div id='form_invoice_values'>
+                  <div class='flex_end'>
+                    <div class='form_invoice_values_label'> Ukupno bez poreza </div>
+                    <div>
+                      <span class='form_invoice_values_value' id='form_invoice_total_price'> </span>
+                    </div>
+                  </div>
+                  <div class='flex_end'>
+                    <div class='form_invoice_values_label'> Porez </div>
+                    <div>
+                      <span class='form_invoice_values_value' id='form_invoice_total_tax'> </span>
+                    </div>
+                  </div>
+                  <div class='flex_end'>
+                    <div class='form_invoice_values_label'> UKUPNO </div>
+                    <div>
+                      <span class='form_invoice_values_value' id='form_invoice_total_with_tax'> </span>
+                    </div>
+                  </div>
+                </div>
+                <div class='form_invoice_break'></div>
+                <div class='form_invoice_footer'>
+                  <div>
+                    <div class='form_invoice_footer_text' id='form_invoice_pdv'>
+                      Obveznik je u sistemu PDV-a
+                    </div>
+                    <div class='form_invoice_footer_text'>
+                      Račun je izdat u elektronskoj formi i validan je bez pečata i potpisa.
+                    </div>
+                  </div>
+                  <div>
+                    <div class='vert_start'>
+                      <div> Napomena </div>
+                      <textarea class='textarea_input' id='form_invoice_note'>
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <form action="https://export.otasync.me/invoice/" class='export_form' target="_blank" method="POST" enctype='multipart/form-data' id='form_invoice_export_form'>
+                <input type="text" name="action" id='form_invoice_export_action'>
+                <textarea name="invoice" id='form_invoice_export_html'></textarea>
+                <input type="submit" value="Submit">
+              </form>
+              <div class='flex_between form_invoice_buttons'>
+                <button class='confirm_button' id='form_invoice_print'>Štampa <img class='button_icon' src='img/print.svg'></button>
+                <button class='confirm_button' id='form_invoice_pdf'>PDF <img class='button_icon' src='img/pdf.svg'></button>
+                <button class='confirm_button' id='form_invoice_fiscal'>Fiskalni <img class='button_icon' src='img/invoice.svg'></button>
+                <button class='cancel_button' id='form_invoice_cancel'>ODUSTANI</button>
+                <button class='confirm_button' id='form_invoice_confirm'>POTVRDI</button>
+              </div>
+            </div>
+            <div id='invoices_list_container'>
+              <div class='list_settings'>
+                <div id='invoices_list_header'>
+                  Prethodni računi
+                </div>
+                <div class='modal_container' id='invoices_filter'>
+                  <img class='filter_button'>
+                  <section class='modal modal_right filter_modal'>
+                    <div class='filter_header'>
+                      Period
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <span class='label'> OD </span>
+                        <input type='text' class='calendar_input filter_dfrom_calendar' readonly id='invoices_filter_dfrom'>
+                      </div>
+                      <div class='flex_center'>
+                        <span class='label'> DO </span>
+                        <input type='text' class='calendar_input filter_dto_calendar' readonly id='invoices_filter_dto'>
+                      </div>
+                    </div>
+                    <div class='filter_header'>
+                      Tip
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='invoices_filter_type_2' data-value=0> <img class='checkbox_value'> </div>
+                        Račun
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='invoices_filter_type_1' data-value=0> <img class='checkbox_value'> </div>
+                        Predračun
+                      </div>
+                    </div>
+                    <div class='filter_header'>
+                      Status
+                    </div>
+                    <div class="flex_around">
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='invoices_filter_status_1' data-value=0> <img class='checkbox_value'> </div>
+                        Plaćen
+                      </div>
+                      <div class='flex_center'>
+                        <div class='custom_checkbox' id='invoices_filter_status_0' data-value=0> <img class='checkbox_value'> </div>
+                        Neplaćen
+                      </div>
+                    </div>
+                    <div class="flex_center">
+                      <button class='cancel_button' id='invoices_filter_clear'> Poništi </button>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              <div id='invoices_list'></div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+      <main id='main_statistics'>
+        <div class='tab' id='tab_statistics'>
+          <div class='list_settings'>
+            <button class='confirm_button' id='stats_plan_show'> Plan prihoda </button>
+            <div class='settings_break'> </div>
+          </div>
+          <div class='list_settings hidden' id='stats_plan'>
+            <div class='vert_center'>
+              <div> Jan </div>
+              <input type='number' class='number_input' id='stats_plan_0'>
+            </div>
+            <div class='vert_center'>
+              <div> Feb </div>
+              <input type='number' class='number_input' id='stats_plan_1'>
+            </div>
+            <div class='vert_center'>
+              <div> Mar </div>
+              <input type='number' class='number_input' id='stats_plan_2'>
+            </div>
+            <div class='vert_center'>
+              <div> Apr </div>
+              <input type='number' class='number_input' id='stats_plan_3'>
+            </div>
+            <div class='vert_center'>
+              <div> Maj </div>
+              <input type='number' class='number_input' id='stats_plan_4'>
+            </div>
+            <div class='vert_center'>
+              <div> Jun </div>
+              <input type='number' class='number_input' id='stats_plan_5'>
+            </div>
+            <div class='vert_center'>
+              <div> Jul </div>
+              <input type='number' class='number_input' id='stats_plan_6'>
+            </div>
+            <div class='vert_center'>
+              <div> Avg </div>
+              <input type='number' class='number_input' id='stats_plan_7'>
+            </div>
+            <div class='vert_center'>
+              <div> Sep </div>
+              <input type='number' class='number_input' id='stats_plan_8'>
+            </div>
+            <div class='vert_center'>
+              <div> Okt </div>
+              <input type='number' class='number_input' id='stats_plan_9'>
+            </div>
+            <div class='vert_center'>
+              <div> Nov </div>
+              <input type='number' class='number_input' id='stats_plan_10'>
+            </div>
+            <div class='vert_center'>
+              <div> Dec </div>
+              <input type='number' class='number_input' id='stats_plan_11'>
+            </div>
+            <div class='vert_center'>
+              <div> &nbsp; </div>
+              <button class='confirm_button' id='stats_plan_update'> Sačuvaj </div>
+          </div>
+          <div class='list_settings'>
+            <select class='basic_select' id='stat_filter_by'>
+              <option value='date_arrival'> Datum dolaska </option>
+              <option value='date_received'> Datum rezervacije </option>
+            </select>
+            <div class='calendar_input_container'>
+              <span class='calendar_label'> OD </span>
+              <input type='text' class='calendar_input filter_dfrom_calendar' readonly id='stat_dfrom'>
+            </div>
+            <div class='calendar_input_container'>
+              <span class='calendar_label'> DO </span>
+              <input type='text' class='calendar_input filter_dto_calendar' readonly id='stat_dto'>
+            </div>
+            <div class='settings_break'></div>
+          </div>
+          <div class="stat_row">
+            <div class='stat_item'>
+              <div class='stat_flex'>
+                <select class='basic_select' id='stat_bar_select'>
+                  <option value='income'>Prihod</option>
+                  <option value='nights'>Broj noćenja</option>
+                  <option value='occupancy'>Popunjenost</option>
+                </select>
+                <select class='basic_select' id='stat_line_select'>
+                  <option value='avg_income'>Prosječan iznos</option>
+                  <option value='max_income'>Najveća cijena</option>
+                  <option value='avg_nights'>Prosječni broj noćenja</option>
+                  <option value='max_nights'>Najveći broj noćenja</option>
+                </select>
+                <select class='basic_select' id='stat_cmp_select'>
+                  <option value='prev_year'>Isti period prethodne godine</option>
+                  <option value='plan'>Isplanirani prihod</option>
+                  <option value='-1'>Bez poređenja</option>
+                </select>
+              </div>
+              <div class='vertical_chart_container' id='stat_vertical'>
+              </div>
+            </div>
+            <div class='stat_item'>
+              <div class='stat_flex'>
+                <select class='basic_select' id='stat2_line_select'>
+                  <option value='income'>Prihod</option>
+                  <option value='nights'>Broj noćenja</option>
+                  <option value='occupancy'>Popunjenost</option>
+                </select>
+                <select class='basic_select' id='stat2_cmp_select'>
+                  <option value='prev_year'>Isti period prethodne godine</option>
+                  <option value='plan'>Isplanirani prihod</option>
+                  <option value='-1'>Bez poređenja</option>
+                </select>
+              </div>
+              <div class='vertical_chart_container' id='stat2_vertical'>
+              </div>
+            </div>
+          </div>
+          <div class="stat_row">
+            <div class='stat_item'>
+              <div class='stat_flex'>
+                <select class='basic_select' id='stat3_bar_select'>
+                  <option value='avg_income'>Prosječna cijena</option>
+                  <option value='avg_nights'> Prosječni broj noćenja</option>
+                  <option value='confirmed'>Broj potvrđenih rezervacija</option>
+                  <option value='canceled_percentage'>% otkazanih rezervacija</option>
+                </select>
+              </div>
+              <div class='vertical_chart_container' id='stat3_vertical'>
+              </div>
+            </div>
+            <div class='stat_item'>
+              <div class='stat_flex'>
+                <select class='basic_select' id='stat_pie_select'>
+                  <option value='countries_percentage'>% po državama</option>
+                  <option value='channels_percentage'>% po kanalima</option>
+                </select>
+              </div>
+              <div class='pie_chart_container' id='stat_pie'>
+              </div>
+            </div>
+          </div>
+          <div class='stat_table'>
+            <div class='stat_flex'>
+              <select class='basic_select' id='stat_table_select'>
+                <option value='channels'>Kanali</option>
+                <option value='rooms'>Jedinice</option>
+              </select>
+            </div>
+            <div class='table_container' id='stat_table'>
+            </div>
+          </div>
+        </div>
+      </main>
+      <main id='main_reports'>
+
+
+        <div class='tab' id='tab_occupancy'>
+
+          <div class="tabsContainer">
+            <div class="card">
+              <div class="card-header">
+
+                <i class="fas fa-angle-down myIcon1" title="Stanje u objektu" onclick="collapse(event,'demo1')"></i>
+                <div class="suo">Filter</div>
+
+
+              </div>
+
+              <div id="demo1">
+                <div class="card-body">
+
+                  <form id="forma1">
+
+                    <div class="myCol mc1">
+                      <input id="dFromOccu" name="dFromOccu" placeholder="Današnji dan" type="text" class="calendar_input">
+                    </div>
+
+                    <div class="myCol mc1">
+                      <input id="dToOccu" name="dToOccu" placeholder="Poredi" type="text" class="calendar_input">
+                    </div>
+                    <select class="multiple room_select" id="tip_sobe" name="tip_sobe"  multiple="multiple">
+
+                    </select>
+
+
+                  </form>
+
+                </div>
+                <div class="card-footer btnWrap">
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="tabsContainer tabCont">
+            <div class="card tabOcc">
+              <div class="card-header izvestaj">
+
+                  Izvještaj
+                <div class='reports_export_button' onclick="toExcell('myTab')">
+                  Izvezi
+                  <img src='img/export.png' class='report_export'></img>
+                </div>
+              </div>
+
+                <div class="card-body" id="Occupancy">
+
+
+
+                </div>
+                <div class="card-footer btnWrap">
+
+                </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class='tab' id='tab_daily'>
+
+          <div class="tabsContainer">
+            <div class="card">
+              <div class="card-header">
+
+                <i class="fas fa-angle-down myIcon1" title="Dnevni izveštaj" onclick="collapse(event,'demo2')"></i>
+                <div class="suo">Filter</div>
+
+
+              </div>
+
+              <div id="demo2">
+                <div class="card-body">
+
+                  <h2 id="today"></h2>
+
+                  <form id="forma2">
+
+                      <div>
+                        <input id="number" name="number" type="checkbox" checked onchange="daily()">
+                        <label for="number">Redni broj</label>
+                      </div>
+
+                      <div>
+                        <input id="room" name="room" type="checkbox" checked onchange="daily()">
+                        <label for="room">Tip jedinice</label>
+                      </div>
+
+                      <div>
+                        <input id="room_number" name="room_number" type="checkbox" checked onchange="daily()">
+                        <label for="room_number">Broj Sobe</label>
+                      </div>
+
+                      <div>
+                        <input id="guest" name="guest" type="checkbox" checked onchange="daily()">
+                        <label for="guest">Nosilac rezervacije</label>
+                      </div>
+
+                      <div>
+                        <input id="adults" name="adults" type="checkbox" checked onchange="daily()">
+                        <label for="adults">Broj odraslih</label>
+                      </div>
+
+                      <div>
+                        <input id="children" name="children" type="checkbox" checked onchange="daily()">
+                        <label for="children">Broj dece</label>
+                      </div>
+
+                      <div>
+                        <input id="arrival" name="arrival" type="checkbox" checked onchange="daily()">
+                        <label for="arrival">Datum dolaska</label>
+                      </div>
+
+                      <div>
+                        <input id="departure" name="departure" type="checkbox" checked onchange="daily()">
+                        <label for="departure">Datum odlaska</label>
+                      </div>
+
+                      <div>
+                        <input id="note" name="note" type="checkbox" checked onchange="daily()">
+                        <label for="note">Napomena</label>
+                      </div>
+
+                      <div>
+                        <input id="price_per_night" name="price_per_night" type="checkbox" checked onchange="daily()">
+                        <label for="price_per_night">Cijena noćenja</label>
+                      </div>
+
+                      <div>
+                        <input id="total_price" name="total_price" type="checkbox" checked onchange="daily()">
+                        <label for="total_price">Ukupna cijena</label>
+                      </div>
+
+                      <div>
+                        <input id="channel" name="channel" type="checkbox" checked onchange="daily()">
+                        <label for="channel">Prodajni kanal</label>
+                      </div>
+
+                  </form>
+                </div>
+                <div class="card-footer btnWrap">
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="tabsContainer tabCont">
+            <div class="card tabOcc">
+              <div class="card-header izvestaj">
+
+                Izvještaj
+
+                <div class='reports_export_button' onclick="toExcell('myTab2')">
+                  Izvezi
+                  <img src='img/export.png' class='report_export'></img>
+                </div>
+              </div>
+
+              <div id="tabelaDaily">
+                <div class="card-body" id="Daily">
+
+
+
+                </div>
+                <div class="card-footer btnWrap">
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class='tab' id='tab_housekeeping'>
+
+          <div class="tabsContainer">
+            <div class="card">
+              <div class="card-header">
+
+                <i class="fas fa-angle-down myIcon1" title="Housekeeping izveštaj" onclick="collapse(event, 'demo3')"></i>
+                <div class="suo">Filter</div>
+
+              </div>
+
+              <div id="demo3">
+                <div class="card-body">
+
+                  <div class='flex_between'>
+
+                    <div id='Rooms_cont'>
+                      <select class="multiple room_select" id="Rooms" name="Rooms"  multiple="multiple" onchange="housekeeping()">
+                      </select>
+                    </div>
+                    <select class="basic_select" id="room_status" name="room_status"  multiple="multiple" onchange="housekeeping()">
+                      <option value="inspected">Pregledano</option>
+                      <option value="clean">Čisto</option>
+                      <option value="dirty">Prljavo</option>
+                    </select>
+
+                    <select class="basic_select" id="reservation_status" name="reservation_status"  multiple="multiple" onchange="housekeeping()">
+                      <option value="arrival">Dolazak</option>
+                      <option value="departure">Odlazak</option>
+                      <option value="stay">Boravak</option>
+                      <option value="free">Slobodno</option>
+                    </select>
+
+                    <select class="basic_select" id="guest_status" name="guest_status"  multiple="multiple" onchange="housekeeping()">
+                      <option value="waiting_arrival">Čeka se dolazak</option>
+                      <option value="arrived">Gost došao</option>
+                      <option value="arrived_and_paid">Gost došao i platio</option>
+                      <option value="left">Gost se odjavio</option>
+                    </select>
+
+                  </div>
+
+                </div>
+                <div class="card-footer btnWrap">
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="tabsContainer tabCont">
+            <div class="card tabOcc">
+              <div class="card-header izvestaj">
+
+                Izvještaj
+
+                <div class='reports_export_button' onclick="toExcell('myTab3')">
+                  Izvezi
+                  <img src='img/export.png' class='report_export'></img>
+                </div>
+              </div>
+
+              <div id="tabelaHousekeeping">
+                <div class="card-body" id="HouseKeeping">
+
+
+
+                </div>
+                <div class="card-footer btnWrap">
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+      <main id='main_settings'>
+        <div id='settings_nav'>
+          <div class='settings_nav_button' id='settings_nav_engine'>Booking Engine</div>
+          <div class='settings_nav_button' id='settings_nav_articles'>Artikli</div>
+          <div class='settings_nav_button' id='settings_nav_general'>Opšte</div>
+          <div class='settings_nav_button' id='settings_nav_emails'>Emailovi</div>
+          <div class='settings_nav_button' id='settings_nav_plans'>Cijene i Restrikcije</div>
+          <div class='settings_nav_button' id='settings_nav_rooms'>Jedinice i Kanali</div>
+          <div class='settings_nav_button' id='settings_nav_users'>Korisnici</div>
+        </div>
+        <div class='tab' id='tab_engine'>
+          <div class="container1">
+            <button type="button" class="collapsible">Podešavanja</button>
+            <div class='content'>
+              <section class='half'>
+                <div class='section_title'> Izgled </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Pozadina</label>
+                  </div>
+                  <div class="col">
+                    <div class='flex_center'>
+                      <div class='image_input_container' id='engine_background_container'>
+                        <img class='image_input_image'>
+                        <div class='image_input_cancel'>Ukloni</div>
+                      </div>
+                      <input type='file' class='image_input_file' id='engine_background_file'>
+                      <button class='add_button image_input' id='engine_background'> + </button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Logo</label>
+                  </div>
+                  <div class="col">
+                    <div class='flex_center'>
+                      <div class='image_input_container' id='engine_logo_container'>
+                        <img class='image_input_image'>
+                        <div class='image_input_cancel'>Ukloni</div>
+                      </div>
+                      <input type='file' class='image_input_file' id='engine_logo_file'>
+                      <button class='add_button image_input' id='engine_logo'> + </button>
+                    </div>
+                  </div>
+                </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Izberi temu</label>
+                  </div>
+                  <div class="col">
+                    <div id="colorPreview" style="background-color: #2c3e50;width: 20px;height: 20px;display: inline-block;margin-left: 5px;margin-bottom: -7px;"></div>
+                    <select id="colors" class='engine_appearance'>
+                      <option value='#222'> Black </option>
+                      <option value="#2c3e50"> Gray </option>
+                      <option value="#16a085"> Green </option>
+                      <option value="#c0392b"> Red </option>
+                      <option value="#1B3C66"> Navyblue </option>
+                    </select>
+                  </div>
+                </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Zaobljene ivice</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_appearance' id='borderRadius' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+                <div class='section_title'>Korak potvrde rezervacije</div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Broj gostiju</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='occupancySpecificaiton' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Telefon</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showPhone' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Adresa</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showAdress' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Grad</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showCity' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Država</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showCountry' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Kreditna kartica</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showCard' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>CVV</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_confirmation' id='showCardCvv' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Period za check-in</label>
+                  </div>
+                  <div class="col">
+                    <select id="checkFrom" class='engine_confirmation'>
+                      <option value="00:00">00:00</option>
+                      <option value="01:00">01:00</option>
+                      <option value="02:00">02:00</option>
+                      <option value="03:00">03:00</option>
+                      <option value="04:00">04:00</option>
+                      <option value="05:00">05:00</option>
+                      <option value="06:00">06:00</option>
+                      <option value="07:00">07:00</option>
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                    </select>
+                    <select id="checkTo" class='engine_confirmation'>
+                      <option value="01:00">01:00</option>
+                      <option value="02:00">02:00</option>
+                      <option value="03:00">03:00</option>
+                      <option value="04:00">04:00</option>
+                      <option value="05:00">05:00</option>
+                      <option value="06:00">06:00</option>
+                      <option value="07:00">07:00</option>
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                      <option value="24:00">24:00</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+              <section class='half'>
+                <div class='section_title'> Info </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Ime objekta</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="name">
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Opis</label>
+                  </div>
+                  <div class="col">
+                    <textarea id="description" rows="6" cols="20">
+                    </textarea>
+                  </div>
+                </div>
+
+                <div class="flex_center">
+                  <button onClick="updateData()" class='confirm_button'>SAČUVAJ</button>
+                </div>
+
+                <div class='section_title'> Korak odabira datuma </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Broj djece </label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_selectdates' id='children' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Predodređeni broj noći</label>
+                  </div>
+                  <div class="col">
+                    <input type='number' class='number_input' id='nights'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Limit za rezervisanje istog dana</label>
+                  </div>
+                  <div class="col">
+                    <select id="sameDay" class='engine_selectdates'>
+                      <option value="01:00">01:00</option>
+                      <option value="02:00">02:00</option>
+                      <option value="03:00">03:00</option>
+                      <option value="04:00">04:00</option>
+                      <option value="05:00">05:00</option>
+                      <option value="06:00">06:00</option>
+                      <option value="07:00">07:00</option>
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
+                      <option value="18:00">18:00</option>
+                      <option value="19:00">19:00</option>
+                      <option value="20:00">20:00</option>
+                      <option value="21:00">21:00</option>
+                      <option value="22:00">22:00</option>
+                      <option value="23:00">23:00</option>
+                      <option value="00:00">00:00</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Centi</label>
+                  </div>
+                  <div class="col">
+                    <div class='custom_checkbox engine_selectdates' id='cents' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="container1">
+            <button type="button" class="collapsible">Kontakt</button>
+            <div class='content'>
+              <section class='half'>
+                <div class='section_title'> Kontakt </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Adresa</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="adresse" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Telefon</label>
+                  </div>
+                    <div class="col">
+                    <input type="text" id="phone" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Email</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="email" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Veb sajt</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="webSite" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Facebook</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="facebook" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Instagram</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="instagram" class='engine_contact'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Youtube</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="youtube" class='engine_contact'>
+                  </div>
+                </div>
+              </section>
+              <section class='half'>
+                <div class='section_title'> Lokacija </div>
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Longitude</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="longitude" class='engine_location'>
+                  </div>
+                </div>
+
+                <div class=" flex-grid">
+                  <div class="col">
+                    <label>Latitude</label>
+                  </div>
+                  <div class="col">
+                    <input type="text" id="latitude" class='engine_location'>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="container1">
+            <button type="button" class="collapsible">Promo kodovi</button>
+            <div class='content'>
+              <section class='half'>
+                <div id='promocodes_list'>
+                </div>
+                <div class="flex_center">
+                  <button class='add_button' id='new_promocode'> + </button>
+                </div>
+                <div id='new_promocode_container'>
+                  <div class='flex_between'>
+                    <div class='vert_center'>
+                      <div> Naziv </div>
+                      <input type="text" id="promocodeName">
+                    </div>
+                    <div class='vert_center'>
+                      <div> Kod </div>
+                      <input type="text" id="promocode">
+                    </div>
+                  </div>
+                  <div class='flex_between'>
+                    <div class='vert_center'>
+                      <div> Tip </div>
+                      <select id="promocodeTarget" class='basic_select'>
+                        <option value="all">Sve</option>
+                        <option value="room">Sobe</option>
+                        <option value="extras">Dodaci</option>
+                      </select>
+                    </div>
+                    <div class='vert_center'>
+                      <div> Iznos </div>
+                      <div class='form_center'>
+                        <input type="number" class='number_input' id="promocodeValue">
+                        <select id="promocodeType" class='basic_select short'>
+                          <option value="percentage">%</option>
+                          <option value="fixed">EUR</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='vert_center'>
+                    <div> Opis </div>
+                    <textarea id="promocodeDescription">
+                    </textarea>
+                  </div>
+                  <div class='flex_center'>
+                    <button class='cancel_button' id='new_promocode_cancel'> PONIŠTI </button>
+                    <button class='confirm_button' id='new_promocode_confirm'> DODAJ </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="container1">
+            <button type="button" class="collapsible">Politike otkazivanja</button>
+            <div class='content'>
+              <section class='half' id='policies_section'>
+                <div id='policies_list'>
+                </div>
+                <div class="flex_center">
+                  <button class='add_button' id='new_policy'> + </button>
+                </div>
+                <div id='new_policy_container'>
+                  <div class='flex_between'>
+                    <div> Naziv </div>
+                    <input type="text" id="policyName">
+                  </div>
+                  <div class='flex_between'>
+                    <div> Tip </div>
+                    <select id="policyType" class='basic_select'>
+                      <option value="firstNight">First Night</option>
+                      <option value="amountPercentage">Amount Percentage</option>
+                      <option value="noPenalty">No Penalty</option>
+                      <option value="entireAmount">Entire Amount</option>
+                      <option value="notRefundable">Not Refundable</option>
+                      <option value="notRefImmediate">Not Ref, immediate chrage</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                  <div class='flex_between new_policy_percentage'>
+                    <div> Iznos naplate (%) </div>
+                    <input type="number" class='number_input' id="policyValue">
+                  </div>
+                  <div class='flex_between'>
+                    <div> Besplatno otkazivanje </div>
+                    <div class='custom_checkbox' id='policyFree' data-value=0> <img class='checkbox_value'> </div>
+                  </div>
+                  <div class='flex_between new_policy_free_days'>
+                    <div> Broj dana za besplatno otkazivanje </div>
+                    <input type="number" class='number_input' id="policyFreeDays">
+                  </div>
+                  <div class='vert_center'>
+                    <div> Opis </div>
+                    <textarea id="policyDescription">
+                    </textarea>
+                  </div>
+                  <div class='flex_center'>
+                    <button class='cancel_button' id='new_policy_cancel'> PONIŠTI </button>
+                    <button class='confirm_button' id='new_policy_confirm'> DODAJ </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="container1">
+            <button type="button" class="collapsible">Poruke</button>
+            <div class='content'>
+
+              <div style='width:100%'>
+                <div class='flex_around' style='align-items:flex-start'>
+                  <section class='half'>
+                    <div class='section_title'> Poruka dobrodošlice </div>
+                    <textarea id="welcome" rows="10" cols="50">
+                    </textarea>
+
+                    <div class='section_title'> Nema raspoloživih jedinica </div>
+                    <textarea id="noAvail" rows="10" cols="50">
+                    </textarea>
+                  </section>
+                  <section class='half'>
+                    <div class='section_title'> Vaučer </div>
+                    <textarea id="voucher" rows="10" cols="50">
+                    </textarea>
+
+                    <div class='section_title'> Pri rezervisanju </div>
+                    <textarea id="book" rows="10" cols="50">
+                    </textarea>
+                  </section>
+                </div>
+                <div class='flex_center'>
+                  <button onClick="updateMessages()" class='confirm_button'>SAČUVAJ</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='tab' id='tab_articles'>
+          <div class='list_settings'>
+            <div class='vert_center'>
+              <div> ID aplikacije </div>
+              <input type='text' class='text_input' id='settings_articles_id'>
+            </div>
+            <div class='vert_center'>
+              <div>&nbsp;</div>
+              <button class='confirm_button' id='settings_articles_send'> UNESI U KASU </button>
+            </div>
+            <div class='vert_center'>
+              <div>KURS ZA RSD</div>
+              <input class='number_input' type='number' id='settings_articles_course'>
+            </div>
+            <div class='vert_center'>
+              <div>&nbsp;</div>
+              <button class='cancel_button' id='settings_articles_restart'> RESETUJ KASU </button>
+            </div>
+          </div>
+          <div class='list_settings'>
+            <button class='confirm_button' id="add_article">Dodaj artikle</button>
+            <button class='confirm_button' id="settings_articles_add_rooms">Dodaj sve jedinice</button>
+            <div class='settings_break'>
+            </div>
+          </div>
+           <div id="categories">
+           </div>
+           <div id="articles">
+             <table id="articles_table">
+               <thead>
+                 <tr>
+                   <th>Porez</th>
+                   <th>Opis</th>
+                   <th>Cijena</th>
+                   <th>Akcije</th>
+                 </tr>
+             </thead>
+             <tbody>
+             </tbody>
+             </table>
+           </div>
+
+           <div id="add_article_form" class="article_form">
+
+             <!-- Modal content -->
+             <div class="article-content">
+               <form>
+                 <div class='vert_center'>
+                   <div>
+                     Barkod
+                   </div>
+                   <input id="add_article_barcode" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Kod
+                   </div>
+                   <input id="add_article_code" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Porez
+                   </div>
+                   <input id="add_article_tax_rate" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Opis
+                   </div>
+                   <input id="add_article_description" type="text" class='text_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Klasa
+                   </div>
+                   <input id="add_article_class" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Cijena
+                   </div>
+                   <input id="add_article_price" type="text" class='number_input'>
+                 </div>
+               </form>
+               <div class='article_buttons'>
+                 <button class='cancel_button' id='add_article_close'> PONIŠTI </button>
+                 <button class='confirm_button' id="submit_article" onclick="add_article()"> SAČUVAJ </button>
+               </div>
+             </div>
+           </div>
+
+           <div id="edit_article_form" class="article_form">
+             <div class="article-content">
+               <form>
+                 <input id="edit_article_id" type="hidden" placeholder="id" disabled>
+                 <div class='vert_center'>
+                   <div>
+                     Barkod
+                   </div>
+                   <input id="edit_article_barcode" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Kod
+                   </div>
+                   <input id="edit_article_code" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Porez
+                   </div>
+                   <input id="edit_article_tax_rate" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Opis
+                   </div>
+                   <input id="edit_article_description" type="text" class='text_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Klasa
+                   </div>
+                   <input id="edit_article_class" type="text" class='number_input'>
+                 </div>
+                 <div class='vert_center'>
+                   <div>
+                     Cijena
+                   </div>
+                   <input id="edit_article_price" type="text" class='number_input'>
+                 </div>
+               </form>
+               <div class='article_buttons'>
+                 <button class='cancel_button' id='edit_article_close'> PONIŠTI </button>
+                 <button class='confirm_button' id="change_article" onclick="edit_article()"> SAČUVAJ </button>
+               </div>
+             </div>
+           </div>
+        </div>
+        <div class='tab flex_tab' id='tab_general'>
+          <section class='half white'>
+            <div class="section_title">
+              Podešavanja objekta
+            </div>
+            <div class='flex_between'>
+              <div> Logo </div>
+              <div class='flex_center'>
+                <div class='image_input_container' id='property_logo_container'>
+                  <img class='image_input_image'>
+                  <div class='image_input_cancel'>Ukloni</div>
+                </div>
+                <input type='file' class='image_input_file' id='property_logo_file'>
+                <button class='add_button image_input' id='property_logo'> + </button>
+              </div>
+            </div>
+            <div class='flex_between'>
+              <div> Naziv objekta </div>
+              <input type='text' class='text_input' id='property_name'>
+            </div>
+            <div class='flex_between'>
+              <div class="floating-label">
+                <input placeholder="PIB" type="text" class='text_input' name="property_pib" id="property_pib" autocomplete="off">
+                <label for="property_pib">PIB</label>
+              </div>
+              <div class="floating-label">
+                <input placeholder="Matični broj" type="text" class='text_input' name="property_mb" id="property_mb" autocomplete="off">
+                <label for="property_mb">Matični broj</label>
+              </div>
+            </div>
+            <div class='flex_between'>
+              <div class="floating-label">
+                <input placeholder="Adresa" type="text" class='text_input' name="property_address" id="property_address" autocomplete="off">
+                <label for="property_address">Adresa</label>
+              </div>
+              <div class="floating-label">
+                <input placeholder="Tekući račun" type="text" class='text_input' name="property_bank_account" id="property_bank_account" autocomplete="off">
+                <label for="property_bank_account">Tekući račun</label>
+              </div>
+            </div>
+            <div class='flex_between'>
+              <div class="floating-label">
+                <input placeholder="IBAN" type="text" class='text_input' name="property_iban" id="property_iban" autocomplete="off">
+                <label for="property_iban">IBAN</label>
+              </div>
+              <div class="floating-label">
+                <input placeholder="SWIFT" type="text" class='text_input' name="property_swift" id="property_swift" autocomplete="off">
+                <label for="property_swift">SWIFT</label>
+              </div>
+            </div>
+            <div class='flex_between'>
+              <div> U sistemu PDV-a </div>
+              <div class='custom_checkbox' id='property_pdv_included' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+            <div class='flex_between'>
+              <div> Porez na jedinice </div>
+              <div class='custom_checkbox' id='property_rooms_tax_included' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+            <div class='flex_between' id='property_rooms_tax_containter'>
+              <div> Porez na jedinice (%) </div>
+              <input type='number' class='number_input' id='property_rooms_tax'>
+            </div>
+            <div class='flex_center'>
+              <button class='confirm_button' id='property_sync'> Sinhronizuj sa Wubook-om </button> <div id='wubook_ids'></div>
+            </div>
+          </section>
+          <section class='half white'>
+            <div class="section_title">
+              Podešavanja profila
+            </div>
+            <div class='flex_between'>
+              <div> Period za poništavanje izmjena </div>
+              <select class='basic_select' id='account_undo_timer'>
+                <option value='0'> Isključeno </option>
+                <option value='30'> 30 sekundi </option>
+                <option value='60'> 1 minut </option>
+                <option value='120'> 2 minuta </option>
+                <option value='300'> 5 minuta </option>
+              </select>
+            </div>
+            <div class='flex_between'>
+              <div> Email </div>
+              <input type='text' class='text_input' id='account_email'>
+            </div>
+            <div class='flex_between'>
+              <div> Pošalji email u slučaju overbooking-a </div>
+              <div class='custom_checkbox' id='account_notify_overbooking' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+            <div class='flex_between'>
+              <div> Pošalji potvrdu za pristigle rezervacije </div>
+              <div class='custom_checkbox' id='account_notify_reservations' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+            <div class='flex_between'>
+              <div> Pošalji potvrdu gostu </div>
+              <div class='custom_checkbox' id='property_notify_guests' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+            <div class='flex_between'>
+              <div> Tema </div>
+              <select class='basic_select' id='account_theme'>
+                <option value='light'> Svetla </option>
+                <option value='dark'> Tamna </option>
+              </select>
+            </div>
+            <div class='flex_between'>
+              <div> Podrazumevani datum isporuke </div>
+              <select class='basic_select' id='account_invoice_delivery'>
+                <option value='today'> Trenutni datum </option>
+                <option value='dfrom'> Check-in </option>
+              </select>
+            </div>
+            <div class='flex_between'>
+              <div> Podrazumevani datum dospeća </div>
+              <select class='basic_select' id='account_invoice_due'>
+                <option value='today'> Trenutni datum </option>
+                <option value='dto'> Check-out </option>
+              </select>
+            </div>
+            <div class='flex_between'>
+              <div> Gornja margina pri štampanju (% stranice) </div>
+              <input type='number' class='number_input' id='account_invoice_margin'>
+            </div>
+            <div class='flex_between'>
+              <div> Ukloni zaglavlje pri štampanju </div>
+              <div class='custom_checkbox' id='account_invoice_header' data-value=0> <img class='checkbox_value'> </div>
+            </div>
+          </section>
+        </div>
+        <div class='tab' id='tab_emails'>
+          <section id='guest_emails'>
+            <div class='flex_around'>
+              <div> Tip rezervacija </div>
+              <select class='basic_select' id='guest_emails_res_type'>
+                <option value=0> Sve </option>
+                <option value=1> Samo privatne rezervacije </option>
+                <option value=2> Samo rezervacije sa prodajnih kanala </option>
+              </select>
+            </div>
+            <div class='flex_between'>
+              <section id='guest_emails_received' class='white'>
+                <div class='section_title'>
+                  Pri rezervisanju
+                </div>
+                <select class='basic_select' id='guest_emails_received_active'>
+                  <option value=0>Isključeno</option>
+                  <option value=1>Uključeno</option>
+                </select>
+                <div class='vert_center'>
+                  <div> Naslov </div>
+                  <input type='text' class='text_input' id='guest_emails_received_subject'>
+                </div>
+                <div class="vert_center">
+                  <div> Tekst emaila
+                    <div class="form_user_info">
+                      <img src="img/info_b.png" style='margin-top:0px;'>
+                      <div class="tooltip" style='width:300px;margin-left:-150px'>U tekstu emaila možete koristiti sledeće ključne reči: <br>
+                        _NAME_  ime gosta <br>
+                        _SURNAME_  prezime gosta <br>
+                        _DFROM_  datum dolaska <br>
+                        _DTO_  datum odlaska <br>
+                        _AMOUNT_  iznos rezervacije
+                      </div>
+                    </div>
+                  </div>
+                  <div id="guest_emails_received_edit" class='editable_div' contenteditable="true">
+                  </div>
+                  <div class='actions'>
+                    <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italic"><i>I</i>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold"><b>B</b>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'underline',false,null);" title="Underline"><u>U</u>
+                    </button>
+                  </div>
+                </div>
+                <button class='confirm_button' id='guest_emails_received_save'>SAČUVAJ</button>
+              </section>
+              <section id='guest_emails_before' class='white'>
+                <div class='section_title'>
+                  Pre dolaska
+                </div>
+                <select class='basic_select' id='guest_emails_before_active'>
+                  <option value=0>Isključeno</option>
+                  <option value=1>1 dan pred dolazak</option>
+                  <option value=2>2 dana pred dolazak</option>
+                  <option value=7>7 dana pred dolazak</option>
+                </select>
+                <div class='vert_center'>
+                  <div> Naslov </div>
+                  <input type='text' class='text_input' id='guest_emails_before_subject'>
+                </div>
+                <div class="vert_center">
+                  <div> Tekst emaila
+                    <div class="form_user_info">
+                      <img src="img/info_b.png" style='margin-top:0px;'>
+                      <div class="tooltip" style='width:300px;margin-left:-150px'>U tekstu emaila možete koristiti sledeće ključne reči: <br>
+                        _NAME_  ime gosta <br>
+                        _SURNAME_  prezime gosta <br>
+                        _DFROM_  datum dolaska <br>
+                        _DTO_  datum odlaska <br>
+                        _AMOUNT_  iznos rezervacije
+                      </div>
+                    </div>
+                  </div>
+                  <div id="guest_emails_before_edit" class='editable_div' contenteditable="true">
+                  </div>
+                  <div class='actions'>
+                    <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italic"><i>I</i>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold"><b>B</b>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'underline',false,null);" title="Underline"><u>U</u>
+                    </button>
+                  </div>
+                </div>
+                <button class='confirm_button' id='guest_emails_before_save'>SAČUVAJ</button>
+              </section>
+              <section id='guest_emails_after' class='white'>
+                <div class='section_title'>
+                  Nakon odlaska
+                </div>
+                <select class='basic_select' id='guest_emails_after_active'>
+                  <option value=0>Isključeno</option>
+                  <option value=1>1 dan nakon odlaska</option>
+                  <option value=2>2 dana nakon odlaska</option>
+                </select>
+                <div class='vert_center'>
+                  <div> Naslov </div>
+                  <input type='text' class='text_input' id='guest_emails_after_subject'>
+                </div>
+                <div class="vert_center">
+                  <div> Tekst emaila
+                    <div class="form_user_info">
+                      <img src="img/info_b.png" style='margin-top:0px;'>
+                      <div class="tooltip" style='width:300px;margin-left:-150px'>U tekstu emaila možete koristiti sledeće ključne reči: <br>
+                        _NAME_  ime gosta <br>
+                        _SURNAME_  prezime gosta <br>
+                        _DFROM_  datum dolaska <br>
+                        _DTO_  datum odlaska <br>
+                        _AMOUNT_  iznos rezervacije
+                      </div>
+                    </div>
+                  </div>
+                  <div id="guest_emails_after_edit" class='editable_div' contenteditable="true">
+                  </div>
+                  <div class='actions'>
+                    <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italic"><i>I</i>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold"><b>B</b>
+                    </button>
+                    <button class="fontStyle" onclick="document.execCommand( 'underline',false,null);" title="Underline"><u>U</u>
+                    </button>
+                  </div>
+                </div>
+                <button class='confirm_button' id='guest_emails_after_save'>SAČUVAJ</button>
+              </section>
+            </div>
+          </section>
+          <section id='client_emails' class='white'>
+            <div class="section_title">
+              Emailovi za vlasnike
+            </div>
+            <div class='flex_around'>
+              <div class='flex_center'>
+                <div>Pošalji email sa dnevnim pregledom rezervacija</div>
+                <div class='custom_checkbox' id='client_emails_active' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class='flex_center'>
+                <div> Email </div>
+                <input type='text' class='text_input' id='client_emails_emails'>
+              </div>
+            </div>
+            <div class='flex_around'>
+              <div class='flex_center'>
+                <div> Dolasci </div>
+                <div class='custom_checkbox' id='client_emails_arrivals' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class='flex_center'>
+                <div> Odlasci </div>
+                <div class='custom_checkbox' id='client_emails_departures' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class='flex_center'>
+                <div> Boravak </div>
+                <div class='custom_checkbox' id='client_emails_stay' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class='flex_center'>
+                <div> Vreme slanja </div>
+                <select class='basic_select' id='client_emails_time'>
+                  <option value=0>00:00</option>
+                  <option value=1>01:00</option>
+                  <option value=2>02:00</option>
+                  <option value=3>03:00</option>
+                  <option value=4>04:00</option>
+                  <option value=5>05:00</option>
+                  <option value=6>06:00</option>
+                  <option value=7>07:00</option>
+                  <option value=8>08:00</option>
+                  <option value=9>09:00</option>
+                  <option value=10>10:00</option>
+                  <option value=11>11:00</option>
+                  <option value=12>12:00</option>
+                  <option value=13>13:00</option>
+                  <option value=14>14:00</option>
+                  <option value=15>15:00</option>
+                  <option value=16>16:00</option>
+                  <option value=17>17:00</option>
+                  <option value=18>18:00</option>
+                  <option value=19>19:00</option>
+                  <option value=20>20:00</option>
+                  <option value=21>21:00</option>
+                  <option value=22>22:00</option>
+                  <option value=23>23:00</option>
+                </select>
+              </div>
+              <div class='flex_center'>
+                <div> Pošalji i za naredni dan </div>
+                <div class='custom_checkbox' id='client_emails_tomorrow' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class='tab flex_tab' id='tab_plans'>
+          <section class='half'>
+            <div class="section_title">
+              Planovi cijena
+            </div>
+            <div class='flex_between'>
+              <div> Podrazumevani cijenovnik </div>
+              <select class='daily_price_select basic_select' id='default_price'>
+              </select>
+            </div>
+            <div id='pricing_plans_list'>
+            </div>
+            <div class="flex_center">
+              <button class='add_button' id='new_price'> + </button>
+            </div>
+            <div id='new_price_container'>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Naziv cijenovnika</div>
+                  <input type='text' class='text_input' id='new_price_name'>
+                </div>
+                <div class="vert_center">
+                  <div>Tip cijenovnika</div>
+                  <div class='flex_center'>
+                    <div class='switch_label'>Auto</div>
+                    <div class='switch_button' id='new_price_type' data-value=1><div class='switch_slider'></div></div>
+                    <div class='switch_label'>Manual</div>
+                  </div>
+                </div>
+              </div>
+              <div class='flex_center new_price_virtual'>
+                <div class="vert_center">
+                  <div>Osnovni cijenovnik</div>
+                  <select class='basic_select daily_price_select' id='new_price_master'>
+                  </select>
+                </div>
+              </div>
+              <div class='flex_between new_price_virtual'>
+                <div class="vert_center">
+                  <div>Tip varijacije</div>
+                  <select class='basic_select' id='new_price_variation_type'>
+                    <option value='-2'> - (EUR) </option>
+                    <option value='-1'> - (%) </option>
+                    <option value='1'> + (%) </option>
+                    <option value='2'> + (EUR) </option>
+                  </select>
+                </div>
+                <div class="vert_center">
+                  <div>Varijacija</div>
+                  <input type='number' class='number_input' id='new_price_variation' value=0>
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Politika otkazivanja</div>
+                  <select class='basic_select policy_select' id='new_price_policy'>
+                  </select>
+                </div>
+                <div class="flex_center">
+                  <div class="custom_checkbox" id="new_price_engine" data-value="0"> <img class="checkbox_value"> </div>
+                  Koristi za Booking Engine
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Plan restrikcija</div>
+                  <select class='basic_select restriction_select' id='new_price_restriction'>
+                    <option value='0'> Bez restrikcija </option>
+                  </select>
+                </div>
+                <div class="vert_center">
+                  <div>Obroci</div>
+                  <select class='basic_select' id='new_price_board'>
+                    <option value='nb'> Samo soba </option>
+                    <option value='bb'> Doručak </option>
+                    <option value='hb'> Polupansion </option>
+                    <option value='fb'> Pun pansion </option>
+                    <option value='ai'> All inclusive </option>
+                  </select>
+                </div>
+              </div>
+              <div class="vert_center">
+                <div>Opis</div>
+                <textarea class='textarea_input' id='new_price_description'></textarea>
+              </div>
+              <div class='flex_center'>
+                <button class='cancel_button' id='new_price_cancel'> PONIŠTI </button>
+                <button class='confirm_button' id='new_price_confirm'> DODAJ </button>
+              </div>
+            </div>
+          </section>
+          <section class='half'>
+            <div class="section_title">
+              Planovi restrikcija
+            </div>
+            <div id='restriction_plans_list'>
+            </div>
+            <div class="flex_center">
+              <button class='add_button' id='new_restriction'> + </button>
+            </div>
+            <div id='new_restriction_container'>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Naziv plana</div>
+                  <input type='text' class='text_input' id='new_restriction_name'>
+                </div>
+                <div class="vert_center">
+                  <div>Tip plana</div>
+                  <div class='flex_center'>
+                    <div class='switch_label'>Dnevni</div>
+                    <div class='switch_button' id='new_restriction_type' data-value=1><div class='switch_slider'></div></div>
+                    <div class='switch_label'>Kompaktan</div>
+                  </div>
+                </div>
+              </div>
+              <div class='flex_center'>
+                <button class='cancel_button' id='new_restriction_cancel'> PONIŠTI </button>
+                <button class='confirm_button' id='new_restriction_confirm'> DODAJ </button>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class='tab flex_tab' id='tab_rooms'>
+          <section class='half white'>
+            <div class="section_title">
+              Podešavanja jedinica
+            </div>
+            <div class='flex_between' id='room_settings_header'>
+              <select class='real_room_select basic_select' id='room_settings_active'>
+                <option value=-1> Izaberi jedinicu </option>
+              </select>
+              <button class='confirm_button' id='new_room'> Dodaj jedinicu </button>
+            </div>
+            <div id='room_settings_inputs'>
+              <div class="flex_between">
+                <div> Naziv </div>
+                <input type='text' class='text_input' id='room_settings_name'>
+              </div>
+              <div class="flex_between">
+                <div> Kratki naziv </div>
+                <input type='text' class='number_input' id='room_settings_shortname'>
+              </div>
+              <div class="flex_between">
+                <div> Tip </div>
+                <select class='basic_select' id='room_settings_type'>
+                  <option value='apartment'> Apartman </option>
+                  <option value='room'> Soba </option>
+                  <option value='villa'> Vila </option>
+                </select>
+              </div>
+              <div class="flex_between">
+                <div> Cijena </div>
+                <input type='number' class='number_input' id='room_settings_price'>
+              </div>
+              <div class="flex_between">
+                <div> Raspoloživost </div>
+                <input type='number' class='number_input' id='room_settings_availability'>
+              </div>
+              <div class="flex_between">
+                <div> Koristi za Booking Engine </div>
+                <div class='custom_checkbox' id='room_settings_engine' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class="flex_between">
+                <div> Broj osoba </div>
+                <input type='number' class='number_input' id='room_settings_occupancy'>
+              </div>
+              <div class="flex_between">
+                <div> Površina (m²) </div>
+                <input type='number' class='number_input' id='room_settings_area'>
+              </div>
+              <div class="flex_between">
+                <div> Broj kupatila </div>
+                <input type='number' class='number_input' id='room_settings_bathrooms'>
+              </div>
+              <div class="flex_between">
+                <div> Broj prostorija </div>
+                <input type='number' class='number_input' id='room_settings_houserooms'>
+              </div>
+              <div id='room_settings_houserooms_inputs'>
+              </div>
+              <div class="flex_between">
+                <div> Vezani kapaciteti </div>
+                <div class='custom_checkbox' id='room_settings_virtual' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div id='room_settings_virtual_inputs'>
+                <div class="flex_between">
+                  <div> Osnovna jedinica </div>
+                  <select class='basic_select real_room_select' id='room_settings_virtual_parent'>
+                  </select>
+                </div>
+                <div class="flex_between">
+                  <div> Raspoloživost </div>
+                  <div class="custom_checkbox" id="room_settings_virtual_avail" data-value="0"> <img class="checkbox_value"> </div>
+                </div>
+                <div class="flex_between">
+                  <div> Cijena </div>
+                  <div class="custom_checkbox" id="room_settings_virtual_price" data-value="0"> <img class="checkbox_value"> </div>
+                </div>
+                <div class="flex_between" id='room_settings_virtual_price_container'>
+                  <div> Iznos </div>
+                  <div class='flex_center'>
+                    <select class='basic_select' id='room_settings_virtual_sign'>
+                      <option value=1>+</option>
+                      <option value=-1>-</option>
+                    </select>
+                    <input type='number' class='number_input' id='room_settings_virtual_value'>
+                    <select class='basic_select' id='room_settings_virtual_variation'>
+                      <option value='percent'>%</option>
+                      <option value='fixed'>EUR</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="flex_between">
+                  <div> Restrikcije </div>
+                  <div class="custom_checkbox" id="room_settings_virtual_restrictions" data-value="0"> <img class="checkbox_value"> </div>
+                </div>
+              </div>
+              <div class="flex_between">
+                <div> Cijena po broju osoba </div>
+                <div class="custom_checkbox" id="room_settings_variations" data-value="0"> <img class="checkbox_value"> </div>
+              </div>
+              <div id='room_settings_variations_inputs'>
+                <div class="flex_between">
+                  <div> Osnovna cijena </div>
+                  <select class='basic_select' id='room_settings_variations_default'>
+                  </select>
+                </div>
+                <div class="flex_between">
+                  <div> Po osobi </div>
+                  <div class='flex_center'>
+                    <select class='basic_select' id='room_settings_variations_sign'>
+                      <option value=1>+</option>
+                      <option value=-1>-</option>
+                    </select>
+                    <input type='number' class='number_input' id='room_settings_variations_value'>
+                    <select class='basic_select' id='room_settings_variations_variation'>
+                      <option value='percent'>%</option>
+                      <option value='fixed'>EUR</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class='vert_center'>
+                <div> Brojevi soba </div>
+                <div id='room_settings_numbers' class='flex_center'>
+                </div>
+              </div>
+              <div class="flex_between">
+                <div>Opis</div>
+                <textarea class='textarea_input' id='room_settings_description'></textarea>
+              </div>
+              <div class="flex_between">
+                <div>Sadržaji</div>
+                <select id='room_settings_amenities' class='basic_select' multiple='multiple'>
+                  <option value='internet'> Internet </option>
+                  <option value='air-conditioning'> Klima </option>
+                  <option value='heading'> Grejanje </option>
+                  <option value='tv-cable'> TV (Kablovska) </option>
+                  <option value='tv-satellite'> TV (Satelit) </option>
+                  <option value='kitchen'> Kuhinja </option>
+                  <option value='hob'> Ploča za kuvanje </option>
+                  <option value='oven'> Rerna </option>
+                  <option value='microwave'> Mikrotalasna </option>
+                  <option value='laundry'> Mašina za ves </option>
+                  <option value='teapot'> Čajnik </option>
+                  <option value='minibar'> Minibar </option>
+                  <option value='fridge'> Frižider </option>
+                  <option value='cradle'> Krevetac za bebe </option>
+                  <option value='private-toilet'> Privatno kupatilo </option>
+                  <option value='hair-dryer'> Fen za kosu </option>
+                  <option value='shower'> Tuš kabina </option>
+                  <option value='tub'> Kada </option>
+                  <option value='jacuzzi'> Đakuzi </option>
+                  <option value='balcony'> Balkon </option>
+                  <option value='terrace'> Terasa </option>
+                  <option value='sea-view'> Pogled na more </option>
+                  <option value='city-view'> Pogled na grad </option>
+                  <option value='mountain-view'> Pogled na planinu </option>
+                  <option value='pool'> Bazen </option>
+                  <option value='sauna'> Sauna </option>
+                </select>
+              </div>
+              <div class='flex_between'>
+                <div>Slike</div>
+                <div id='room_settings_images'></div>
+              </div>
+              <div class='flex_center'>
+                <button class='cancel_button' id='room_settings_cancel'> PONIŠTI </button>
+                <button class='confirm_button' id='room_settings_confirm'> POTVRDI </button>
+              </div>
+            </div>
+            <div class="section_title">
+              Dodaj sadržaje za sve sobe
+            </div>
+            <div class="flex_between">
+              <div>Amenities</div>
+              <select id='all_rooms_amenities' class='basic_select' multiple='multiple'>
+                <option value='internet'> Internet </option>
+                <option value='air-conditioning'> Klima </option>
+                <option value='heading'> Grejanje </option>
+                <option value='tv-cable'> TV (Kablovska) </option>
+                <option value='tv-satellite'> TV (Satelit) </option>
+                <option value='kitchen'> Kuhinja </option>
+                <option value='hob'> Ploča za kuvanje </option>
+                <option value='oven'> Rerna </option>
+                <option value='microwave'> Mikrotalasna </option>
+                <option value='laundry'> Mašina za ves </option>
+                <option value='teapot'> Čajnik </option>
+                <option value='minibar'> Minibar </option>
+                <option value='fridge'> Frižider </option>
+                <option value='cradle'> Krevetac za bebe </option>
+                <option value='private-toilet'> Privatno kupatilo </option>
+                <option value='hair-dryer'> Fen za kosu </option>
+                <option value='shower'> Tuš kabina </option>
+                <option value='tub'> Kada </option>
+                <option value='jacuzzi'> Đakuzi </option>
+                <option value='balcony'> Balkon </option>
+                <option value='terrace'> Terasa </option>
+                <option value='sea-view'> Pogled na more </option>
+                <option value='city-view'> Pogled na grad </option>
+                <option value='mountain-view'> Pogled na planinu </option>
+                <option value='pool'> Bazen </option>
+                <option value='sauna'> Sauna </option>
+              </select>
+              <button class='confirm_button' id='all_rooms_amenities_confirm'> DODAJ </button>
+            </div>
+          </section>
+          <section class='half'>
+            <div class="section_title">
+              Dodaci
+            </div>
+            <div id='extras_list'>
+            </div>
+            <div class="flex_center">
+              <button class='add_button' id='new_extra'> + </button>
+            </div>
+            <div id='new_extra_container'>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Naziv</div>
+                  <input type='text' class='text_input' id='new_extra_name'>
+                </div>
+                <div class="vert_center">
+                  <div>Predefinisani dodaci</div>
+                  <select class='basic_select' id='new_extra_predefined'>
+                    <option value=-1>Izaberi dodatak</option>
+                    <option value=1>Doručak</option>
+                    <option value=2>Polupansion</option>
+                    <option value=3>Pun pansion</option>
+                    <option value=4>Parking</option>
+                    <option value=5>Spa centar</option>
+                    <option value=6>Sauna</option>
+                    <option value=7>Prevoz od aerodroma</option>
+                    <option value=8>Prevoz od aerodroma (povratni)</option>
+                    <option value=9>Prevoz brodom</option>
+                    <option value=10>Ulaznica u klub</option>
+                  </select>
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div class="vert_center">
+                  <div>Varijacija</div>
+                  <select class='basic_select' id='new_extra_variation'>
+                    <option value=-1> Smanjenje </option>
+                    <option value=1> Povećanje </option>
+                  </select>
+                </div>
+                <div class="vert_center">
+                  <div>Cijena</div>
+                  <input type='number' class='number_input' id='new_extra_price'>
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div>Porez (%)</div>
+                <input type='number' class='number_input' id='new_extra_tax'>
+              </div>
+              <div class="flex_between">
+                <div class="vert_center">
+                  <div> Tip </div>
+                  <select class='basic_select' id='new_extra_type'>
+                    <option value='room'> Po sobi </option>
+                    <option value='person'> Po osobi </option>
+                    <option value='one'> Jednokratno </option>
+                  </select>
+                </div>
+                <div class="flex_center" id='new_extra_daily_container'>
+                  <div class="custom_checkbox" id="new_extra_daily" data-value="0"> <img class="checkbox_value"> </div>
+                  Dnevno
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div>Uključeno u cijenu</div>
+                <select class='basic_select real_room_select' id='new_extra_rooms' multiple='multiple'>
+                </select>
+              </div>
+              <div class='flex_between'>
+                <div>Samo za određene jedinice</div>
+                <select class='basic_select real_room_select' id='new_extra_specific_rooms' multiple='multiple'>
+                </select>
+              </div>
+              <div class="flex_between">
+                <div> Period po planu restrikcija </div>
+                <div class='custom_checkbox' id='new_extra_period_type' data-value=0> <img class='checkbox_value'> </div>
+              </div>
+              <div class='flex_between' id='new_extra_dates'>
+                <div>Period</div>
+                <div class='flex_end'>
+                  <input type='text' class='calendar_input filter_dfrom_calendar' readonly id='new_extra_dfrom'>
+                  <input type='text' class='calendar_input filter_dto_calendar' readonly id='new_extra_dto'>
+                </div>
+              </div>
+              <div class='flex_between' id='new_extra_restrictions'>
+                <div>Plan restrikcija</div>
+                <select class='basic_select daily_restriction_select' id='new_extra_restriction'>
+                </select>
+              </div>
+              <div class='flex_between'>
+                <div>Slika</div>
+                <div class='flex_center'>
+                  <div class='image_input_container' id='new_extra_image_container'>
+                    <img class='image_input_image'>
+                    <div class='image_input_cancel'>Ukloni</div>
+                  </div>
+                  <input type='file' class='image_input_file' id='new_extra_image_file'>
+                  <button class='add_button image_input' id='new_extra_image'> + </button>
+                </div>
+              </div>
+              <div class='flex_between'>
+                <div>Opis</div>
+                <textarea class='textarea_input' id='new_extra_description'></textarea>
+              </div>
+              <div class='flex_center'>
+                <button class='cancel_button' id='new_extra_cancel'> PONIŠTI </button>
+                <button class='confirm_button' id='new_extra_confirm'> DODAJ </button>
+              </div>
+            </div>
+          </section>
+          <section class='half'>
+            <div class="section_title">
+              Podešavanja kanala
+            </div>
+            <div id='channels_list'>
+            </div>
+            <div class="flex_center">
+              <button class='add_button' id='new_channel'> + </button>
+            </div>
+            <div id='new_channel_container'>
+              <div class='flex_between'>
+                <div>Naziv</div>
+                <input type='text' class='text_input' id='new_channel_name'>
+              </div>
+              <div class='flex_between'>
+                <div>Provizija (%)</div>
+                <input type='number' class='number_input' id='new_channel_commission'>
+              </div>
+              <div class='flex_between'>
+                <div>Logo</div>
+                <button class='add_button' id='new_channel_logo'> + </button>
+              </div>
+              <div class='flex_center'>
+                <button class='cancel_button' id='new_channel_cancel'> PONIŠTI </button>
+                <button class='confirm_button' id='new_channel_confirm'> DODAJ </button>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class='tab' id='tab_users'>
+          <div class='list_settings'>
+            <button class='confirm_button' id='new_user'> Dodaj korisnika </button>
+          </div>
+          <div id='users_list'></div>
+        </div>
+      </main>
+      <main id='main_finances'>
+        <div class='tab' id='tab_finances'>
+        </div>
+      </main>
+      <main id='main_changelog'>
+        <div class='tab' id='tab_changelog'>
+          <div class='list_settings'>
+            <div class='settings_break'></div>
+            <input id="dfrom" name="dfrom" placeholder="Datum Od" type="text" class="calendar_input">
+            <input id="dto" name="dto" placeholder="Datum Do" type="text" class="calendar_input">
+            <div id='data_types_cont'>
+              <select class="basic_select" id="data_types" name="data_types"  multiple="multiple">
+                  <option value="reservation">Rezervacije</option>
+                  <option value="guest">Gosti</option>
+                  <option value="invoice">Računi</option>
+                  <option value="room">Jedinice</option>
+                  <option value="extra">Dodaci</option>
+                  <option value="channel">Kanali</option>
+                  <option value="price">Cijene</option>
+                  <option value="restriction">Restrikcije</option>
+                  <option value="avail">Raspoloživost</option>
+                  <option value="pricingPlan">Planovi cijena</option>
+                  <option value="restrictionPlan">Restrikcije</option>
+                  <option value="promocode">Promo kodovi</option>
+                  <option value="policy">Politike otkazivanja</option>
+                  <option value="user">Korisnici</option>
+              </select>
+            </div>
+            <div id='actions_cont'>
+              <select class="basic_select" id="actions" name="actions"  multiple="multiple">
+                <option value="edit">Izmjene</option>
+                <option value="insert">Unos</option>
+                <option value="delete">Brisanje</option>
+              </select>
+            </div>
+          </div>
+          <div id='markup'></div>
+      </main>
+    </div>
+
+    <div class='form_container' id='form_res'>
+      <div class='form'>
+        <input type='hidden' id='form_res_id'>
+        <input type='hidden' id='form_res_pid'>
+        <h1> Unos nove rezervacije </h1>
+        <h2> Detalji rezervacije </h2>
+        <div class='flex_between'>
+          <div class='vert_center'>
+            <div class='form_label'> OD/DO </div>
+            <div>
+              <input type='text' class='calendar_input nights_dfrom_calendar' readonly id='form_res_dfrom'>
+              <input type='text' class='calendar_input nights_dto_calendar' readonly id='form_res_dto'>
+            </div>
+          </div>
+          <div class="vert_center secondary">
+            <div class='form_label'>JEDINICA</div>
+            <select class='basic_select' id='form_res_room'>
+              <option value=-1>Izaberi jedinicu</option>
+            </select>
+          </div>
+          <div class="vert_center tertiary">
+            <div class='form_label'>BROJ SOBE</div>
+            <select class='basic_select short' id='form_res_room_number'>
+              <option value=x>Auto</option>
+            </select>
+          </div>
+          <div class='vert_center tertiary'>
+            <div class='form_label'>ODRASLI/DJECA</div>
+            <div>
+              <select class='basic_select short' id='form_res_adults'>
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+              <select class='basic_select short' id='form_res_children'>
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex_center tertiary">
+            <div class='vert_center vert_center_margin'>
+              <div class='form_label'>PRODAJNI KANAL</div>
+              <select class='basic_select channel_select'  id='form_res_channel'>
+              </select>
+            </div>
+            <div class='vert_center vert_center_margin'>
+              <div class='form_label commission_label'>PROVIZIJA (<span id='form_res_commission_text'></span>%)</div>
+              <input type='text' class='number_input form_readonly' readonly  id='form_res_commission_amount'></input>
+            </div>
+          </div>
+        </div>
+        <h2 class='tertiary'> Podaci o gostima </h2>
+        <div class="flex_center tertiary">
+          <div id='form_res_guests' class='form_list'>
+          </div>
+          <button class='add_button' id='form_res_new_guest'> + </button>
+        </div>
+        <h2 class='tertiary'> Smještaj i Usluge </h2>
+        <div class='flex_between spaced tertiary'>
+          <div class='flex_center'>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div class="form_text">Cijena noćenja</div>
+            </div>
+            <div class="vert_center">
+              <div class='form_label'></div>
+              <input class='number_input' type='number'  id='form_res_night_price'>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div class='form_text'>
+                x
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div class='form_label'></div>
+              <input class='number_input form_readonly' type='text' readonly  id='form_res_nights'>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div class='form_text'>
+                =
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <input class='number_input form_readonly' readonly type='number'  id='form_res_amount'>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div class='form_text'>
+                EUR
+              </div>
+            </div>
+          </div>
+          <div class="flex_between">
+            <div class="vert_center">
+              <div class="form_label">Popust</div>
+              <div>
+                <input class='number_input' type='number' id='form_res_discount_value'>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <select class='basic_select short' id='form_res_discount_type'>
+                  <option value='percent'> % </option>
+                  <option value='fixed'>EUR</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="flex_center">
+            <div class="vert_center">
+              <div class="form_label">Avans</div>
+              <div>
+                <input class='number_input' type='number' id='form_res_avans_value'>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <select class='basic_select short'  id='form_res_avans_type'>
+                  <option value='percent'> % </option>
+                  <option value='fixed'>EUR</option>
+                </select>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <div id='form_res_avans_text'></div>
+              </div>
+            </div>
+          </div>
+          <div class="vert_center">
+            <div class="form_label">Preostali iznos</div>
+            <div>
+              <input class='number_input form_readonly' type='number' readonly id='form_res_remaining_amount'>
+              <span> EUR </span>
+            </div>
+          </div>
+        </div>
+        <div id='form_res_services' class='form_list tertiary'>
+        </div>
+        <div class="flex_center tertiary">
+          <button class='add_button' id='form_res_new_service'> + </button>
+        </div>
+        <div class='flex_center'>
+          <div class="vert_center">
+            <div class="form_label">NAPOMENA</div>
+            <textarea class='textarea_input' id='form_res_note'></textarea>
+          </div>
+        </div>
+        <h2 style='background-color: white;'> </h2>
+        <div class="flex_around spaced tertiary">
+          <input class='number_input form_readonly' type='hidden' readonly id='form_res_discounted_price'>
+          <input class='number_input form_readonly' type='hidden' readonly id='form_res_services_price'>
+          <div class='flex_center'>
+            <div class='form_text fixed_label_right'> Ukupna cijena: </div>
+            <input class='number_input form_readonly' type='number' readonly id='form_res_total_price'>
+            <div class='currency'> EUR </div>
+          </div>
+          <div class='flex_center'>
+            <div class='form_text fixed_label_right'> Plaćeno: </div>
+            <input class='number_input form_readonly' type='number' readonly id='form_res_total_paid'>
+            <div class='currency'> EUR </div>
+          </div>
+          <div class='flex_center'>
+            <div class='form_text fixed_label_right'>Preostali iznos:</div>
+            <input class='number_input form_readonly' type='number' readonly id='form_res_total_remaining'>
+            <div class='currency'> EUR </div>
+          </div>
+        </div>
+        <h2 style='background-color: white;'> </h2>
+        <div class='form_error' id='form_res_error'></div>
+        <div class='flex_center'>
+          <button class='cancel_button form_cancel'>ODUSTANI</button>
+          <button class='confirm_button tertiary' id='form_res_confirm'>POTVRDI</button>
+        </div>
+      </div>
+    </div>
+    <div class='form_container' id='form_group'>
+      <div class='form'>
+        <input type='hidden' id='form_group_id'>
+        <input type='hidden' id='form_group_pid'>
+        <h1> Unos grupne rezervacije </h1>
+        <h2> Detalji rezervacije </h2>
+        <div class='flex_around spaced'>
+          <div class='vert_center'>
+            <div class='form_label'> OD/DO </div>
+            <div>
+              <input type='text' class='calendar_input nights_dfrom_calendar' readonly id='form_group_dfrom'>
+              <input type='text' class='calendar_input nights_dto_calendar' readonly id='form_group_dto'>
+            </div>
+          </div>
+          <div class='vert_center secondary'>
+            <div class='form_label'>ODRASLI/DJECA</div>
+            <div class='flex_center'>
+              <input type='number' min=0 class='number_input' id='form_group_adults'>
+              <input type='number' min=0 class='number_input' id='form_group_children'>
+            </div>
+          </div>
+          <div class="flex_center secondary">
+            <div class='vert_center'>
+              <div class='form_label'>PRODAJNI KANAL</div>
+              <select class='basic_select channel_select'  id='form_group_channel'>
+              </select>
+            </div>
+            <div class='vert_center'>
+              <div class='form_label commission_label'>PROVIZIJA (<span id='form_group_commission_text'></span>%)</div>
+              <input type='text' class='number_input form_readonly' readonly  id='form_group_commission_amount'></input>
+            </div>
+          </div>
+        </div>
+        <div id='form_group_rooms' class='form_list secondary'>
+        </div>
+        <h2 class='secondary'> Podaci o gostima </h2>
+        <div class="flex_center secondary">
+          <div id='form_group_guests' class='form_list'>
+          </div>
+          <button class='add_button' id='form_group_new_guest'> + </button>
+        </div>
+        <h2 class='secondary'> Smještaj i Usluge </h2>
+        <div class='flex_around spaced secondary'>
+          <div class='flex_center'>
+            <div class='vert_center'>
+              <div class='form_label'></div>
+              <input class='number_input form_readonly' type='text' readonly  id='form_group_nights'>
+            </div>
+          </div>
+          <div class="flex_center">
+            <div class="vert_center">
+              <div class="form_label">Popust</div>
+              <div>
+                <input class='number_input' type='number' id='form_group_discount_value'>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <select class='basic_select short' id='form_group_discount_type'>
+                  <option value='percent'> % </option>
+                  <option value='fixed' class='currency'>EUR</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="flex_center">
+            <div class="vert_center">
+              <div class="form_label">Avans</div>
+              <div>
+                <input class='number_input' type='number' id='form_group_avans_value'>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <select class='basic_select short'  id='form_group_avans_type'>
+                  <option value='percent'> % </option>
+                  <option value='fixed' class='currency'>EUR</option>
+                </select>
+              </div>
+            </div>
+            <div class="vert_center">
+              <div class="form_label"></div>
+              <div>
+                <div id='form_group_avans_text'></div>
+              </div>
+            </div>
+          </div>
+          <div class="vert_center">
+            <div class="form_label">Preostali iznos</div>
+            <div>
+              <input class='number_input form_readonly' type='number' readonly id='form_group_remaining_amount'>
+              <span class='currency'> EUR </span>
+            </div>
+          </div>
+        </div>
+        <div id='form_group_services' class='form_list secondary'>
+        </div>
+        <div class="flex_center secondary">
+          <button class='add_button' id='form_group_new_service'> + </button>
+        </div>
+        <div class='flex_center secondary'>
+          <div class="vert_center">
+            <div class="form_label">NAPOMENA</div>
+            <textarea class='textarea_input' id='form_group_note'></textarea>
+          </div>
+        </div>
+        <h2 style='background-color: white;'> </h2>
+        <div class="flex_around spaced secondary">
+          <input class='number_input form_readonly' type='hidden' readonly id='form_group_discounted_price'>
+          <input class='number_input form_readonly' type='hidden' readonly id='form_group_services_price'>
+          <div class='flex_center'>
+            <div class='form_text'> Ukupna cijena: </div>
+            <input class='number_input form_readonly' type='number' readonly id='form_group_total_price'>
+            <div class='currency'> EUR </div>
+          </div>
+          <div class='flex_center'>
+            <div class='form_text'> Plaćeno: </div>
+            <input class='number_input form_readonly' type='number' readonly id='form_group_total_paid'>
+            <div class='currency'> EUR </div>
+          </div>
+          <div class='flex_center'>
+            <div class='form_text'>Preostali iznos:</div>
+            <input class='number_input form_readonly' type='number' readonly id='form_group_total_remaining'>
+            <div class='currency'> EUR </div>
+          </div>
+        </div>
+        <h2 style='background-color: white;'> </h2>
+        <div class='form_error' id='form_group_error'></div>
+        <div class='flex_center'>
+          <button class='cancel_button form_cancel'>ODUSTANI</button>
+          <button class='confirm_button secondary' id='form_group_confirm'>POTVRDI</button>
+        </div>
+      </div>
+    </div>
+
+    <div class='form_container' id='form_guest'>
+      <div class='form'>
+        <input type='hidden' id='form_guest_id'>
+        <input type='hidden' id='form_guest_res_id'>
+        <h1> Ažuriranje gosta </h1>
+        <h2> Podaci o gostu </h2>
+        <div class='flex_between'>
+          <div class='vert_center'>
+            <div class='form_label'>IME</div>
+            <input class='text_input' type='text' id='form_guest_name'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>PREZIME</div>
+            <input class='text_input' type='text' id='form_guest_surname'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>EMAIL</div>
+            <input class='text_input' type='email' id='form_guest_email'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>TELEFON</div>
+            <input class='text_input' type='text' id='form_guest_phone'>
+          </div>
+        </div>
+        <div class='flex_between'>
+          <div class='vert_center'>
+            <div class='form_label'>ADRESA</div>
+            <input class='text_input' type='text' id='form_guest_address'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>GRAD</div>
+            <input class='text_input' type='text' id='form_guest_city'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>ZIP</div>
+            <input class='text_input' type='text' id='form_guest_zip'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>DRŽAVA</div>
+            <select class='basic_select country_select' id='form_guest_country'>
+              <option value='--'>Izaberi državu</option>
+            </select>
+          </div>
+        </div>
+        <div class='flex_between'>
+          <div class='vert_center'>
+            <div class='form_label'>TIP DOKUMENTA</div>
+            <select class='basic_select' id='form_guest_document_type'>
+              <option value=1>Lična karta</option>
+              <option value=2>Pasoš</option>
+            </select>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>BROJ DOKUMENTA</div>
+            <input type='text' class='text_input' id='form_guest_document_number'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>DATUM ROĐENJA</div>
+            <input type='text' class='calendar_input birth_calendar' readonly id='form_guest_date_of_birth'>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>POL</div>
+            <div class='flex_center'>
+              <div class='switch_label'><img src='img/male_logo_b.png'></div>
+              <div class='switch_button' id='form_guest_gender' data-value=1><div class='switch_slider'></div></div>
+              <div class='switch_label'><img src='img/female_logo_b.png'></div>
+            </div>
+          </div>
+          <div class='vert_center'>
+            <div class='form_label'>UGOSTI OPET?</div>
+            <div class='flex_center'>
+              <div class='yes_label'>DA</div>
+              <div class='switch_button switch_button_red' id='form_guest_host_again' data-value=1><div class='switch_slider'></div></div>
+              <div class='no_label'>NE</div>
+            </div>
+          </div>
+        </div>
+        <div class='flex_center'>
+          <div class="vert_center">
+            <div class="form_label">NAPOMENA</div>
+            <textarea class='textarea_input' id='form_guest_note'></textarea>
+          </div>
+        </div>
+        <h2> </h2>
+        <div class='form_error' id='form_guest_error'></div>
+        <div class='flex_center'>
+          <button class='cancel_button' id='form_guest_cancel'>ODUSTANI</button>
+          <button class='confirm_button' id='form_guest_confirm'>POTVRDI</button>
+        </div>
+      </div>
+    </div>
+
+    <div id='click_to_hide'> </div>
+
+    <div id='hide_modals'></div>
+    <div id='undo_list'></div>
+
+    <div class='form_container' id='form_user'>
+        <div class='form'>
+          <input type='hidden' id='form_user_id'>
+          <h1> Dodaj korisnika </h1>
+          <h2> Podaci o korisniku </h2>
+          <div class='flex_around'>
+            <div class='vert_center'>
+              <div>IME</div>
+              <input class='text_input' type='text' id='form_user_name'>
+            </div>
+            <div class='vert_center'>
+              <div>EMAIL</div>
+              <input class='text_input' type='email' id='form_user_email'>
+            </div>
+          </div>
+          <h2> Prava pristupa </h2>
+          <div class="flex_around">
+            <div class='vert_center'>
+              <div>Rezervacije</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_reservations'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_reservations_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Gosti</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_guests'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_guests_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Računi</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_invoices'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_invoices_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex_around">
+            <div class='vert_center'>
+              <div>Cijene</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_prices'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_prices_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Restrikcije</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_restrictions'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_restrictions_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Raspoloživost</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_avail'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_avail_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex_around">
+            <div class='vert_center'>
+              <div>Podešavanja jedinica</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_rooms'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_rooms_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Podešavanja kanala</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_channels'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                  <option value=2>Prikaz i dodavanje</option>
+                  <option value=3>Puna prava</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_channels_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='vert_center'>
+              <div>Statistika</div>
+              <div class="flex_center">
+                <select class='basic_select' id='form_user_statistics'>
+                  <option value=0>Sakriveno</option>
+                  <option value=1>Samo prikaz</option>
+                </select>
+                <div class='form_user_info'>
+                  <img src='img/info_b.png'>
+                  <div class='tooltip' id='form_user_statistics_tooltip'>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2> Objekti </h2>
+          <div id='form_user_properties'>
+          </div>
+          <div class='form_error' id='form_user_error'></div>
+          <div class='flex_center'>
+            <button class='cancel_button' id='form_user_cancel'>ODUSTANI</button>
+            <button class='confirm_button' id='form_user_confirm'>POTVRDI</button>
+          </div>
+        </div>
+      </div>
+
+  </body>
+</html>

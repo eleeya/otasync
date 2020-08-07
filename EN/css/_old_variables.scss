@@ -1,0 +1,55 @@
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flexBetween() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flexAround() {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@mixin flexStart() {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+@mixin flexEnd() {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@mixin appear($name, $duration) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+$headerHeight: 60px;
+$navWidth: 65px;
+$basicGray: #768799;
+$basicGrayHover: #5D6E80;
+$basicBlue: #385978;
+$basicDark: #1f2734;
+$mainColor: #306bad;
+$basicRed: #f0535a;
+$brightGreen: #09cb0a;
+$brightGreenHover: #009800;
+$brightOrange: #ffb400;
+$darkGray: #464646;
+$darkGreen: #007236;
+$darkGreenHover: #00591D;
+$potvrdjenaColor: #09cb0a;
+$izmenjenaColor: #c6a43d;
+$otkazanaColor: #f0535a;
+$potvrdiButton: #57a774;
+$potvrdiButtonHover: #3E8E5B;
+$pripremiButton: #c6a43d;
+$pripremiButtonHover: #AD8B24;
+$otkaziButton: #f1545b;
+$otkaziButtonHover: #D83B42;

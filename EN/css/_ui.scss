@@ -1,0 +1,451 @@
+
+// Variables
+$navWidth: 70px;
+
+
+
+// Document
+@font-face {
+  font-family: Poppins;
+  src: url(fonts/Poppins/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(fonts/Poppins/Poppins-SemiBold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(fonts/Roboto/Roboto-Medium.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(fonts/Roboto/Roboto-Bold.ttf);
+  font-weight: bold;
+}
+* {
+  font-family: 'Poppins';
+}
+html, body {
+  margin:0 0 0 0;
+  padding:0 0 0 0;
+  height: 100%;
+}
+body {
+  background-color: $backgroundColor;
+  padding-left: $navWidth;
+  min-height:100vh;
+  box-sizing: border-box;
+  color: white;
+  width:100vw;
+  overflow-x: hidden;
+}
+main, .tab {
+  display: none;
+}
+section {
+  border-radius: 3px;
+  border: $navColor;
+  box-shadow: 0px 0px 6px $shadowColor;
+  color: $lightGray;
+}
+.section_title {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: $darkBlue;
+}
+.flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flex_start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.flex_end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.flex_between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.flex_around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.vert_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.vert_start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+// Header
+header {
+  background-color: $backgroundColor;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+#tab_title {
+  margin-top: 10px;
+  font-family: 'Roboto';
+  font-size: 48px;
+  font-weight: bold;
+  color: $darkBlue;
+}
+#search {
+  margin-left: auto;
+  margin-right: 30px;
+  width: 300px !important;
+  flex-shrink: 0;
+  flex-grow: 0;
+  color: white;
+  background-color: $lightBlue;
+  border: none;
+  &::placeholder {
+    font-size: 14px;
+    color: white;
+  }
+  background-image: url("../img/search_white.svg");
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+}
+#property_select {
+  width: 200px;
+}
+#menu {
+  width: 40px;
+  height: auto;
+  margin-left: 30px;
+  cursor: pointer;
+  content: $nav_menu;
+  &:hover {
+    content: $nav_menu_hovered;
+  }
+}
+.menu_item {
+  width: 200px;
+  box-sizing: border-box;
+  padding-left: 20px;
+  height: 60px;
+  color: $darkBlue;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: $listHoverColor;
+  }
+  background-position: 20px 50%;
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  border-bottom: 1px solid $lightGray;
+}
+
+#menu_finances {
+  background-image: url("../img/finances.png");
+
+}
+#menu_changelog {
+  background-image: url("../img/changelog.png");
+}
+#menu_logout {
+  border-bottom: 0px;
+  background-image: url("../img/logout.png");
+}
+
+// Search
+
+#search_results, #form_search_results {
+  position: absolute;
+  background-color: $backgroundColor;
+  color: $darkBlue;
+  width: 600px;
+  z-index: 5;
+  box-shadow: 0px 0px 6px $shadowColor;
+  border-radius: 5px;
+  overflow: auto;
+  padding-bottom: 20px;
+}
+
+
+// Navigation
+#nav {
+  z-index: 4;
+  position: fixed;
+  width: $navWidth;
+  height:100vh;
+  top:0;
+  left:0;
+  background-color: $navColor;
+  box-shadow: 2px 0px 6px $shadowColor;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+#nav_logo {
+  width: 40px;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.nav_item {
+  height: 60px;
+  width: 100%;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  position: relative;
+}
+.nav_selected {
+  border-right: 2px solid $lightBlue;
+}
+#nav_home {
+  background-image: $nav_home;
+  &:hover, &.nav_selected {
+    background-image: $nav_home_hovered;
+  }
+}
+#nav_calendar {
+  background-image: $nav_calendar;
+  &:hover, &.nav_selected {
+    background-image: $nav_calendar_hovered;
+  }
+}
+#nav_reservations {
+  background-image: $nav_reservations;
+  &:hover, &.nav_selected {
+    background-image: $nav_reservations_hovered;
+  }
+}
+#nav_guests {
+  background-image: $nav_guests;
+  &:hover, &.nav_selected {
+    background-image: $nav_guests_hovered;
+  }
+}
+#nav_invoices {
+  background-image: $nav_invoices;
+  &:hover, &.nav_selected {
+    background-image: $nav_invoices_hovered;
+  }
+}
+#nav_statistics {
+  background-image: $nav_statistics;
+  &:hover, &.nav_selected {
+    background-image: $nav_statistics_hovered;
+  }
+}
+#nav_reports {
+  background-image: $nav_reports;
+  &:hover, &.nav_selected {
+    background-image: $nav_reports_hovered;
+  }
+}
+#nav_settings {
+  margin-top: auto;
+  margin-bottom: 30px;
+  background-image: $nav_settings;
+  &:hover, &.nav_selected {
+    background-image: $nav_settings_hovered;
+  }
+}
+
+.nav_item:hover .nav_tooltip {
+  display: flex;
+}
+.nav_tooltip {
+  z-index: 5;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  height: 32px;
+  font-size: 16px;
+  border-radius: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(0,0,0,0.95);
+  margin-top: -16px;
+  margin-left: 10px;
+}
+.nav_tooltip:after{
+  content: ' ';
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-right:5px solid rgba(0,0,0,0.95);
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -5px;
+}
+
+// Tab navigation
+.tab_nav {
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 30px;
+  box-sizing: border-box;
+}
+.tab_nav_button {
+  cursor: pointer;
+  text-align: center;
+  color: $lightGray;
+  font-size: 20px;
+  margin-right: 20px;
+  &.selected {
+    color: $darkBlue;
+    font-size: 26px;
+  }
+}
+
+// Settings navigation
+body.settings_active {
+  padding-left: $navWidth + 200px;
+}
+#settings_nav {
+  z-index: 3;
+  position: fixed;
+  left: $navWidth;
+  top:0;
+  height:100vh;
+  background-color: $lightBlue;
+  box-shadow: 2px 0px 6px $shadowColor;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 200px;
+  padding-top: 170px;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.settings_nav_button {
+  height: 50px;
+  cursor: pointer;
+  &.selected {
+    font-weight: bold;
+  }
+}
+
+// Changes
+
+
+#undo_list {
+  z-index: 4;
+  position: fixed;
+  left: 50%;
+  margin-left: -200px;
+  bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column-reverse;
+}
+.undo_item {
+  width:400px;
+  background-color: $confirmedColor;
+  color: white;
+  margin-top: 10px;
+  height:50px;
+  border-radius: 25px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  box-sizing: border-box;
+  padding: 0;
+}
+#undo_item_error {
+  background-color: $canceledColor;
+}
+.undo_cancel {
+  cursor: pointer;
+  flex-shrink: 0;
+  flex-grow: 0;
+  content: $cancelImage;
+  width:  30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.undo_countdown {
+  flex-shrink: 0;
+  flex-grow: 0;
+  font-size: 14px;
+  width: 30px;
+  text-align: center;
+  margin-right: 10px;
+}
+.undo_text {
+  font-size: 14px;
+  text-align: center;
+  flex-grow: 1;
+
+}
+.undo_undo {
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+// Containers
+
+#click_to_hide {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 4;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0);
+}

@@ -1,0 +1,132 @@
+#main_home, #main_calendar {
+
+  // General
+  background-color: #306bad;
+  color: white;
+  min-height: calc(100vh - 80px);
+
+  // Select2
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white;
+  }
+  .select2-container--default .select2-selection--single {
+    border-color: white;
+    border-radius: 0px;
+  }
+  .select2-dropdown {
+    box-shadow: none;
+  }
+  b {
+    border-top-color: white !important;
+    border-bottom-color: white !important;
+  }
+  section {
+    box-shadow: none;
+  }
+
+  //Inputs
+  .calendar_input, .text_input, .number_input {
+    color: white;
+    border-color: white;
+    box-shadow: none;
+    background-color: $lightBlue;
+  }
+  .number_input.rest_room_value {
+    color: $lightBlue;
+    background-color: white;
+  }
+  .calendar_input {
+    background-image: url("../img/calendar_w.svg");
+  }
+  .custom_checkbox {
+    box-shadow: none;
+  }
+
+  // Lists
+  .list_row {
+    box-shadow: 0px 0px 6px $darkBlue;
+  }
+  .empty {
+    color: white;
+  }
+  .empty_img {
+    content: url("../img/empty.png");;;
+    height: 64px;
+    width: 64px;
+  }
+  .filter_button {
+    content: url("../img/filter.png");;
+  }
+  .order.asc {
+    content: $order_asc;
+  }
+  .order.desc {
+    content: $order_desc;
+  }
+
+}
+
+
+#main_calendar .filter_modal {
+
+  // Select2
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white;
+  }
+  .select2-container--default .select2-selection--single {
+    border-color: $lightBlue;
+    border-radius: 18px;
+  }
+  .select2-dropdown {
+    box-shadow: 0px 0px 6px $shadowColor;
+  }
+  b {
+    border-top-color: white !important;
+    border-bottom-color: white !important;
+  }
+  //Inputs
+  .calendar_input, .text_input, .number_input {
+    color: $darkBlue;
+    border-color: $lightGray;
+  }
+  .custom_checkbox {
+    box-shadow: 0px 0px 2px 1px $checkboxShadowColor;
+  }
+
+}
+
+
+.create_button {
+  cursor: pointer;
+  color: #306bad;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 5px;
+  text-transform: uppercase;
+  padding-left: 35px;
+  padding-right: 10px;
+  font-weight: bold;
+  border: 0px;
+  background-image: url("../img/add_b.png");
+  background-position: 10px 50%;
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  width: 200px;
+  &:hover {
+    background-color: #eeeeee;
+  }
+  height: 36px;
+  border-radius: 18px;
+}
+
+#cal_new_reservation {
+  background-image: url("../img/person_blue.svg");
+}
+#cal_new_group_reservation {
+  background-image: url("../img/people_blue.svg");
+}
+
+#main_calendar {
+  padding-top: 20px;
+  box-sizing: border-box;
+}

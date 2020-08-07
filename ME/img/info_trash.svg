@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="11.5" height="16" viewBox="0 0 11.5 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a9abb8;
+      }
+    </style>
+  </defs>
+  <g id="Icon_ionic-ios-trash" data-name="Icon ionic-ios-trash" transform="translate(-5.531 -3)">
+    <path id="Path_1" data-name="Path 1" class="cls-1" d="M6.239,6l.983,12.113a1.22,1.22,0,0,0,1.221,1.221h5.875a1.22,1.22,0,0,0,1.221-1.221L16.51,6ZM8.806,17.042,8.527,7.333H9.3l.288,9.708Zm2.929,0h-.75V7.333h.75Zm2.179,0h-.775l.283-9.708h.771Z" transform="translate(-0.079 -0.333)"/>
+    <path id="Path_2" data-name="Path 2" class="cls-1" d="M15.781,4.167h-1.5l-1.1-.958A.845.845,0,0,0,12.635,3h-2.7a.858.858,0,0,0-.558.208l-1.1.958h-1.5c-.733,0-1.25.35-1.25,1.083h11.5C17.031,4.517,16.515,4.167,15.781,4.167Z"/>
+  </g>
+</svg>

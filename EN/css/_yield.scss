@@ -1,0 +1,164 @@
+#yield_container {
+  align-items: flex-start;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#yield_variations {
+  width: 280px;
+  padding-left: 10px;
+  padding-right: 10px;
+  .add_button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .empty_img {
+    content: $emptyImage !important;
+  }
+  .empty {
+    color: $darkBlue !important;
+  }
+
+}
+
+#new_variation_container {
+  display: none;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#main_calendar #yield_variations {
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white;
+  }
+  .select2-container--default .select2-selection--single {
+    border-color: $lightBlue;
+    border-radius: 18px;
+  }
+  .select2-dropdown {
+    box-shadow: 0px 0px 6px $shadowColor;
+  }
+  b {
+    border-top-color: white !important;
+    border-bottom-color: white !important;
+  }
+}
+
+
+#variations_list {
+  width: 100%;
+  .list_row {
+    height:40px;
+  }
+  .list_row.selected {
+    border: 2px solid $lightBlue;
+  }
+}
+
+.variation_amount {
+  width: 70%;
+}
+.variation_actions {
+  width: 30%;
+}
+
+
+
+
+#yield_calendar_container {
+  flex-grow: 1;
+}
+
+#yield {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yield_calendar {
+  width:770px;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-radius: 20px 20px 0px 0px;
+}
+.yield_header {
+  font-weight: bold;
+  border-right: 1px solid $mainColor;
+  border-radius: 20px 20px 0px 0px;
+  height: 60px;
+  width:770px;
+  @include flexCenter();
+  color: $mainColor;
+  border-bottom: 1px solid $mainColor;
+}
+.yield_date {
+  height:80px;
+  width:110px;
+  border-right: 1px solid $mainColor;
+  border-bottom: 1px solid $mainColor;
+  box-sizing: border-box;
+  @include flexBetween();
+  flex-direction: column;
+}
+
+
+.yield_day {
+
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  height:18px;
+  > div {
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+  }
+}
+
+.yield_price {
+  font-size: 14px;
+  font-weight: bold;
+  color: $mainColor;
+}
+.yield_delta.increase {
+  background-color: #ffa3a3;
+}
+.yield_delta.decrease {
+  background-color: #a3ffa3;
+}
+.yield_footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+}
+.yield_avail {
+  width: 30px;
+  height: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: bold;
+  @include flexCenter();
+}
+.yield_delta {
+  padding-right: 2px;
+  height: 32px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  @include flexCenter();
+  flex-direction: column;
+  > div {
+    font-size: 12px;
+    color: black;
+  }
+
+}

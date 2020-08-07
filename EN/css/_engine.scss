@@ -1,0 +1,156 @@
+#engine_link {
+    margin: 10px 0px 10px 20px;
+    color: $lightBlue;
+    display: block;
+    font-size: 20px;
+  &:visited {
+    color: $lightBlue;
+  }
+}
+
+#tab_engine {
+  color: $darkBlue;
+}
+
+table{
+      width: 70%;
+      margin: 20px 0;
+      border-collapse: collapse;
+}
+th, td{
+    border: 1px solid #cdcdcd;
+}
+table th, table td{
+    padding: 5px;
+    text-align: left;
+}
+thead th, table {
+  border: 0px;
+  font-weight: normal;
+}
+
+#tab_engine section {
+  box-shadow: none;
+  min-height: 0px;
+}
+
+#tab_engine select {
+  width: 85px;
+}
+#tab_engine .basic_select {
+  width: 200px;
+}
+#tab_engine .basic_select.short {
+  width: 100px;
+}
+#tab_engine input[type='text'] {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid $lightGray;
+  border-radius: 20px;
+  height: 40px;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 200px;
+  padding-left: 10px;
+  font-size: 16px;
+  &::placeholder {
+    font-size: 14px;
+    color: $lightGray;
+  }
+}
+#tab_engine input[type='file'] {
+  display: none;
+}
+#tab_engine textarea{
+  width: 70%;
+  min-width: 200px;
+  min-height: 100px;
+  border: 1px solid $lightGray;
+  border-radius: 5px;
+  padding: 5px;
+  color: $darkBlue;
+  background-color: rgba(0,0,0,0);
+}
+
+#promocodes_table  input {
+  width: 65px;
+}
+#promocodes_table  i {
+  padding-left: 10px;
+}
+#policy_table  input {
+  width: 65px;
+}
+#policy_table  i {
+  padding-left: 10px;
+}
+
+
+
+.labels{
+ float: left;
+
+}
+.inputs{
+ float: right;
+}
+label{
+  margin: 15px;
+}
+.container{
+  margin-left: 330px;
+  margin-right:330px;
+
+  border: 1px solid black;
+  width: 400px;
+  height: 500px;
+}
+.appearance{
+  border: 1px solid black;
+  float: right;
+  width: 400px;
+  height: 500px;
+}
+.flex-grid{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  width: 100%
+}
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+background-color: $navColor;
+color: $darkBlue;
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
+border-bottom: 2px solid rgba(0,0,0,0);
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+#tab_engine .active, .collapsible:hover {
+border-bottom: 2px solid $lightBlue;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+padding: 0 18px;
+display: none;
+align-items: flex-start;
+justify-content: space-around;
+overflow: hidden;
+}
+.container1{
+  margin: 50;
+}
+
+#policies_section {
+  width: 70%;
+}

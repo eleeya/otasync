@@ -1,0 +1,57 @@
+#tab_articles {
+  color: $darkBlue;
+  .confirm_button, .cancel_button {
+    width: 150px;
+  }
+  #categories {
+    margin-top: 30px;
+    float: left;
+  }
+  #articles {
+    margin-left: 500px;
+  }
+  padding-left: 20px;
+  .jstree-search {
+    color: black !important;
+  }
+
+  .article_form {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  /* Modal Content/Box */
+  .article-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 700px;
+    border-radius: 20px;
+  }
+}
+
+.article_buttons {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

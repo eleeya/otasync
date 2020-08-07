@@ -1,0 +1,610 @@
+.settings_break {
+  margin-right: auto;
+}
+#calendar_prev {
+  content: $calendar_prev;
+  margin-right: -10px;
+}
+#calendar_next {
+  margin-left: 5px;
+  content: $calendar_next;
+}
+#calendar_prev, #calendar_next {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+#cal_filter_type {
+  margin-bottom: 20px;
+}
+
+#cal_filter_rooms_types_list, #cal_filter_rooms_single_list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.cal_filter_room {
+  width: 30%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  margin-top: 10px;
+  margin-right: 10px;
+  border: 1px solid $lightBlue;
+  border-radius: 5px;
+}
+
+
+// Calendar Global
+$kalendarDani: #d6d6d6;
+$kalendarDanas: #b0b0b0;
+$kalendarDetalji: #dfdfdf;
+$kalendarHover: #d8d8d8;
+$kalendarSelect: #b5b5b5;
+$scrollTransDuration: 0.2s;
+
+
+#calendar {
+  user-select: none;
+  border-radius: 20px;
+  background-color: $navColor;
+  color: $lightBlue;
+  font-weight: bold;
+  width: 90vw;
+  max-height: 90vh;
+  margin: auto;
+  overflow: hidden;
+}
+#calendar div {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.cal_scroll {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  transition: margin-left 0s;
+}
+.cal_month_name, .date_field, .price_field, .min_field, .avail_field, .room_field, .cal_label, .google_field {
+  border-bottom: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  height: 100%;
+  box-sizing: border-box;
+}
+.cal_month_name {
+  transition: padding 0s;
+}
+
+// Calendar Header
+#cal_header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height:80px;
+  user-select: none;
+}
+#cal_drag_to_scroll {
+  cursor: all-scroll;
+}
+#cal_property {
+  text-align: center;
+}
+#cal_month_names {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+}
+.cal_month_name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#cal_month_dates {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+}
+#cal_month_dates > .date_field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40px;
+  background-color: $kalendarDani;
+}
+.date_field_date {
+  font-size: 14px;
+}
+.date_field_day {
+  font-size: 12px;
+}
+
+// Calendar Body
+#cal_body {
+  max-height: calc(90vh - 80px);
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.cal_label {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: white;
+  position: relative;
+  font-weight: normal;
+}
+
+.cal_label.room_status {
+  justify-content: flex-end;
+  > .cal_label_half, > .cal_label_half2 {
+    width: 40%;
+  }
+  > .cal_label_full {
+    width: 80%;
+  }
+}
+
+.room_status_input {
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../img/cleaning_white.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 16px auto;
+
+  .room_status_clean, .room_status_dirty, .room_status_inspected {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100px;
+    color: white;
+  }
+  .room_status_clean {
+    background-color: $confirmedColor;
+  }
+  .room_status_inspected {
+    background-color: $modifiedColor;
+  }
+  .room_status_dirty {
+    background-color: $canceledColor;
+    border-radius: 0px 5px 5px 0px;
+  }
+
+  &.active {
+    box-shadow: 0px 0px 6px $shadowColor;
+    border-radius: 0px 5px 5px 0px;
+    z-index: 5;
+    .room_status_clean, .room_status_dirty, .room_status_inspected {
+      display: flex;
+    }
+  }
+}
+.room_status_input[data-value='clean']{
+  background-color: $confirmedColor;
+}
+.room_status_input[data-value='inspected']{
+  background-color: $modifiedColor;
+}
+.room_status_input[data-value='dirty']{
+  background-color: $canceledColor;
+}
+
+.cal_label_half {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid $backgroundColor;
+  height: 90%;
+}
+.cal_label_half2 {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+.cal_label_full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+}
+.cal_row_avail, .cal_row_min, .cal_row_price, .cal_row_room, .cal_row_google { // All rows
+  width: 100%;
+  overflow: hidden;
+}
+.cal_row_avail, .cal_row_min, .cal_row_price { // Detail rows
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 35px;
+  font-size: 16px;
+  background-color: $kalendarDetalji;
+  .cal_label {
+    background-color: $kalendarDetalji;
+  }
+}
+.cal_row_room, .cal_row_google { // Room rows
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 60px;
+  border-color: #bbb;
+}
+.avail_field, .min_field, .price_field, .room_field { // All fields
+  width: 40px;
+  cursor: pointer;
+}
+.avail_field, .min_field, .price_field { // Detail fields
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.room_field, .google_field { // Room fields
+  overflow: visible;
+}
+.cal_hovered {
+  background-color: $kalendarHover;
+}
+.cal_main_hovered {
+  background-color: $kalendarSelect;
+}
+.selected_field {
+  position: relative;
+}
+#cal_selected_period {
+  color: white !important;
+  background-color: $lightBlue;
+  z-index: 6;
+  font-size: 12px;
+  font-weight: bold;
+  width:80px;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+  pointer-events: none;
+}
+.row_warning {
+  margin-left: 5px;
+  position: relative;
+  width:24px;
+  height:24px;
+  img {
+    width:24px;
+    height:24px;
+  }
+}
+.row_warning:hover .row_warning_tooltip {
+  display: flex;
+}
+.row_warning_tooltip {
+  font-weight: normal;
+  color: white;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  height: 50px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(0,0,0,0.95);
+  margin-top: -25px;
+  margin-left: 10px;
+}
+.row_warning_tooltip:after{
+  content: ' ';
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-right:5px solid rgba(0,0,0,0.95);
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -5px;
+}
+
+#calendar .avail_field.empty_field {
+  color: $canceledColor !important;
+  background-color: rgb(255, 233, 233) !important;
+}
+
+// Tetris
+.tetris_left {
+  position: absolute;
+  top:0px;
+  left:0px;
+  width:10px;
+  height:100%;
+  cursor:w-resize;
+}
+.tetris_right {
+  position: absolute;
+  top:0px;
+  right:0px;
+  width:10px;
+  height:100%;
+  cursor: e-resize;
+}
+.tetris_center {
+  position: absolute;
+  top:0px;
+  left:10px;
+  width:calc(100% - 20px);
+  height:100%;
+  cursor: move;
+}
+#tetris_ghost_res {
+  background-color: #13b536;
+  color:white;
+  height:40px;
+  margin-left:25px;
+  margin-top:10px;
+  z-index: 2;
+  padding-left:5px;
+  padding-top:9px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 14px;
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  background-color: #969494 !important;
+}
+
+// Reservations
+.rezervacija_u_kalendaru {
+  background-color: #13b536;
+  color:white;
+  height:40px;
+  margin-left:25px;
+  margin-top:10px;
+  z-index: 2;
+  padding-left:5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 14px;
+  display: block;
+  position: relative;
+  img {
+    margin-right: 3px;
+    height: 16px;
+    width: 16px;
+  }
+  .ruk_info {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .ruk_text {
+    width: calc(100% - 24px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+// Errors
+.cal_error {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-image: url('../img/warning.png');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 20px 20px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  &:hover {
+    .cal_error_tooltip {
+      display: flex;
+    }
+  }
+}
+.cal_error_tooltip {
+  z-index: 5;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 2px;
+  height: 54px;
+  font-size: 12px;
+  color: white;
+  width: 300px;
+  text-align: center;
+  border-radius: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(0,0,0,0.95);
+  margin-left: 10px;
+}
+.cal_error_tooltip:after{
+  content: ' ';
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-right:5px solid rgba(0,0,0,0.95);
+  position: absolute;
+  right: 100%;
+  top: 5px;
+}
+.cal_row_room_error {
+  display: none;
+}
+
+// Modal
+
+@mixin appear($name, $duration) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+#cal_modal {
+  display: none;
+  background-color: white;
+  color: $darkBlue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px $shadowColor;
+  position: absolute;
+  z-index: 5;
+  max-width: 80vw;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  top: 30%;
+  padding: 10px;
+  .flex_between {
+    margin-bottom: 20px;
+  }
+  @include appear(cal_modal_appear, 0.2s);
+}
+@keyframes cal_modal_appear {
+  from {opacity: 0; margin-top:-150px;}
+  to {opacity: 1; margin-top: 0px;}
+}
+
+#cal_modal_compact_note {
+  text-align: center;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 10px;
+}
+
+// Tetris dialog
+
+#cal_dialog_container {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 4;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.3);
+}
+#cal_dialog {
+  background-color: white;
+  color: $darkBlue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px $shadowColor;
+  padding: 20px;
+  z-index: 5;
+  width: 400px;
+  font-weight: bold;
+  margin: auto;
+  @include appear(cal_dialog_appear, 0.2s);
+}
+@keyframes cal_dialog_appear {
+  from {opacity: 0; margin-top:0px;}
+  to {opacity: 1; margin-top: 150px;}
+}
+#cal_dialog_changes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.cal_dialog_change {
+  margin-bottom: 10px;
+  color: black;
+  > span {
+    color: $confirmedColor;
+  }
+}
+
+// Fullscreen
+
+#calendar {
+  position: relative;
+}
+
+.calendar_fullscreen_button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+}
+#calendar_enter_fullscreen {
+  display: block;
+}
+#calendar_exit_fullscreen {
+  display: none;
+}
+
+#calendar.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  border-radius: 0px;
+  z-index: 4;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  #calendar_enter_fullscreen {
+    display: none;
+  }
+  #calendar_exit_fullscreen {
+    display: block;
+  }
+  #cal_body {
+    max-height: calc(100vh - 80px);
+  }
+}

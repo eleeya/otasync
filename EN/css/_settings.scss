@@ -1,0 +1,245 @@
+
+// General
+
+.flex_tab {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.flex_center {
+  .confirm_button, .cancel_button {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+section.half {
+  margin-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: calc(95vh - 150px);
+  width: 45%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  .flex_between {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .textarea_input {
+    width: 350px;
+    min-height: 120px;
+  }
+}
+section.white {
+  background-color: $navColor;
+}
+
+#property_sync {
+  width: 220px;
+}
+#wubook_ids {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  color: $darkBlue;
+}
+
+// Rooms and Channels
+
+#tab_rooms {
+  section.half {
+    width: 32%;
+    min-width: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+#new_room {
+  width: 140px;
+}
+#room_settings_inputs {
+  display: none;
+  width: 100%;
+}
+
+#room_settings_virtual_sign, #room_settings_virtual_variation, #room_settings_variations_sign, #room_settings_variations_variation {
+  width: 60px;
+}
+.houseroom {
+  margin-top: 15px;
+  margin-bottom: 0px !important;
+}
+#room_settings_houserooms_inputs, #room_settings_variations_inputs, #room_settings_virtual_inputs {
+  margin: auto;
+  margin-bottom: 15px;
+  width: 90%;
+  max-width: 450px;
+  padding-bottom: 40px;
+}
+#room_settings_amenities {
+  width: 350px;
+}
+
+#room_settings_images {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.room_image {
+  margin-bottom: 10px;
+}
+
+.room_image_cancel {
+  cursor: pointer;
+}
+.room_image_image {
+  max-height: 150px;
+  max-width: 300px;
+  margin: 5px;
+
+}
+.room_image_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+
+
+
+// Prices and Restrictions
+
+#new_price_container, #new_restriction_container, #new_extra_container, #new_channel_container, #new_promocode_container, #new_policy_container {
+  width:100%;
+  display: none;
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#edit_price_container, #edit_restriction_container, #edit_extra_container, #edit_channel_container, #edit_promocode_container, #edit_policy_container {
+  width:100%;
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  margin-bottom: 30px;
+}
+
+#new_price, #new_restriction, #new_extra, #new_channel, #new_promocode, #new_policy {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.new_price_virtual {
+  animation-name: appear;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+#new_price_container, #new_restriction_container, #edit_price_container, #edit_restriction_container, #new_extra_container, #edit_extra_container, #new_channel_container, #edit_channel_container, #new_promocode_container, #edit_promocode_container, #new_policy_container, #edit_policy_container {
+  > .flex_between, > .vert_center, > .flex_center, > .flex_around {
+    margin: auto;
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+// Emails
+
+#guest_emails {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  padding: 30px;
+  box-sizing: border-box;
+  > .flex_around {
+    width: 50%;
+  }
+  > .flex_between {
+    width: 100%;
+    margin-top: 20px;
+    align-items: stretch;
+  }
+}
+#guest_emails_received, #guest_emails_before, #guest_emails_after {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  > * {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .vert_center {
+    width: 100%;
+  }
+}
+
+.editable_div {
+  width: 90%;
+  min-height: 100px;
+  border: 1px solid $lightGray;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: $darkBlue;
+}
+
+#client_emails {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  margin: auto;
+  margin-top: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 95%;
+  .flex_around {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .flex_center > * {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+// Rooms
+
+#room_settings_numbers input {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#new_extra_dto, #edit_extra_dto {
+  margin-left: 5px;
+}

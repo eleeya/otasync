@@ -1,0 +1,272 @@
+@mixin appear($name, $duration) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+// Containers
+
+
+#form_invoice_export_form {
+  display: none;
+}
+
+#form_invoice_article_select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+#form_guest {
+  .form {
+    max-width: 1200px;
+  }
+  .flex_between {
+    max-width: 1100px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+}
+
+.form .textarea_input {
+  min-width: 400px;
+  min-height: 80px;
+}
+
+
+.form_container {
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.4);
+  width:100vw;
+  height:100vh;
+  z-index: 4;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.form {
+  position: relative;
+  background-color: $navColor;
+  width:90vw;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  z-index: 5;
+  border-radius: 5px;
+  border: $navColor;
+  box-shadow: 0px 0px 6px $shadowColor;
+  color: $darkBlue;
+  padding: 20px;
+  @include appear(form_appear, 0.2s);
+}
+@keyframes form_appear {
+  from {opacity: 0; margin-top:-100px;}
+  to {opacity: 1; margin-top: 20px;}
+}
+
+.form_list {
+  width: 100%;
+  margin-top: 20px;
+  > div {
+    margin-bottom: 10px;
+  }
+}
+
+#form_group .form {
+  max-width: 1200px;
+}
+
+// Titles
+
+h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin: 0px 0px 20px 0px;
+  color: $darkBlue;
+}
+h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: $darkBlue;
+  margin: 30px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+#form_res, #form_group {
+  .form {
+    padding: 0px;
+  }
+  .form > .flex_between {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  h1 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+  }
+  h2 {
+    background-color: $lightBlue;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .form_list {
+    margin: 0px;
+  }
+  .form_list > div {
+    margin-bottom: 0px;
+  }
+  .add_button {
+    margin-top: 10px;
+  }
+}
+
+.form_error {
+  width:100%;
+  color: red;
+  line-height: 2;
+  text-align: center;
+}
+
+// Input
+
+.form .form_readonly {
+  background-color: $backgroundColor;
+  border-color: $backgroundColor;
+  color: $darkBlue;
+}
+
+.form .flex_center {
+  .confirm_button, .cancel_button {
+    height: 50px;
+    width: 150px;
+    border-radius: 25px;
+    font-size: 17px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+  }
+}
+
+.spaced input {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.form_label {
+  height: 22px;
+}
+.form .add_button {
+  margin-top: 20px;
+}
+
+// Group
+
+#form_group_rooms .room {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px $shadowColor;
+  margin-top: 20px;
+  height: 90px;
+}
+
+.form_group_room_room {
+  padding-left: 15px;
+  height:100%;
+  width:40%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form_group_room_number {
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form_group_room_price {
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form_group_room_total {
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Korisnik
+
+.form_user_info {
+  position: relative;
+  width:16px;
+  height:16px;
+  img {
+    margin-top: 5px;
+    width:16px;
+    height:16px;
+  }
+  display: inline-block;
+}
+.form_user_info:hover .tooltip {
+  display: block;
+}
+.form_user_info .tooltip {
+  display: none;
+  box-sizing: border-box;
+  color: white;
+  z-index: 5;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width:160px;
+  font-size: 16px;
+  font-weight: normal;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.95);
+  margin-top: 12px;
+  margin-left: -80px;
+  text-align: center;
+}
+.form_user_info .tooltip:after{
+  content: ' ';
+  width: 0px;
+  height: 0px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom:5px solid rgba(0,0,0,0.95);
+  border-right:5px solid transparent;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  margin-left: -5px;
+}
+#form_user_properties {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
