@@ -9,16 +9,16 @@ require 'fixes.php';
 
 function connectToDB()
 {
-  /*
   $server = "localhost";
   $serverUser = "cuwpvuip_korisnik";
   $serverPassword = "davincijevkod966";
   $database = "cuwpvuip_aplikacija";
-  */
+  /*
   $server = "localhost";
   $serverUser = "otasyncm_korisnikU";
   $serverPassword = "CT*$,ULOqgb=";
   $database = "aplikacijaBeta";
+  */
 
   $konekcija = new mysqli($server, $serverUser, $serverPassword, $database);
   if ($konekcija->connect_error) {
@@ -739,6 +739,9 @@ function sendReservationConfirmation($reservation_id, $lcode, $account, $konekci
   $red = mysqli_fetch_assoc($rezultat);
   if($red["notify_new_reservations"] != "1")
     return;
+  $sql = "SELECT email FROM all_properties WHERE lcode = '$lcode'";
+  $rezultat = mysqli_query($konekcija, $sql);
+  $red = mysqli_fetch_assoc($rezultat);
   $to_email = $red["email"];
 
 
@@ -831,10 +834,13 @@ function sendReservationConfirmation($reservation_id, $lcode, $account, $konekci
     $status_text = "<div class='value value2 modified'> Izmenjena </div>";
     $subject = "Izmjenjena rezervacija $property_name ($date_arrival, $res_id, $guest";
   }
-  else {
+  else if($status == 5) {
     $status_title = "<div class='title canceled'> OTKAZANA REZERVACIJA </div>";
     $status_text = "<div class='value value2 canceled'> Otkazana </div>";
     $subject = "Otkazana rezervacija $property_name ($date_arrival, $res_id, $guest)";
+  }
+  else {
+    return; // No status means reservation isn't fetched at all
   }
   $ancillary = $reservation["additional_data"];
   if($reservation["additional_data"] != "{}" && $reservation["additional_data"] != "[]"){

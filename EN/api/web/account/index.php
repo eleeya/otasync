@@ -23,7 +23,7 @@ if($action == "loginSession")
 
   // Get user data
   $id = $user["id"];
-  $sql = "SELECT id, username, account, name, properties, reservations, guests, invoices, prices, restrictions, avail, rooms, channels, statistics, changelog, articles, wspay, engine, email, phone, client_name, company_name, address, city, country, pib, mb, undo_timer, notify_overbooking, notify_new_reservations, invoice_header, invoice_margin, invoice_issued, invoice_delivery FROM all_users WHERE id = '$id' LIMIT 1";
+  $sql = "SELECT id, username, account, name, properties, reservations, guests, invoices, prices, restrictions, avail, rooms, channels, statistics, changelog, articles, wspay, engine, email, phone, client_name, company_name, address, city, country, pib, mb, undo_timer, notify_overbooking, notify_new_reservations, invoice_header, invoice_margin, invoice_issued, invoice_delivery, room_count FROM all_users WHERE id = '$id' LIMIT 1";
   $rezultat = mysqli_query($konekcija, $sql);
   if(!$rezultat)
     fatal_error("Database error", 500);
@@ -38,6 +38,9 @@ if($action == "loginSession")
   if($account == "IM043"){
     $sql = "SELECT * FROM all_properties";
   }
+  else if($account == "ME001"){
+    $sql = "SELECT * FROM all_properties WHERE agency = 1 OR agency = 3 OR agency = 5";
+  }
   else {
     $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
   }
@@ -49,6 +52,16 @@ if($action == "loginSession")
   // Return Values
   $ret_val = $user;
 
+  if($user["status"] == 4){
+    $property = $user["properties"];
+    $rooms = [];
+    $sql = "SELECT * FROM rooms_$property";
+    $rezultat = mysqli_query($konekcija, $sql);
+    while($red = mysqli_fetch_assoc($rezultat)){
+        array_push($rooms, fixRoom($red));
+    }
+    $ret_val["rooms"] = $rooms;
+  }
   $ret_val["quicksetup_step"] = 1;
   $ret_val["status"] = "ok";
   $ret_val["key"] = $key;
@@ -100,6 +113,9 @@ if($action == "login")
   $properties = [];
   if($account == "IM043"){
     $sql = "SELECT * FROM all_properties";
+  }
+  else if($account == "ME001"){
+    $sql = "SELECT * FROM all_properties WHERE agency = 1 OR agency = 3 OR agency = 5";
   }
   else {
     $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
@@ -342,6 +358,59 @@ if($action == "property")
     $ret_val["lcode"] = $lcode;
   }
 }
+
+if($action == "subuserInfo") // Get data for autofill of registration form
+{
+  $pwd = checkPost("key");
+  $id = checkPost("id");
+  $sql = "SELECT *
+          FROM all_users
+          WHERE pwd = '$pwd' AND id = $id AND status = 3
+          LIMIT 1
+          ";
+  $rezultat = mysqli_query($konekcija, $sql);
+  if($rezultat)
+  {
+    $red = mysqli_fetch_assoc($rezultat);
+    $ret_val["email"] = $red['email'];
+  }
+  else {
+    fatal_error("Invalid ID", 200);
+  }
+
+}
+
+if($action == "subuserConfirm") // Sub-user registration
+{
+  $email = checkPost("email");
+  $email = strtolower($email);
+  $password = checkPost("password");
+  $password= sha1($password);
+  $pkey = checkPost("key");
+  $sql = "SELECT COUNT(*) AS broj
+            FROM all_users
+            WHERE email = '$email' AND pwd = '$pkey'
+            LIMIT 1
+          ";
+  $rezultat = mysqli_query($konekcija, $sql);
+  $red = mysqli_fetch_assoc($rezultat);
+  $broj = $red['broj'];
+  if($broj == 0) // Invalid key or email of pending user
+  {
+    fatal_error("Invalid key", 200);
+  }
+  else {
+    $sql = "UPDATE all_users SET
+      status = 2,
+      pwd = '$password'
+      WHERE email = '$email' AND pwd = '$pkey'
+    ";
+    $rezultat = mysqli_query($konekcija, $sql);
+    if(!$rezultat)
+      fatal_error("Database error", 500); // Server failed
+  }
+}
+
 
 // Missing forgot password
 

@@ -39,7 +39,15 @@ if($action == "loginSession")
   $account = $user["account"];
   $properties_list = $user["properties"];
   $properties = [];
-  $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
+  if($account == "IM043"){
+    $sql = "SELECT * FROM all_properties";
+  }
+  else if($account == "ME001"){
+    $sql = "SELECT * FROM all_properties WHERE agency = 1 OR agency = 3 OR agency = 5";
+  }
+  else {
+    $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
+  }
   $rezultat = mysqli_query($konekcija, $sql);
   while($red = mysqli_fetch_assoc($rezultat)){
       array_push($properties, fixProperty($red));
@@ -96,7 +104,15 @@ if($action == "login")
   $account = $user["account"];
   $properties_list = $user["properties"];
   $properties = [];
-  $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
+  if($account == "IM043"){
+    $sql = "SELECT * FROM all_properties";
+  }
+  else if($account == "ME001"){
+    $sql = "SELECT * FROM all_properties WHERE agency = 1 OR agency = 3 OR agency = 5";
+  }
+  else {
+    $sql = "SELECT * FROM all_properties WHERE lcode IN ($properties_list)";
+  }
   $rezultat = mysqli_query($konekcija, $sql);
   while($red = mysqli_fetch_assoc($rezultat)){
       array_push($properties, fixProperty($red));

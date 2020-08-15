@@ -1302,6 +1302,20 @@ if($action == "restrictionCompact")
     $new_data = mysqli_fetch_assoc($rezultat);
   }
 }
+if($action == "noshow")
+{
+  $action = "";
+  $userToken = makeRequest("acquire_token", array($account, "davincijevkod966", "753fa793e9adb95321b061f05e29a78327645c05e097e376"));
+  makeRequest("bcom_notify_noshow", array($userToken, $lcode, $id));
+  makeRequest("release_token", array($userToken));
+}
+if($action == "invalidcc")
+{
+  $action = "";
+  $userToken = makeRequest("acquire_token", array($account, "davincijevkod966", "753fa793e9adb95321b061f05e29a78327645c05e097e376"));
+  makeRequest("bcom_notify_invalid_cc", array($userToken, $lcode, $id));
+  makeRequest("release_token", array($userToken));
+}
 
 // Changelog
 if($action != ""){

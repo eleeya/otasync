@@ -293,11 +293,23 @@ var get_rest_details = function() {
 function display_rest_details(data, field, rest_dfrom){
   let allData = {};
   let all_details_dates = range_of_dates(rest_dfrom, 366);
-  let rooms = rooms_list;
+  let cal_rooms = properties_map[main_lcode].custom_calendar.room_types;
+  let rooms = [];
   if(field == "avail")
-    rooms = real_rooms_list;
+    rooms = cal_rooms;
+  else {
+    for(let i=0;i<cal_rooms.length;i++){
+      rooms.push(cal_rooms[i]);
+      for(let j=0;j<rooms_list.length;j++){ // Push all rooms that are virtual of current room
+        if(rooms_list[j].parent_room == cal_rooms[i])
+          rooms.push(rooms_list[j].id);
+      }
+    }
+  }
+
 
   for(let i=0;i<rooms.length;i++){
+
     var room_id = rooms[i];
     var room_data = []; // All data for one room
     let segment = {}; // A single segment - with same values
@@ -318,9 +330,8 @@ function display_rest_details(data, field, rest_dfrom){
     segment["length"] = 0;
     segment["value"] = cur_val;
 
-    for(let j=0;j<all_details_dates.length - 1;j++){ // Might act differently depending on last value
+    for(let j=0;j<all_details_dates.length - 1;j++){
       // Get current value of correct field
-      let cur_val = 0;
       if(data[room_id][all_details_dates[j]] != undefined){
         if(field == "avail" || field == "price")
           cur_val = data[room_id][all_details_dates[j]];
@@ -355,19 +366,9 @@ function display_rest_details(data, field, rest_dfrom){
       }
       else {
         room_data.push(JSON.parse(JSON.stringify(segment))); // Push old segment
-        segment.length = 0;
-        let next_val = 0;
-        if(field == "avail" || field == "price")
-          next_val = data[room_id][all_details_dates[j+1]];
-        if(field == "min")
-          next_val = data[room_id][all_details_dates[j+1]]["min_stay"];
-        if(field == "max")
-          next_val = data[room_id][all_details_dates[j+1]]["max_stay"];
-        if(field == "closure")
-          next_val = data[room_id][all_details_dates[j+1]]["closed"];
-        if(field == "ota")
-          next_val = data[room_id][all_details_dates[j+1]]["no_ota"];
-        segment.value = next_val;
+        segment.length = 1;
+        segment.value = cur_val;
+        // New segment already started, so length is 1 and value is the new value
       }
     }
     room_data.push(JSON.parse(JSON.stringify(segment))); // Insert last segment
@@ -407,7 +408,7 @@ function display_rest_details(data, field, rest_dfrom){
   }
 
   // Displaying values
-  $("#rest_details > .loader").remove();
+  $("#rest_details").empty();
 
   for(var i=0;i<rooms.length;i++){
     let graph_html = "";
@@ -444,7 +445,7 @@ function display_rest_details(data, field, rest_dfrom){
       else {
         graph_html = graph_html + `
         <div class='rest_details_data_item' style='width:${allData[rooms[i]][j].width}%;height:100%;'>
-          <div style='height:${allData[rooms_list[i]][j].height}%;width:100%;background-color:#6cd425;'></div>
+          <div style='height:${allData[rooms[i]][j].height}%;width:100%;background-color:#6cd425;'></div>
           <div class='rest_tooltip'>
             <div>
               ${iso_to_eur(allData[rooms[i]][j].dfrom)} - ${iso_to_eur(allData[rooms[i]][j].dto)}

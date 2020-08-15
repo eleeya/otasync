@@ -1372,7 +1372,7 @@ function initProperty($account, $lcode, $konekcija){
 
 }
 
-initDatabase();
+//initDatabase();
 
 $konekcija = connectToDB();
 $account = $_GET["account"];

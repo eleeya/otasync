@@ -357,6 +357,7 @@ function display_property_info(data){
   $("#property_iban").val(property.iban);
   $("#property_swift").val(property.swift);
   $("#default_price").val(property.default_price).change();
+  $("#property_email").val(property.email);
   set_checkbox("property_pdv_included", property.pdv_included);
   set_checkbox("property_rooms_tax_included", property.rooms_tax_included);
   if(property.rooms_tax_included == 1){

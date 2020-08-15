@@ -1269,6 +1269,42 @@ if($action == "sync")
     initProperty($account, $inserted_properties[$i], $konekcija);
   }
 
+
+  // Add new reservation code on edited reservations
+  $edited_reservations = [];
+  $sql = "SELECT reservation_code, modified_reservation FROM reservations_$lcode WHERE modified_reservation != ''";
+  $rezultat = mysqli_query($konekcija, $sql);
+  while($red = mysqli_fetch_assoc($rezultat)){
+    if($red["reservation_code"] != $red["modified_reservation"])
+      array_push($edited_reservations, $red);
+  }
+  for($i=0;$i<sizeof($edited_reservations);$i++){
+    $old = $edited_reservations[$i]["modified_reservation"];
+    $new = $edited_reservations[$i]["reservation_code"];
+    $sql = "UPDATE reservations_$lcode SET new_reservation_code = '$new' WHERE reservation_code = '$old'";
+    mysqli_query($konekcija, $sql);
+  }
+
+  // Fix guest names
+  $guests = [];
+  $sql = "SELECT * FROM guests_$lcode";
+  $rezultat = mysqli_query($konekcija, $sql);
+  while($red = mysqli_fetch_assoc($rezultat)){
+    array_push($guests, $red);
+  }
+  for($i=0;$i<sizeof($guests);$i++){
+    $id = $guests[$i]["id"];
+    $sql = "SELECT customer_name, customer_surname FROM reservations_$lcode WHERE guest_ids = '$id' OR guest_ids LIKE '%,$id,%' OR guest_ids LIKE '%,$id' OR guest_ids LIKE '$id,%' LIMIT 1";
+    $rezultat = mysqli_query($konekcija, $sql);
+    $red = mysqli_fetch_assoc($rezultat);
+    $name = $red["customer_name"];
+    $surname = $red["customer_surname"];
+    if($name != "" && $surname != ""){
+      $sql = "UPDATE guests_$lcode SET name = '$name' AND surname = '$surname' WHERE id = '$id'";
+      mysqli_query($konekcija, $sql);
+    }
+  }
+
 }
 
 // All of below should be in edit

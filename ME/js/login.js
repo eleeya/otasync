@@ -357,6 +357,7 @@ function display_property_info(data){
   $("#property_iban").val(property.iban);
   $("#property_swift").val(property.swift);
   $("#default_price").val(property.default_price).change();
+  $("#property_email").val(property.email);
   set_checkbox("property_pdv_included", property.pdv_included);
   set_checkbox("property_rooms_tax_included", property.rooms_tax_included);
   if(property.rooms_tax_included == 1){
@@ -428,6 +429,7 @@ function display_property_info(data){
   $("#cal_filter_days_"+filters.days).find(".radio_value").addClass("checked");
   $(`#cal_filter_days`).val(filters.days);
   $("#cal_filter_rooms").val(-1).change();
+  $("#cal_filter_rooms_types_list").empty();
   for(let i=0;i<filters.room_types.length;i++){
     let room_id = filters.room_types[i];
     let shortname = rooms_map[room_id].shortname;
@@ -439,7 +441,6 @@ function display_property_info(data){
     }
   }
   $("#cal_filter_rooms_single").val(-1).change();
-  $("#cal_filter_rooms_types_list").empty();
   $("#cal_filter_rooms_single_list").empty();
   for(let i=0;i<filters.single_rooms.length;i++){
     let room_id = filters.single_rooms[i].split("_")[0];

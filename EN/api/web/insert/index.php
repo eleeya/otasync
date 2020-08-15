@@ -721,6 +721,79 @@ if($action == "room")
    fatal_error("Database error", 500); // Server failed
   }
 
+  // Fix tables
+
+  // Drop old avail/price/restriction tables
+
+  $sql = "DROP TABLE avail_values_$lcode, prices_values_$lcode, restrictions_values_$lcode";
+  mysqli_query($konekcija, $sql);
+
+  // Create avail/price/restriction values tables
+  $real_rooms = [];
+  $sql = "SELECT id FROM rooms_$lcode WHERE parent_room = '0'"; // Only get real rooms for avail
+  $rezultat = mysqli_query($konekcija, $sql);
+  while($red = mysqli_fetch_assoc($rezultat)){
+    array_push($real_rooms, $red["id"]);
+  }
+  $rooms = [];
+  $restrictions_rooms = [];
+  $sql = "SELECT id FROM rooms_$lcode"; // Get all rooms for prices and restrictions
+  $rezultat = mysqli_query($konekcija, $sql);
+  while($red = mysqli_fetch_assoc($rezultat)){
+    array_push($rooms, $red["id"]);
+    // Making all fields for restrictions table
+    array_push($restrictions_rooms, "min_stay_" . $red["id"]);
+    array_push($restrictions_rooms, "min_stay_arrival_" . $red["id"]);
+    array_push($restrictions_rooms, "max_stay_" . $red["id"]);
+    array_push($restrictions_rooms, "closed_" . $red["id"]);
+    array_push($restrictions_rooms, "closed_departure_" . $red["id"]);
+    array_push($restrictions_rooms, "closed_arrival_" . $red["id"]);
+    array_push($restrictions_rooms, "no_ota_" . $red["id"]);
+  }
+
+
+
+  // Avail
+  $rooms_sql = "room_" . implode(" INT, room_", $real_rooms) . " INT"; // SQL to create a column for each room
+  $sql = "CREATE TABLE avail_values_$lcode
+  (
+    avail_date DATE NOT NULL,
+    $rooms_sql,
+    PRIMARY KEY (avail_date)
+  )";
+  $rezultat = mysqli_query($konekcija, $sql);
+  // Prices
+  $rooms_sql = "room_" . implode(" FLOAT, room_", $rooms) . " FLOAT";
+  $sql = "CREATE TABLE prices_values_$lcode
+  (
+    id VARCHAR(63),
+    price_date DATE NOT NULL,
+    $rooms_sql,
+    PRIMARY KEY (id, price_date)
+  )";
+  mysqli_query($konekcija, $sql);
+  // Restrictions
+  $rooms_sql = implode(" INT, ", $restrictions_rooms) . " INT";
+  $sql = "CREATE TABLE restrictions_values_$lcode
+  (
+    id VARCHAR(63),
+    restriction_date DATE NOT NULL,
+    $rooms_sql,
+    PRIMARY KEY (id, restriction_date)
+  )";
+  mysqli_query($konekcija, $sql);
+
+  // Values of avail/prices/restrictions
+  $dfrom = date("Y-m-d");
+  $time = strtotime($dfrom);
+  $dto = date("Y-m-d", $time+364*24*60*60);
+  plansInsertWubook($lcode, $account, $dfrom, $dto, $konekcija);
+  $dfrom = date("Y-m-d", $time+365*24*60*60);
+  $dto = date("Y-m-d", $time+729*24*60*60);
+  plansInsertWubook($lcode, $account, $dfrom, $dto, $konekcija);
+  plansInsertWubook($lcode, $account, "2021-03-01", "2021-03-31", $konekcija);
+
+
 }
 
 if($action == "initialRooms")
@@ -972,6 +1045,17 @@ if($action == "user")
     $sql = "SELECT * FROM all_users WHERE id = '$id'";
     $rezultat = mysqli_query($konekcija, $sql);
     $new_data = mysqli_fetch_assoc($rezultat);
+    // Send email
+    $link = "https://admin.otasync.me/confirm?key=$user_key&id=$id";
+    $to_email = $user_email;
+    $subject = 'Registracija';
+    $message = "Za registraciju na admin.otasync.me za nalog $account kliknite na link: $link";
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= 'From: noreply@otasync.me';
+    $rez = mail($to_email, $subject, $message, $headers);
+    if(!$rez)
+      fatal_error("Email not sent", 500);
   }
   else {
    fatal_error("Database error", 500); // Server failed

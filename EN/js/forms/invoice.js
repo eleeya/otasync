@@ -346,7 +346,13 @@ function open_res_invoice(res_id){
   $("#form_invoice_mark").val(next_invoice_mark);
   $("#form_invoice_status").val(1).change();
   $("#form_invoice_issued").datepicker().data('datepicker').selectDate(new Date());
+  if($("#account_invoice_delivery").val() == "dfrom"){
+    $("#form_invoice_issued").datepicker().data('datepicker').selectDate(new Date(res.date_arrival));
+  }
   $("#form_invoice_delivery").datepicker().data('datepicker').selectDate(new Date());
+  if($("#account_invoice_due").val() == "dto"){
+    $("#form_invoice_delivery").datepicker().data('datepicker').selectDate(new Date(res.date_departure));
+  }
   $("#form_invoice_payment_type").val(1).change();
   // Client
   $("#form_invoice_client_name").val(res.customer_name + " " + res.customer_surname);

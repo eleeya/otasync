@@ -181,10 +181,57 @@ $(document).ready(function(){
       }
     });
   });
-  
-  $("body").on("click", "#res_info_noshow, #res_info_invalidcc", function(){
-    click_to_hide();
-    add_change_settings("Izmjena sačuvana");
+
+  // Noshow and Invalid cc
+  $("body").on("click", "#res_info_noshow", function(){
+    let id = $(this).attr("data-value");
+    $.ajax({
+      type: 'POST',
+      url: api_link + 'edit/noshow',
+      data: {
+        key: main_key,
+        account: account_name,
+        lcode: main_lcode,
+        id: id
+      },
+      success: function(rezultat){
+        var sve = check_json(rezultat);
+        if(sve.status !== "ok") {
+          add_change_error(sve.status);
+          return;
+        }
+        add_change_settings();
+        click_to_hide();
+      },
+      error: function(xhr, textStatus, errorThrown){
+        window.alert("Doslo je do greske. " + xhr.responseText);
+      }
+    });
+  });
+  $("body").on("click", "#res_info_invalidcc", function(){
+    let id = $(this).attr("data-value");
+    $.ajax({
+      type: 'POST',
+      url: api_link + 'edit/invalidcc',
+      data: {
+        key: main_key,
+        account: account_name,
+        lcode: main_lcode,
+        id: id
+      },
+      success: function(rezultat){
+        var sve = check_json(rezultat);
+        if(sve.status !== "ok") {
+          add_change_error(sve.status);
+          return;
+        }
+        add_change_settings();
+        click_to_hide();
+      },
+      error: function(xhr, textStatus, errorThrown){
+        window.alert("Doslo je do greske. " + xhr.responseText);
+      }
+    });
   });
 });
 
@@ -513,8 +560,8 @@ function open_res_info(res){
       </div>
       ${export_html}
       <div class='res_info_buttons'>
-        <button class='confirm_button' id='res_info_noshow'> No Show </button>
-        <button class='confirm_button' id='res_info_invalidcc'> Nevalidna kartica </button>
+        <button class='confirm_button' id='res_info_noshow' data-value='${res.reservation_code}'> No Show </button>
+        <button class='confirm_button' id='res_info_invalidcc' data-value='${res.reservation_code}'> Nevalidna kartica </button>
         <div class='left_break'> </div>
         <div class='res_info_tooltip_container res_info_delete' id='res_info_delete_${res.reservation_code}' data-value='${res.reservation_code}'>
           <img class='res_info_button' src='img/info_trash.svg'>

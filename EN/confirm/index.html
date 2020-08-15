@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="rs" dir="ltr">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>Potvrda registracije</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.min.css">
+    <link rel="icon" href="img/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="register.js"></script>
+  </head>
+  <body>
+    <div id='login'>
+      <div id='login_header'>
+      </div>
+      <div id='login_window' style='display:flex'>
+        <div id='login_window_title'>
+          REGISTRACIJA
+        </div>
+        <div>Email</div>
+        <input type='text' id='login_username' class='text_input readonly' readonly>
+        <div>Lozinka</div>
+        <input type='password' id='login_password' class='text_input' style='width:200px;border-radius:17px;' autocomplete="off">
+        <div>Potvrdi lozinku</div>
+        <input type='password' id='login_password_confirm' class='text_input' autocomplete="off">
+        <div>
+          <input type='button' id='login_confirm' class='confirm_button' value='REGISTRUJ SE'></input>
+        </div>
+        <div id='login_error'></div>
+      </div>
+      <div id="login_footer">
+        <div>
+          Copyright© 2020
+        </div>
+        <a href="https://serbian-bookers.com/uslovi-koriscenja/" target="_blank" id="login_terms"></a>
+        <a href="https://serbian-bookers.com/pravilnik-o-privatnosti-podataka/" target="_blank" id="login_policy"></a>
+      </div>
+    </div>
+  </body>
+</html>

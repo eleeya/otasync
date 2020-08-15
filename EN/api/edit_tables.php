@@ -19,5 +19,9 @@ for($i=0;$i<sizeof($lcodes);$i++){
   mysqli_query($konekcija, $sql);
 }
 
+/*
+SELECT * FROM information_schema.tables WHERE table_name LIKE '%1485558698'
+
+*/
 
  ?>

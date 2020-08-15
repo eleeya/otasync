@@ -113,6 +113,10 @@ $(document).ready(function(){
     let val = $(this).val();
     update_property("swift", val);
   });
+  $("#property_email").change(function(){
+    let val = $(this).val();
+    update_property("email", val);
+  });
   $("#property_pdv_included").click(function(){
     let val = $(this).attr("data-value");
     update_property("pdv_included", val);
