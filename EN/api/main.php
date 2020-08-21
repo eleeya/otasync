@@ -9,16 +9,16 @@ require 'fixes.php';
 
 function connectToDB()
 {
+  /*
   $server = "localhost";
   $serverUser = "cuwpvuip_korisnik";
   $serverPassword = "davincijevkod966";
   $database = "cuwpvuip_aplikacija";
-  /*
+  */
   $server = "localhost";
   $serverUser = "otasyncm_korisnikU";
   $serverPassword = "CT*$,ULOqgb=";
   $database = "aplikacijaBeta";
-  */
 
   $konekcija = new mysqli($server, $serverUser, $serverPassword, $database);
   if ($konekcija->connect_error) {
@@ -347,9 +347,9 @@ function insertWubookGuest($lcode, $reservation, $konekcija)
       'M',
       1,
       '',
-      $arrivals,
-      $nights,
-      $amount,
+      0,
+      0,
+      0,
       '',
       'Wubook')";
     $rezultat = mysqli_query($konekcija, $sql);
@@ -372,14 +372,37 @@ function insertWubookGuest($lcode, $reservation, $konekcija)
       'M',
       1,
       '',
-      $arrivals,
-      $nights,
-      $amount,
+      0,
+      0,
+      0,
       '',
       'Wubook')";
     $rezultat = mysqli_query($konekcija, $sql);
     if(!$rezultat){
-      fatal_error("Database failed", 505);
+      $name = utf8_encode($name);
+       $surname = utf8_encode($surname);
+       $city = utf8_encode($city);
+       $address = utf8_encode($address);
+       $sql = "INSERT INTO guests_$lcode (name, surname, email, phone, country_of_residence, place_of_residence, address, zip, country_of_birth, date_of_birth, gender, host_again, note, total_arrivals, total_nights, total_paid, registration_data, created_by) VALUES (
+     '',
+     '',
+     '$email',
+     '$phone',
+     '$country',
+     '',
+     '',
+     '$zip',
+     '$country',
+     '0001-01-01',
+     'M',
+     1,
+     '',
+     0,
+     0,
+     0,
+     '',
+     'Wubook')";
+     $rezultat = mysqli_query($konekcija, $sql);
     }
     }
     $customer_id = mysqli_insert_id($konekcija);

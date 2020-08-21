@@ -21,11 +21,13 @@ flush();
   $res = makeRequest("fetch_booking", array($userToken, $lcode, $rcode, 1));
   $res = $res[0];
   insertWubookReservation($lcode, $account, $res);
-  sendReservationConfirmation($reservation_code, $lcode, $account, $konekcija);
-  sendGuestEmail($reservation_code, $lcode, $account, $konekcija);
+  sendReservationConfirmation($rcode, $lcode, $account, $konekcija);
+  sendGuestEmail($rcode, $lcode, $account, $konekcija);
 
 
   // Mobile app push notification
+
+
 function sendNotification($rcode, $lcode, $account, $konekcija)
 {
   // Channel data
@@ -114,11 +116,11 @@ function sendNotification($rcode, $lcode, $account, $konekcija)
   curl_close($ch);
 }
 
-  sendNotification($rcode, $lcode, $account, $konekcija);
+sendNotification($rcode, $lcode, $account, $konekcija);
 
 
 
 
-  $konekcija->close();
+$konekcija->close();
 
 ?>

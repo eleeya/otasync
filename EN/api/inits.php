@@ -1376,7 +1376,6 @@ function initProperty($account, $lcode, $konekcija){
 
 $konekcija = connectToDB();
 $account = $_GET["account"];
-$account = "PV117";
 
 $sql = "SELECT * FROM all_users WHERE account = '$account'";
 $rezultat = mysqli_query($konekcija, $sql);

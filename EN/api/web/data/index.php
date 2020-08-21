@@ -577,7 +577,7 @@ if($action == "users")
   $ret_val["users"] = $users;
 }
 
-if($action == "statistics") // This needs to be checked
+if($action == "statistics")
 {
   $statistics = [];
   $dfrom = checkPost("dfrom");
@@ -990,7 +990,6 @@ if($action == "statistics") // This needs to be checked
   $statistics["bookwindow"] = $bookwindow_data;
   $ret_val["data"] = $statistics;
 }
-
 
 if($action == "search")
 {

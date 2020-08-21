@@ -236,22 +236,14 @@
             // Fixing guest number prices
               $additional_prices = (array) json_decode($rooms[$i]["additional_prices"]);
               if($additional_prices["active"] == 1){
-
-                  if($additional_prices["default"] == 1 && $additional_prices["variation_type"] == "fixed"){
-                      $delta = $guests - 1;
+                  if($additional_prices["variation"] < 0)
+                    $additional_prices["variation"] = - $additional_prices["variation"];
+                  if($additional_prices["variation_type"] == "fixed"){
+                      $delta = $guests - $additional_prices["default"];
                       $price += $delta * $additional_prices["variation"];
                   }
-                  else if($additional_prices["default"] > 1 && $additional_prices["variation_type"] == "fixed"){
-                      $delta = $additional_prices["default"] - $guests;
-                      $price += $delta * $additional_prices["variation"];
-                  }
-                  else if($additional_prices["default"] == 1 && $additional_prices["variation_type"] == "percent"){
-                      $delta = $guests - 1;
-                      $delta_price = $price * $additional_prices["variation"] / 100;
-                      $price += $delta * $delta_price;
-                  }
-                  else if($additional_prices["default"] > 1 && $additional_prices["variation_type"] == "percent"){
-                      $delta = $additional_prices["default"] - $guests;
+                  else if($additional_prices["variation_type"] == "percent"){
+                      $delta = $guests - $additional_prices["default"];
                       $delta_price = $price * $additional_prices["variation"] / 100;
                       $price += $delta * $delta_price;
                   }

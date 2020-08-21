@@ -21,6 +21,12 @@ $action = getAction();
 $user = getSession($key, $account, $konekcija);
 $user_id = $user["id"];
 
+if($account == "ME001" || $account == "IM043"){
+  $sql = "SELECT account FROM all_properties WHERE lcode = '$lcode'";
+  $rezultat = mysqli_query($konekcija, $sql);
+  $red = mysqli_fetch_assoc($rezultat);
+  $account = $red["account"];
+}
 // Check access here
 
 $old_data = [];
@@ -51,7 +57,7 @@ if($action == "reservation")
     $rezultat = mysqli_query($konekcija, $sql);
     if($rezultat){
       $userToken = makeRequest("acquire_token", array($account, "davincijevkod966", "753fa793e9adb95321b061f05e29a78327645c05e097e376"));
-      makeUncheckedRequest("cancel_reservation", array($userToken, $lcode, $id));
+      makeRequest("cancel_reservation", array($userToken, $lcode, $id));
       makeReleaseRequest("release_token", array($userToken));
 
       // Updating avail in database

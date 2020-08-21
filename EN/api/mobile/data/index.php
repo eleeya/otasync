@@ -96,6 +96,13 @@ $action = getAction();
 $ret_val = [];
 $ret_val["status"] = "ok";
 $user = getSession($key, $account, $konekcija);
+
+if($account == "ME001" || $account == "IM043"){
+  $sql = "SELECT account FROM all_properties WHERE lcode = '$lcode'";
+  $rezultat = mysqli_query($konekcija, $sql);
+  $red = mysqli_fetch_assoc($rezultat);
+  $account = $red["account"];
+}
 // Check access here
 
 if($action == "all" || $action == "news" || $action == "events" || $action == "calendar" || $action =="reservations" || $action == "reservationsFilter" || $action == "search" || $action == "calendarGantt") // Fetching channel logos
@@ -189,7 +196,6 @@ if($action == "events")
   $ret_val["noshow"] = $noshow;
 }
 
-// Filtering
 if($action == "reservationsFilter")
 {
   $reservations = [];
@@ -459,7 +465,7 @@ if($action == "occupancy")
   $ret_val["occupancy"] = $all_occupancy;
 }
 
-if($action == "statistics") // This needs to be checked
+if($action == "statistics")
 {
   $statistics = [];
   $dfrom = checkPost("dfrom");

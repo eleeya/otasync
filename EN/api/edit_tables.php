@@ -1,5 +1,7 @@
 <?php
 
+require "main.php";
+
 $konekcija = connectToDB();
 
 $lcodes = [];

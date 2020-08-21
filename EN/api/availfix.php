@@ -77,7 +77,7 @@ do {
       echo $rooms[$j]["shortname"] . " " . "($room_avail)" . "   ";
     }
   }
-  echo "<br>"
+  echo "<br>";
 
   $i += 1;
 } while(cmpDates($date, $dto) < 0);

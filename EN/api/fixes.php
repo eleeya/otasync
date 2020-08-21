@@ -49,6 +49,8 @@ function fixReservation($res, $channel_data, $konekcija, $lcode){
 function fixRoom($room){
   $room["houserooms"] = json_decode($room["houserooms"]);
   $room["additional_prices"] = json_decode($room["additional_prices"]);
+  if($room["additional_prices"]->variation < 0)
+    $room["additional_prices"]->variation = - $room["additional_prices"]->variation;
   $room["linked_room"] = json_decode($room["linked_room"]);
   $room["amenities"] = json_decode($room["amenities"]);
   $room["images"] = json_decode($room["images"]);

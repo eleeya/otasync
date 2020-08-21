@@ -37,8 +37,9 @@ function room_variations_change(){ // Show / hide additional prices form
   if(val == 1){
     let num = $("#room_settings_occupancy").val();
     $("#room_settings_variations_default option").remove();
-    $("#room_settings_variations_default").append(`<option value=1> 1 person </option>`);
-    $("#room_settings_variations_default").append(`<option value=${num}> ${num} people </option>`);
+    for(let q=1;q<=num;q++){
+      $("#room_settings_variations_default").append(`<option value=${q}> ${q} people </option>`);
+    }
     $("#room_settings_variations_inputs").fadeIn(200);
   }
   else {
@@ -223,7 +224,6 @@ $("#room_settings_active").change(function(){
     set_checkbox("room_settings_variations", variations.active);
     room_variations_change();
     $("#room_settings_variations_default").val(variations.default).change();
-    $("#room_settings_variations_sign").val(variations.variation < 0 ? -1 : 1).change();
     $("#room_settings_variations_value").val(Math.abs(variations.variation));
     $("#room_settings_variations_variation").val(variations.variation_type).change();
     $("#room_settings_description").val(room.description);
@@ -295,7 +295,7 @@ $("#room_settings_confirm").click(function(){
   let variations_struct = {};
   variations_struct.active = $("#room_settings_variations").attr('data-value');
   variations_struct.default = $("#room_settings_variations_default").val();
-  variations_struct.variation = $("#room_settings_variations_sign").val() * $("#room_settings_variations_value").val();
+  variations_struct.variation = $("#room_settings_variations_value").val();
   variations_struct.variation_type = $("#room_settings_variations_variation").val();
 
   let room_numbers = [];

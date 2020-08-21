@@ -20,6 +20,12 @@ $action = getAction();
 $user = getSession($key, $account, $konekcija);
 $user_id = $user["id"];
 
+if($account == "ME001" || $account == "IM043"){
+  $sql = "SELECT account FROM all_properties WHERE lcode = '$lcode'";
+  $rezultat = mysqli_query($konekcija, $sql);
+  $red = mysqli_fetch_assoc($rezultat);
+  $account = $red["account"];
+}
 // Check access here
 
 $old_data = [];
@@ -571,6 +577,21 @@ if($action == "reservation")
     $ret_val["data"]["new_data"] = [];
     $ret_val["data"]["new_data"]["customer_notes"] = $customer_notes;
   }
+}
+
+if($action == "noshow")
+{
+  $id = checkPost("rcode");
+  $userToken = makeRequest("acquire_token", array($account, "davincijevkod966", "753fa793e9adb95321b061f05e29a78327645c05e097e376"));
+  makeRequest("bcom_notify_noshow", array($userToken, $lcode, $id));
+  makeRequest("release_token", array($userToken));
+}
+if($action == "invalidcc")
+{
+  $id = checkPost("rcode");
+  $userToken = makeRequest("acquire_token", array($account, "davincijevkod966", "753fa793e9adb95321b061f05e29a78327645c05e097e376"));
+  makeRequest("bcom_notify_invalid_cc", array($userToken, $lcode, $id));
+  makeRequest("release_token", array($userToken));
 }
 
 echo json_encode($ret_val);
