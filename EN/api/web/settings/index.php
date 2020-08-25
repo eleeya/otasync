@@ -1231,6 +1231,7 @@ if($action == "sync")
         '$key',
         '$account',
         '$name',
+        '',
         '$address',
         '$zip',
         '$city',
@@ -1263,7 +1264,7 @@ if($action == "sync")
     }
   }
   $all_properties = implode(",", $all_properties);
-  $sql = "UPDATE all_users SET properies = '$all_properties' WHERE account = '$account' AND status = 1";
+  $sql = "UPDATE all_users SET properties = '$all_properties' WHERE account = '$account' AND status = 1";
   mysqli_query($konekcija, $sql);
   for($i=0;$i<sizeof($inserted_properties);$i++){
     initProperty($account, $inserted_properties[$i], $konekcija);

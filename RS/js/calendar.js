@@ -1482,11 +1482,14 @@ function display_calendar_details(data){
     let prices = data.prices;
     let restrictions = data.restrictions;
 
+    console.log(data);
+
     for(let i=0;i<rooms.length;i++){
       for(let j=0;j<dates_list.length;j++){
 
         // Avail
         let field_id = "#avail_" + rooms[i] + "_" + dates_list[j];
+        console.log(field_id);
         let value = avail[rooms[i]][dates_list[j]];
         if(value == undefined)
           value = "-";

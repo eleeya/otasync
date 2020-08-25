@@ -222,7 +222,7 @@ if($action == "calendar")
     // Get calendar
     $sql = "SELECT *
             FROM reservations_$lcode
-            WHERE ((date_arrival >= '$dfrom' AND date_arrival <= '$dto') OR (date_departure >= '$dfrom' AND date_departure <= '$dto')) AND status=1
+            WHERE ((date_arrival >= '$dfrom' AND date_arrival <= '$dto') OR (date_departure >= '$dfrom' AND date_departure <= '$dto')  OR (date_arrival <= '$dfrom' AND date_departure >= '$dto')) AND status=1
             ORDER BY date_arrival ASC
             ";
     $rezultat = mysqli_query ($konekcija, $sql);

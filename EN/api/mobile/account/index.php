@@ -66,7 +66,9 @@ if($action == "login")
   $username = checkPost("username");
   $pwd = checkPost("password");
   $remember = checkPost("remember");
-
+  if(strpos($username, '@'))
+    $username = strtolower($username); // Temp fix
+    
   $sql = "SELECT pwd, account, status FROM all_users WHERE username = '$username'";
   $rezultat = mysqli_query($konekcija, $sql);
   $user = mysqli_fetch_assoc($rezultat);
